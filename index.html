@@ -3705,6 +3705,59 @@ document.querySelectorAll('.nav-links a').forEach(a => {
   }
 
   // ============ UNIVERSAL PHOTO UPLOAD SLOTS — alle foto-plekken op de site ============
+  // ============ IndexedDB fallback — voor als localStorage vol is (iOS Safari ~5MB limit) ============
+  const IDB_NAME = 'stan-merk-ik';
+  const IDB_STORE = 'uploads';
+  let _idbPromise = null;
+  const getIdb = () => _idbPromise || (_idbPromise = new Promise((resolve) => {
+    if (!window.indexedDB) { resolve(null); return; }
+    const req = indexedDB.open(IDB_NAME, 1);
+    req.onupgradeneeded = () => req.result.createObjectStore(IDB_STORE);
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => resolve(null);
+  }));
+  const idbSet = async (k, v) => {
+    const db = await getIdb(); if (!db) throw new Error('no-idb');
+    return new Promise((res, rej) => {
+      const tx = db.transaction(IDB_STORE, 'readwrite');
+      tx.objectStore(IDB_STORE).put(v, k);
+      tx.oncomplete = res; tx.onerror = () => rej(tx.error);
+    });
+  };
+  const idbGet = async (k) => {
+    const db = await getIdb(); if (!db) return null;
+    return new Promise((res) => {
+      const tx = db.transaction(IDB_STORE, 'readonly');
+      const r = tx.objectStore(IDB_STORE).get(k);
+      r.onsuccess = () => res(r.result ?? null);
+      r.onerror = () => res(null);
+    });
+  };
+  const idbDel = async (k) => {
+    const db = await getIdb(); if (!db) return;
+    return new Promise((res) => {
+      const tx = db.transaction(IDB_STORE, 'readwrite');
+      tx.objectStore(IDB_STORE).delete(k);
+      tx.oncomplete = res; tx.onerror = res;
+    });
+  };
+  // Storage API — probeert localStorage, valt terug op IndexedDB
+  window.StanStorage = {
+    async set(k, v) {
+      try { localStorage.setItem(k, v); return 'local'; }
+      catch { try { await idbSet(k, v); return 'idb'; } catch { return 'fail'; } }
+    },
+    async get(k) {
+      const ls = localStorage.getItem(k);
+      if (ls != null) return ls;
+      return await idbGet(k);
+    },
+    async remove(k) {
+      localStorage.removeItem(k);
+      await idbDel(k);
+    },
+  };
+
   (function initUniversalUploads() {
     const STORAGE_PREFIX = 'upload-v1-';
     const compressImg = (file) => new Promise((resolve, reject) => {
@@ -3714,14 +3767,14 @@ document.querySelectorAll('.nav-links a').forEach(a => {
         const img = new Image();
         img.onerror = reject;
         img.onload = () => {
-          const maxDim = 1400;
+          const maxDim = 900;  // kleiner → past beter in iOS localStorage
           let { width, height } = img;
           if (width > height && width > maxDim) { height = Math.round(height * (maxDim / width)); width = maxDim; }
           else if (height > maxDim)              { width  = Math.round(width  * (maxDim / height)); height = maxDim; }
           const canvas = document.createElement('canvas');
           canvas.width = width; canvas.height = height;
           canvas.getContext('2d').drawImage(img, 0, 0, width, height);
-          resolve(canvas.toDataURL('image/jpeg', 0.82));
+          resolve(canvas.toDataURL('image/jpeg', 0.72));
         };
         img.src = ev.target.result;
       };
@@ -3804,11 +3857,14 @@ document.querySelectorAll('.nav-links a').forEach(a => {
       };
       const stopCycle = () => { if (state.timer) { clearInterval(state.timer); state.timer = null; } };
 
-      const persist = () => {
-        try {
-          localStorage.setItem(STORAGE_PREFIX + key, JSON.stringify({ items: state.items }));
-        } catch {
-          console.warn('localStorage vol voor slot "' + key + '" — foto\'s alleen deze sessie.');
+      const persist = async () => {
+        const result = await window.StanStorage.set(STORAGE_PREFIX + key, JSON.stringify({ items: state.items }));
+        if (result === 'fail') {
+          cue.textContent = '⚠ Opslag vol — refresh + wis een slot';
+          setTimeout(() => {
+            if (state.items.length > 1) cue.textContent = `+ Meer toevoegen · ${state.idx + 1}/${state.items.length}`;
+            else cue.textContent = '+ Meer toevoegen';
+          }, 3500);
         }
       };
 
@@ -3821,45 +3877,43 @@ document.querySelectorAll('.nav-links a').forEach(a => {
             state.items.push(dataUrl);
           } catch {}
         }
-        persist();
-        // start met de nieuwste (laatst toegevoegde) als we nog maar net begonnen
+        await persist();
         if (state.items.length === files.length) state.idx = 0;
         showCurrent(false);
         startCycle();
         input.value = '';
       });
-      clearBtn.addEventListener('click', (e) => {
+      clearBtn.addEventListener('click', async (e) => {
         e.stopPropagation(); e.preventDefault();
         stopCycle();
         state.items = []; state.idx = 0;
-        localStorage.removeItem(STORAGE_PREFIX + key);
+        await window.StanStorage.remove(STORAGE_PREFIX + key);
         imgEl.removeAttribute('src');
         el.classList.remove('has-image');
         dots.innerHTML = '';
         cue.textContent = 'Tap voor foto\'s';
       });
 
-      // Pauze bij hover zodat je rustig kunt kijken
       el.addEventListener('mouseenter', stopCycle);
       el.addEventListener('mouseleave', startCycle);
 
-      // Restore
-      const stored = localStorage.getItem(STORAGE_PREFIX + key);
-      if (stored) {
+      // Restore — try localStorage eerst, dan IndexedDB
+      (async () => {
+        const stored = await window.StanStorage.get(STORAGE_PREFIX + key);
+        if (!stored) return;
         try {
           const parsed = JSON.parse(stored);
           if (parsed && Array.isArray(parsed.items)) state.items = parsed.items;
           else if (typeof parsed === 'string') state.items = [parsed];
           else if (parsed && typeof parsed.data === 'string') state.items = [parsed.data];
         } catch {
-          // legacy raw dataUrl
           state.items = [stored];
         }
         if (state.items.length) {
           showCurrent(false);
           startCycle();
         }
-      }
+      })();
     };
 
     // Auto-enhance alle bekende plekken
