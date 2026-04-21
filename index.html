@@ -3865,8 +3865,8 @@ document.querySelectorAll('.nav-links a').forEach(a => {
     return window._ghFilesPromise;
   };
 
-  // Settings modal wiring
-  (function initSettingsModal() {
+  // Settings modal wiring — wacht tot DOM klaar want button staat na dit script-block
+  function bootSettingsModal() {
     const btn = document.getElementById('settingsBtn');
     const modal = document.getElementById('settingsModal');
     const input = document.getElementById('ghTokenInput');
@@ -3918,7 +3918,12 @@ document.querySelectorAll('.nav-links a').forEach(a => {
       setTimeout(() => location.reload(), 800);
     });
     updateIndicator();
-  })();
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bootSettingsModal);
+  } else {
+    bootSettingsModal();
+  }
 
   // ============ IndexedDB fallback — voor als localStorage vol is (iOS Safari ~5MB limit) ============
   const IDB_NAME = 'stan-merk-ik';
