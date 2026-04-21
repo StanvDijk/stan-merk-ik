@@ -4096,9 +4096,9 @@ document.querySelectorAll('.nav-links a').forEach(a => {
         if (!files.length) return;
         const useGh = window.GH && window.GH.hasToken();
         cue.textContent = useGh ? 'Uploaden naar cloud...' : 'Bezig...';
+        let lastErr = null; let successCount = 0;
         for (const file of files) {
           try {
-            // Compress (imgs only) - videos skip compressie, direct upload
             let blob, ext;
             if (file.type.startsWith('video/')) {
               blob = file; ext = (file.name.split('.').pop() || 'mp4').toLowerCase();
@@ -4111,8 +4111,8 @@ document.querySelectorAll('.nav-links a').forEach(a => {
               const meta = await window.GH.uploadBlob(key, blob, ext);
               state.items.push(meta.url);
               ghItemsMeta.push(meta);
+              successCount++;
             } else {
-              // Local-only: gebruik dataURL
               const reader = new FileReader();
               const dataUrl = await new Promise((res, rej) => {
                 reader.onload = () => res(reader.result);
@@ -4120,15 +4120,24 @@ document.querySelectorAll('.nav-links a').forEach(a => {
                 reader.readAsDataURL(blob);
               });
               state.items.push(dataUrl);
+              successCount++;
             }
           } catch (err) {
             console.error('Upload failed', err);
+            lastErr = err;
           }
         }
         if (!useGh) await persist();
         if (state.items.length === files.length) state.idx = 0;
-        showCurrent(false);
-        startCycle();
+        if (successCount === 0 && lastErr) {
+          // Alle uploads gefaald → laat duidelijke error zien
+          cue.textContent = '⚠ Upload gefaald — zie alert';
+          setTimeout(() => { cue.textContent = 'Tap voor foto\'s'; }, 4000);
+          alert('Foto upload mislukt:\n\n' + (lastErr.message || lastErr) + '\n\nCheck je GitHub token:\n• Repo-access = stan-merk-ik\n• Permissions: Contents → Read and write\n• Niet verlopen\n\nOf klik ⚙ + Verwijderen en maak opnieuw aan.');
+        } else {
+          showCurrent(false);
+          startCycle();
+        }
         input.value = '';
       });
       clearBtn.addEventListener('click', async (e) => {
