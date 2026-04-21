@@ -1,0 +1,3129 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stan van Dijk — Merk IK · Cinematic</title>
+<meta name="description" content="Stan van Dijk — eerstejaars Commerciële Economie aan de Hanze. Op zoek naar een stage in marketing, merkstrategie of sales.">
+<meta property="og:title" content="Stan van Dijk — Merk IK">
+<meta property="og:description" content="Op zoek naar een stageplek waar branding, campagnes en sales dagelijkse kost zijn.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* === LIGHT EDITORIAL PALETTE === */
+  --bg: #faf8f3;                /* warm cream */
+  --bg-elev-1: #ffffff;
+  --bg-elev-2: #f4f1e8;         /* soft warm grey */
+  --bg-elev-3: #ece8dc;
+
+  --text-primary: #1a1a1e;
+  --text-secondary: #4a4a52;
+  --text-tertiary: #75757d;
+  --text-quaternary: #a8a8ad;
+
+  --border-subtle: rgba(26, 26, 30, 0.07);
+  --border-default: rgba(26, 26, 30, 0.11);
+  --border-strong: rgba(26, 26, 30, 0.18);
+
+  --accent: #1e3a5f;             /* deep navy */
+  --accent-bright: #2a5285;
+  --accent-muted: rgba(30, 58, 95, 0.09);
+  --accent-glow: rgba(30, 58, 95, 0.18);
+  --accent-deep: #0f2340;
+
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px;
+  --space-5: 24px; --space-6: 32px; --space-7: 48px; --space-8: 64px;
+  --space-9: 96px; --space-10: 128px; --space-11: 160px;
+
+  --radius-sm: 8px; --radius-md: 12px; --radius-lg: 16px;
+  --radius-xl: 20px; --radius-full: 9999px;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--bg); color: var(--text-primary);
+  line-height: 1.6; font-size: 16px;
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11', 'ss01';
+  overflow-x: hidden;
+}
+
+::selection { background: var(--accent); color: #fff; }
+
+.mono { font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; }
+.serif { font-family: 'Fraunces', 'Times New Roman', serif; }
+
+/* ============ SCROLL PROGRESS ============ */
+.scroll-progress {
+  position: fixed; top: 0; left: 0; height: 2px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-bright) 100%);
+  width: 0%; z-index: 999;
+  transition: width 0.08s ease-out;
+}
+
+/* ============ BRAND DOT ============ */
+.nav-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--accent);
+  position: relative;
+  box-shadow: 0 0 0 3px var(--accent-muted);
+}
+.nav-dot::after {
+  content: ''; position: absolute; inset: -4px; border-radius: 50%;
+  border: 1px solid var(--accent); opacity: 0.35;
+  animation: dot-orbit 3s ease-in-out infinite;
+}
+@keyframes dot-orbit {
+  0%, 100% { transform: scale(1); opacity: 0.35; }
+  50%      { transform: scale(1.8); opacity: 0; }
+}
+
+/* ============ SHIMMER ACCENT TEXT ============ */
+h1 .accent-text {
+  color: var(--accent);
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 600;
+}
+
+/* ============ CONTAINERS ============ */
+.container {
+  max-width: 1120px; margin: 0 auto;
+  padding: 0 var(--space-5);
+}
+.container-narrow {
+  max-width: 780px; margin: 0 auto;
+  padding: 0 var(--space-5);
+}
+
+/* ============ NAV ============ */
+nav.top {
+  position: fixed; top: 0; left: 0; right: 0;
+  padding: var(--space-4) 0; z-index: 100;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background: rgba(250, 248, 243, 0.78);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.nav-inner {
+  max-width: 1200px; margin: 0 auto;
+  padding: 0 var(--space-5);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: var(--space-5);
+}
+.nav-brand {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-weight: 600; font-size: 15px; color: var(--text-primary);
+  text-decoration: none; letter-spacing: -0.01em;
+  white-space: nowrap;
+  font-family: 'Fraunces', serif;
+}
+.nav-links {
+  display: flex; align-items: center; gap: var(--space-4);
+  list-style: none;
+}
+.nav-links a {
+  font-size: 13px; color: var(--text-tertiary);
+  text-decoration: none; transition: color 0.2s ease;
+  font-weight: 500;
+}
+.nav-links a:hover { color: var(--accent); }
+.nav-cta {
+  padding: 8px 16px; background: var(--text-primary); color: var(--bg);
+  text-decoration: none; border-radius: var(--radius-full);
+  font-weight: 500; font-size: 13px;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
+}
+.nav-cta:hover { opacity: 0.85; transform: translateY(-1px); }
+.nav-toggle { display: none; background: none; border: 0; color: var(--text-primary); cursor: pointer; }
+
+@media (max-width: 980px) {
+  .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: flex-start; background: var(--bg-elev-1); padding: var(--space-5); border-bottom: 1px solid var(--border-subtle); gap: var(--space-4); }
+  .nav-links.open { display: flex; }
+  .nav-toggle { display: inline-flex; }
+  .nav-cta-wrap { display: none; }
+}
+
+/* ============ HERO ============ */
+.hero { position: relative; padding: 180px 0 140px; overflow: hidden; }
+.hero::before {
+  content: ''; position: absolute; top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 1200px; height: 700px;
+  background: radial-gradient(ellipse 50% 50% at 50% 50%, var(--accent-muted), transparent 70%);
+  pointer-events: none;
+}
+.hero-inner { position: relative; z-index: 2; text-align: center; }
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: var(--space-3);
+  padding: 6px 14px 6px 10px;
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-full);
+  font-size: 13px; color: var(--text-secondary);
+  margin-bottom: var(--space-7);
+  opacity: 0; animation: fade-in 0.8s var(--ease-out-expo) 0.1s forwards;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+.eyebrow-badge {
+  font-size: 11px; font-weight: 600;
+  padding: 2px 8px; background: var(--accent-muted); color: var(--accent-deep);
+  border-radius: var(--radius-full);
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
+
+h1 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(44px, 7vw, 84px);
+  line-height: 1.0; font-weight: 700;
+  letter-spacing: -0.035em; max-width: 900px;
+  margin: 0 auto var(--space-6);
+  color: var(--text-primary);
+  opacity: 0; animation: fade-in-up 1s var(--ease-out-expo) 0.2s forwards;
+}
+
+.hero-sub {
+  font-size: clamp(17px, 1.4vw, 20px);
+  color: var(--text-secondary); max-width: 620px;
+  margin: 0 auto var(--space-8); line-height: 1.6;
+  opacity: 0; animation: fade-in-up 1s var(--ease-out-expo) 0.35s forwards;
+}
+
+.hero-ctas {
+  display: inline-flex; gap: var(--space-3); flex-wrap: wrap; justify-content: center;
+  opacity: 0; animation: fade-in-up 1s var(--ease-out-expo) 0.5s forwards;
+}
+
+.btn {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  padding: 14px 26px; border-radius: var(--radius-full);
+  font-weight: 500; font-size: 15px;
+  text-decoration: none;
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  border: 1px solid transparent;
+  will-change: transform;
+  cursor: pointer;
+}
+.btn-primary { background: var(--text-primary); color: var(--bg-elev-1); }
+.btn-primary:hover { background: var(--accent); transform: translateY(-1px); }
+.btn-secondary { background: transparent; color: var(--text-primary); border-color: var(--border-strong); }
+.btn-secondary:hover { background: var(--bg-elev-2); transform: translateY(-1px); }
+
+.hero-trust {
+  margin-top: var(--space-10);
+  opacity: 0; animation: fade-in 1s var(--ease-out-expo) 0.7s forwards;
+}
+.trust-label {
+  font-size: 11px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.14em;
+  color: var(--text-quaternary); margin-bottom: var(--space-5);
+}
+.trust-stats {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-7); max-width: 720px; margin: 0 auto;
+  padding-top: var(--space-5); border-top: 1px solid var(--border-subtle);
+}
+@media (max-width: 640px) {
+  .trust-stats { grid-template-columns: 1fr; gap: var(--space-5); }
+}
+.trust-stat { text-align: center; }
+.trust-stat-value {
+  font-size: 34px; font-weight: 600;
+  letter-spacing: -0.03em; color: var(--text-primary);
+  line-height: 1; margin-bottom: 6px;
+  font-family: 'Fraunces', serif;
+}
+.trust-stat-label { font-size: 12px; color: var(--text-tertiary); font-weight: 500; }
+
+.hero-cover {
+  margin-top: var(--space-9);
+  max-width: 960px; margin-left: auto; margin-right: auto;
+  aspect-ratio: 16/9;
+  background: var(--bg-elev-2);
+  border: 1px dashed var(--accent);
+  border-radius: var(--radius-xl);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--accent-deep);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px; text-align: center; padding: var(--space-5);
+  position: relative; z-index: 2;
+  opacity: 0; animation: fade-in-up 1s var(--ease-out-expo) 0.65s forwards;
+  overflow: hidden;
+}
+.hero-cover img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ============ ANIMATIONS ============ */
+@keyframes fade-in { to { opacity: 1; } }
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.9s var(--ease-out-expo), transform 0.9s var(--ease-out-expo);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ============ SECTIONS ============ */
+section { padding: var(--space-10) 0; position: relative; }
+
+.section-eyebrow {
+  font-size: 12px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.14em;
+  color: var(--accent-deep);
+  margin-bottom: var(--space-4);
+  display: inline-block;
+}
+.section-num {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text-quaternary);
+  margin-right: var(--space-3);
+  font-weight: 500;
+}
+
+h2 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(34px, 5vw, 54px);
+  font-weight: 700; letter-spacing: -0.025em;
+  line-height: 1.05;
+  margin-bottom: var(--space-5);
+  max-width: 760px;
+}
+h2 .serif-accent { font-style: italic; color: var(--accent); font-weight: 600; }
+
+.section-sub {
+  font-size: 18px; color: var(--text-secondary);
+  max-width: 640px; line-height: 1.65;
+  margin-bottom: var(--space-8);
+}
+
+h3.sub {
+  font-size: 18px; font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-4);
+  letter-spacing: -0.01em;
+}
+
+/* ============ INPUT PLACEHOLDER (wat jij nog moet doen) ============ */
+.placeholder {
+  display: block;
+  padding: var(--space-4) var(--space-5);
+  background: var(--accent-muted);
+  border: 1px dashed var(--accent);
+  border-radius: var(--radius-md);
+  color: var(--accent-deep);
+  font-size: 13px;
+  font-family: 'JetBrains Mono', monospace;
+  line-height: 1.6;
+  margin: var(--space-3) 0;
+}
+.placeholder-img {
+  display: flex; align-items: center; justify-content: center;
+  min-height: 220px;
+  background: var(--bg-elev-2);
+  border: 1px dashed var(--accent);
+  border-radius: var(--radius-md);
+  color: var(--accent-deep);
+  font-size: 13px;
+  font-family: 'JetBrains Mono', monospace;
+  text-align: center;
+  padding: var(--space-5);
+}
+
+/* ============ PROSE (kolommen voor body text) ============ */
+.prose {
+  column-count: 2;
+  column-gap: var(--space-7);
+  color: var(--text-secondary);
+  font-size: 16px;
+  line-height: 1.75;
+}
+.prose p { margin-bottom: var(--space-4); break-inside: avoid; }
+.prose p:first-of-type::first-letter {
+  font-family: 'Fraunces', serif;
+  font-size: 58px; font-weight: 700;
+  float: left; line-height: 0.9;
+  padding-right: 10px; padding-top: 6px;
+  color: var(--accent);
+}
+.prose strong { color: var(--text-primary); font-weight: 600; }
+.prose em { font-family: 'Fraunces', serif; font-style: italic; color: var(--text-primary); font-weight: 500; }
+@media (max-width: 720px) {
+  .prose { column-count: 1; }
+}
+
+/* ============ STAGE GRID ============ */
+.stage-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8);
+}
+@media (max-width: 820px) { .stage-grid { grid-template-columns: 1fr; } }
+
+.checklist { list-style: none; display: grid; gap: 0; }
+.checklist li {
+  display: grid; grid-template-columns: 28px 1fr; gap: var(--space-3);
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-secondary); font-size: 15px; line-height: 1.55;
+}
+.checklist li::before {
+  content: '→';
+  color: var(--accent);
+  font-weight: 600;
+  font-family: 'JetBrains Mono', monospace;
+}
+.checklist li strong { color: var(--text-primary); font-weight: 600; }
+
+.card-soft {
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6) var(--space-6);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+}
+
+p.body-text { color: var(--text-secondary); font-size: 15px; line-height: 1.7; margin-bottom: var(--space-3); }
+p.body-text strong { color: var(--text-primary); font-weight: 600; }
+p.body-text em { font-family: 'Fraunces', serif; font-style: italic; color: var(--text-primary); font-weight: 500; }
+
+/* ============ PEOPLE GRID ============ */
+.people {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-5);
+  margin-bottom: var(--space-7);
+}
+@media (max-width: 720px) { .people { grid-template-columns: 1fr; } }
+.person {
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+}
+.person:hover { border-color: var(--accent); box-shadow: 0 4px 12px rgba(0,0,0,0.04); }
+.person-head {
+  display: flex; align-items: center; gap: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+.person-avatar {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--bg-elev-2);
+  border: 1px dashed var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--accent-deep); font-size: 11px;
+  font-family: 'JetBrains Mono', monospace;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.person-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+.person-meta .person-name {
+  font-size: 16px; font-weight: 600; color: var(--text-primary);
+  letter-spacing: -0.01em;
+  font-family: 'Fraunces', serif;
+}
+.person-meta .person-rel {
+  font-size: 12px; color: var(--text-tertiary);
+  font-family: 'JetBrains Mono', monospace;
+  margin-top: 2px;
+}
+.person-quote {
+  font-size: 15px; color: var(--text-secondary);
+  line-height: 1.7;
+  border-left: 2px solid var(--accent);
+  padding-left: var(--space-4);
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+}
+
+/* ============ STARR ============ */
+.starr-block {
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-7);
+  margin-bottom: var(--space-5);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+}
+.starr-head {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: var(--space-5);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--border-subtle);
+  flex-wrap: wrap; gap: var(--space-3);
+}
+.starr-head h3 {
+  font-size: 20px; font-weight: 600; color: var(--text-primary);
+  letter-spacing: -0.01em;
+  font-family: 'Fraunces', serif;
+}
+.starr-tag {
+  font-size: 11px; color: var(--accent-deep);
+  background: var(--accent-muted);
+  padding: 4px 10px; border-radius: var(--radius-full);
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.starr-steps { display: grid; gap: var(--space-4); }
+.starr-step {
+  display: grid; grid-template-columns: 90px 1fr;
+  gap: var(--space-5);
+  padding: var(--space-3) 0;
+  border-bottom: 1px dashed var(--border-subtle);
+  font-size: 15px; color: var(--text-secondary);
+  line-height: 1.7;
+}
+.starr-step:last-child { border-bottom: 0; }
+.starr-step-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; font-weight: 600;
+  color: var(--accent-deep);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  padding-top: 2px;
+}
+@media (max-width: 640px) {
+  .starr-step { grid-template-columns: 1fr; gap: var(--space-2); }
+}
+
+/* ============ VALUES ROW ============ */
+.values-row {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5); margin-bottom: var(--space-8);
+}
+@media (max-width: 720px) { .values-row { grid-template-columns: 1fr; } }
+.value-card {
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-7);
+  text-align: center;
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+}
+.value-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.05); }
+.value-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; color: var(--text-quaternary);
+  letter-spacing: 0.08em;
+  margin-bottom: var(--space-3);
+  font-weight: 500;
+}
+.value-name {
+  font-family: 'Fraunces', serif;
+  font-size: 30px; font-weight: 600;
+  color: var(--accent);
+  margin-bottom: var(--space-3);
+  letter-spacing: -0.02em;
+  font-style: italic;
+}
+.value-desc {
+  font-size: 14px; color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ============ TIMELINE ============ */
+.timeline { display: grid; gap: 0; border-left: 1px solid var(--border-default); padding-left: var(--space-6); margin-left: var(--space-4); }
+.timeline-item {
+  position: relative;
+  padding-bottom: var(--space-7);
+}
+.timeline-item::before {
+  content: ''; position: absolute;
+  left: calc(-1 * var(--space-6) - 6px); top: 4px;
+  width: 11px; height: 11px; border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-muted);
+}
+.timeline-year {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; color: var(--accent-deep);
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-2);
+  font-weight: 600;
+}
+.timeline-title {
+  font-family: 'Fraunces', serif;
+  font-size: 19px; font-weight: 600; color: var(--text-primary);
+  margin-bottom: var(--space-2); letter-spacing: -0.01em;
+}
+.timeline-desc {
+  font-size: 14px; color: var(--text-secondary);
+  line-height: 1.7; max-width: 580px;
+}
+
+/* ============ SOMEBODY ============ */
+.somebody-split {
+  display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5);
+  margin-bottom: var(--space-7);
+}
+@media (max-width: 720px) { .somebody-split { grid-template-columns: 1fr; } }
+.somebody-card {
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+}
+.somebody-img {
+  aspect-ratio: 4/5;
+  background: var(--bg-elev-2);
+  border-bottom: 1px dashed var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--accent-deep); font-size: 13px;
+  font-family: 'JetBrains Mono', monospace;
+  text-align: center; padding: var(--space-5);
+}
+.somebody-body { padding: var(--space-6); }
+.somebody-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; color: var(--accent-deep);
+  letter-spacing: 0.08em; text-transform: uppercase;
+  margin-bottom: var(--space-2); font-weight: 600;
+}
+.somebody-cap {
+  font-family: 'Fraunces', serif;
+  font-size: 22px; font-weight: 600;
+  color: var(--text-primary); line-height: 1.3;
+  letter-spacing: -0.01em;
+  font-style: italic;
+}
+
+/* ============ GALLERY ============ */
+.gallery {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3); margin-bottom: var(--space-7);
+}
+@media (max-width: 720px) { .gallery { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .gallery { grid-template-columns: 1fr; } }
+.gallery-item {
+  aspect-ratio: 1/1;
+  background: var(--bg-elev-2);
+  border: 1px dashed var(--accent);
+  border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--accent-deep); font-size: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  text-align: center; padding: var(--space-4);
+  overflow: hidden;
+  transition: transform 0.4s var(--ease-out-expo);
+}
+.gallery-item:hover { transform: scale(1.02); }
+.gallery-item.wide { grid-column: span 2; aspect-ratio: 2/1; }
+
+/* ============ A DAY IN THE LIFE ============ */
+.day-grid { display: grid; gap: var(--space-4); }
+.day-row {
+  display: grid; grid-template-columns: 100px 1fr 1fr;
+  gap: var(--space-5); align-items: start;
+  padding: var(--space-5) 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+@media (max-width: 720px) {
+  .day-row { grid-template-columns: 80px 1fr; }
+  .day-img { grid-column: 1 / -1; }
+}
+.day-time {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 15px; font-weight: 600;
+  color: var(--accent-deep); letter-spacing: 0.05em;
+}
+.day-title {
+  font-family: 'Fraunces', serif;
+  font-size: 18px; font-weight: 600; color: var(--text-primary);
+  margin-bottom: var(--space-2); letter-spacing: -0.01em;
+}
+.day-desc {
+  font-size: 14px; color: var(--text-secondary); line-height: 1.65;
+}
+.day-img {
+  aspect-ratio: 3/2;
+  background: var(--bg-elev-2);
+  border: 1px dashed var(--accent);
+  border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--accent-deep); font-size: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  text-align: center; padding: var(--space-4);
+}
+
+/* ============ MOTTO ============ */
+.motto-card {
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-xl);
+  padding: var(--space-10) var(--space-8);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+}
+.motto-card::before {
+  content: '"';
+  position: absolute;
+  top: 10px; left: 36px;
+  font-family: 'Fraunces', serif;
+  font-size: 200px;
+  color: var(--accent-muted);
+  line-height: 1;
+  font-weight: 700;
+}
+.motto-text {
+  font-family: 'Fraunces', serif;
+  font-style: italic; font-weight: 700;
+  font-size: clamp(30px, 4.5vw, 46px);
+  line-height: 1.15; color: var(--text-primary);
+  max-width: 680px; margin: 0 auto var(--space-6);
+  letter-spacing: -0.02em; position: relative; z-index: 1;
+}
+.motto-text .accent-word { color: var(--accent); }
+.motto-attr {
+  font-size: 12px; color: var(--text-tertiary);
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* ============ EDITORIAL CTA ============ */
+.editorial-cta {
+  background: var(--bg-elev-2);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  margin-top: var(--space-6);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: var(--space-5); flex-wrap: wrap;
+}
+.editorial-cta p {
+  font-size: 16px; color: var(--text-primary); font-weight: 500;
+  margin: 0; max-width: 520px;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+}
+
+/* ============ CONTACT ============ */
+.contact {
+  text-align: center;
+  padding: var(--space-11) 0;
+  position: relative; overflow: hidden;
+}
+.contact::before {
+  content: ''; position: absolute;
+  top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 900px; height: 500px;
+  background: radial-gradient(ellipse 50% 50% at 50% 50%, var(--accent-muted), transparent 70%);
+  pointer-events: none;
+}
+.contact .container-narrow { position: relative; z-index: 1; }
+.contact h2 { margin-left: auto; margin-right: auto; margin-bottom: var(--space-5); }
+.contact .section-sub { margin-left: auto; margin-right: auto; margin-bottom: var(--space-7); }
+.contact-actions {
+  display: inline-flex; gap: var(--space-3); flex-wrap: wrap; justify-content: center;
+}
+.contact-details {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5); margin-top: var(--space-9);
+  padding-top: var(--space-7); border-top: 1px solid var(--border-subtle);
+}
+@media (max-width: 640px) { .contact-details { grid-template-columns: 1fr; } }
+.contact-detail-label {
+  font-size: 11px; font-weight: 600; color: var(--text-quaternary);
+  text-transform: uppercase; letter-spacing: 0.14em;
+  margin-bottom: var(--space-2);
+}
+.contact-detail-value {
+  font-size: 15px; color: var(--text-primary);
+  font-family: 'JetBrains Mono', monospace;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.contact-detail-value:hover { color: var(--accent); }
+
+/* ============ FOOTER ============ */
+footer {
+  padding: var(--space-7) 0;
+  border-top: 1px solid var(--border-subtle);
+  background: var(--bg-elev-2);
+}
+.footer-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: var(--space-4);
+}
+.footer-brand {
+  font-size: 15px; font-weight: 600;
+  color: var(--text-primary);
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  font-family: 'Fraunces', serif;
+}
+.footer-meta {
+  font-size: 12px; color: var(--text-tertiary);
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.04em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ======================================================= */
+/* ============ CINEMATIC LEVEL 3 UPGRADES ============== */
+/* ======================================================= */
+
+/* Remove smooth scroll since Lenis handles it */
+html { scroll-behavior: auto; }
+
+/* ============ CINEMATIC INTRO ============ */
+.cinematic-intro {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0;
+}
+.cinematic-name {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: clamp(56px, 11vw, 150px);
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  text-align: center;
+  color: var(--text-primary);
+  position: relative;
+  z-index: 2;
+  will-change: transform, opacity;
+}
+.cinematic-tagline {
+  position: absolute;
+  top: calc(50% + clamp(60px, 9vw, 140px));
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(11px, 1.1vw, 14px);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  white-space: nowrap;
+  opacity: 0;
+  z-index: 3;
+}
+.cinematic-tagline .accent { color: var(--accent); }
+.cinematic-name .line {
+  display: block;
+  overflow: hidden;
+}
+.cinematic-name .word {
+  display: inline-block;
+  transform: translateY(110%);
+  opacity: 0;
+}
+.cinematic-name .word.italic {
+  font-style: italic;
+  color: var(--accent);
+  font-weight: 600;
+}
+.cinematic-sub {
+  position: absolute;
+  bottom: var(--space-8);
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  opacity: 0;
+  white-space: nowrap;
+}
+.cinematic-sub::before {
+  content: '↓';
+  display: block;
+  font-size: 16px;
+  margin-bottom: 8px;
+  animation: scroll-hint 1.8s ease-in-out infinite;
+}
+@keyframes scroll-hint {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(4px); opacity: 1; }
+}
+
+/* ============ BACKDROP TYPOGRAPHY ============ */
+.type-backdrop {
+  position: absolute;
+  font-family: 'Fraunces', serif;
+  font-weight: 800;
+  font-size: clamp(120px, 24vw, 400px);
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  color: var(--text-primary);
+  opacity: 0.04;
+  pointer-events: none;
+  white-space: nowrap;
+  text-transform: uppercase;
+  z-index: 0;
+  user-select: none;
+}
+.type-backdrop.top-right { top: 5%; right: -8%; }
+.type-backdrop.top-left { top: 8%; left: -4%; }
+.type-backdrop.bottom-left { bottom: 5%; left: -6%; }
+.type-backdrop.bottom-right { bottom: 8%; right: -6%; }
+
+/* ============ HORIZONTAL PHOTO RAIL — pinned pattern ============ */
+.photo-rail-wrap {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background: var(--bg-elev-2);
+}
+.photo-rail-wrap::before {
+  content: attr(data-label);
+  position: absolute;
+  top: var(--space-6);
+  left: var(--space-7);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+  z-index: 3;
+}
+.photo-rail-wrap::after {
+  content: '→ scroll';
+  position: absolute;
+  top: var(--space-6);
+  right: var(--space-7);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  z-index: 3;
+  animation: scroll-hint-x 2s ease-in-out infinite;
+}
+@keyframes scroll-hint-x {
+  0%, 100% { transform: translateX(0); opacity: 0.6; }
+  50% { transform: translateX(6px); opacity: 1; }
+}
+.photo-rail {
+  display: flex;
+  gap: 6vw;
+  will-change: transform;
+  padding-left: 20vw;
+  padding-right: 20vw;
+  align-items: center;
+}
+.rail-card {
+  flex: 0 0 auto;
+  width: min(60vw, 560px);
+  aspect-ratio: 4/5;
+  background: var(--bg-elev-1);
+  border: 1px dashed var(--accent);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition: box-shadow 0.6s var(--ease-out-expo);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.08);
+  will-change: transform, opacity, filter;
+  transform-origin: center center;
+}
+.rail-card.wide { width: min(75vw, 720px); aspect-ratio: 3/2; }
+.rail-card-overlay {
+  padding: var(--space-5) var(--space-6);
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);
+  color: #fff;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+.rail-card-overlay .rail-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin-bottom: 6px;
+}
+.rail-card-overlay .rail-title {
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.rail-card-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-deep);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  text-align: center;
+  padding: var(--space-5);
+  background: linear-gradient(135deg, var(--bg-elev-2) 0%, var(--bg-elev-3) 100%);
+}
+
+/* ============ HORIZONTAL PIN SECTION ============ */
+.pin-section {
+  height: 300vh;
+  position: relative;
+}
+.pin-track {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+.pin-content {
+  display: flex;
+  gap: var(--space-8);
+  padding: 0 var(--space-8);
+  will-change: transform;
+}
+.pin-panel {
+  flex: 0 0 auto;
+  width: min(90vw, 900px);
+  height: 70vh;
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: var(--space-9);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.05);
+}
+.pin-panel-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: var(--space-3);
+}
+.pin-panel h3 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(36px, 4vw, 54px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+  margin-bottom: var(--space-5);
+}
+.pin-panel h3 em {
+  font-style: italic;
+  color: var(--accent);
+  font-weight: 600;
+}
+.pin-panel p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  max-width: 520px;
+}
+.pin-panel p + p { margin-top: var(--space-4); }
+
+/* ============ STICKER / STICKY NOTE CARDS ============ */
+.sticky-note {
+  position: relative;
+  background: #fff8e1;
+  border: 1px solid rgba(0,0,0,0.08);
+  padding: var(--space-6) var(--space-7);
+  border-radius: 4px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.05);
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #3d2d10;
+  transform: rotate(var(--rotate, -1deg));
+  transition: transform 0.5s var(--ease-out-expo);
+  max-width: 340px;
+  will-change: transform;
+}
+.sticky-note:hover {
+  transform: rotate(0deg) translateY(-4px) scale(1.02);
+}
+.sticky-note-name {
+  font-family: 'JetBrains Mono', monospace;
+  font-style: normal;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+  margin-top: var(--space-4);
+  padding-top: var(--space-3);
+  border-top: 1px dashed rgba(0,0,0,0.2);
+}
+.sticky-note.color-mint { background: #e0f5e9; color: #1d3a2a; }
+.sticky-note.color-pink { background: #fde7ec; color: #52202c; }
+.sticky-note.color-blue { background: #e3ecf8; color: #1a2c45; }
+
+.sticky-board {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-7);
+  padding: var(--space-7) 0;
+}
+.sticky-board > *:nth-child(1) { --rotate: -2deg; }
+.sticky-board > *:nth-child(2) { --rotate: 1.5deg; }
+.sticky-board > *:nth-child(3) { --rotate: -1deg; }
+.sticky-board > *:nth-child(4) { --rotate: 2deg; }
+
+/* ============ NOTES CINEMA (pinned · pen-writes-each-note) ============ */
+.notes-cinema {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--bg-elev-2);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  margin-top: var(--space-7);
+}
+.notes-cinema-inner {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cinema-note {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(var(--r, -1.5deg));
+  width: min(78vw, 680px);
+  min-height: min(56vh, 480px);
+  padding: clamp(32px, 4.5vw, 60px) clamp(32px, 4.5vw, 64px);
+  background: #fff8e1;
+  color: #3d2d10;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: clamp(18px, 1.9vw, 26px);
+  line-height: 1.55;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.12), 0 2px 6px rgba(0,0,0,0.06);
+  border-radius: 3px;
+  opacity: 0;
+  pointer-events: none;
+  will-change: opacity, transform;
+}
+.cinema-note--1 { --r: -2deg; background: #fde7ec; color: #52202c; }
+.cinema-note--2 { --r: 1.5deg; background: #e3ecf8; color: #1a2c45; }
+.cinema-note--3 { --r: -1.5deg; background: #fff8e1; color: #3d2d10; }
+.cinema-note--4 { --r: 2deg; background: #e0f5e9; color: #1d3a2a; }
+.cinema-note.active { opacity: 1; pointer-events: auto; }
+.cinema-note-text {
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+.cinema-note-text .nw {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(8px);
+}
+.cinema-note-name {
+  margin-top: var(--space-4);
+  padding-top: var(--space-3);
+  border-top: 1px dashed rgba(0,0,0,0.2);
+  font-family: 'JetBrains Mono', monospace;
+  font-style: normal;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: currentColor;
+  opacity: 0.75;
+}
+.notes-pen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: clamp(36px, 3vw, 56px);
+  height: clamp(36px, 3vw, 56px);
+  pointer-events: none;
+  opacity: 0;
+  z-index: 5;
+  transform-origin: bottom right;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+  will-change: transform, opacity;
+  animation: pen-wiggle 0.35s ease-in-out infinite alternate;
+}
+@keyframes pen-wiggle {
+  from { transform: rotate(-1deg); }
+  to   { transform: rotate(1deg); }
+}
+.cinema-counter {
+  position: absolute;
+  bottom: var(--space-6);
+  right: var(--space-8);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  color: var(--text-tertiary);
+  z-index: 3;
+}
+.cinema-counter .cnt-current { color: var(--accent); font-weight: 600; }
+
+/* ============ SPLIT PASSIE ============ */
+.split-passion {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  min-height: 90vh;
+  position: relative;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+@media (max-width: 820px) { .split-passion { grid-template-columns: 1fr; } }
+.passion-half {
+  padding: var(--space-9);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.passion-half .passion-number {
+  position: absolute;
+  top: var(--space-5);
+  right: var(--space-6);
+  font-family: 'Fraunces', serif;
+  font-weight: 800;
+  font-size: clamp(140px, 20vw, 260px);
+  line-height: 0.8;
+  color: var(--text-primary);
+  opacity: 0.05;
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: -0.04em;
+}
+.passion-half.right .passion-number { right: auto; left: var(--space-6); }
+.passion-half.left {
+  background: var(--bg-elev-1);
+  border-right: 1px solid var(--border-subtle);
+}
+.passion-half.right {
+  background: var(--bg-elev-2);
+}
+.passion-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: var(--space-4);
+}
+.passion-half h3 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(40px, 5vw, 72px);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  margin-bottom: var(--space-6);
+}
+.passion-half h3 em {
+  font-style: italic;
+  color: var(--accent);
+  font-weight: 600;
+}
+.passion-half p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  max-width: 420px;
+}
+
+/* ============ FULL SCREEN MOTTO ============ */
+.motto-cinematic {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding: var(--space-9) var(--space-5);
+}
+.motto-cinematic .motto-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 50%, var(--accent-muted) 0%, transparent 70%);
+  pointer-events: none;
+}
+.motto-bg-word {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Fraunces', serif;
+  font-weight: 800;
+  font-size: clamp(180px, 30vw, 520px);
+  color: var(--text-primary);
+  opacity: 0.04;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+  z-index: 0;
+}
+.motto-cinematic h2 {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: clamp(40px, 7vw, 120px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  max-width: 1100px;
+  position: relative;
+  z-index: 2;
+}
+.motto-cinematic h2 .hl {
+  color: var(--accent);
+}
+.motto-cinematic .motto-attr-big {
+  margin-top: var(--space-7);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  position: relative;
+  z-index: 2;
+}
+
+/* ============ TIME-TRAVEL (pinned horizontal timeline) ============ */
+.timetravel-wrap {
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  background: var(--bg-elev-1);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.timetravel-wrap::before {
+  content: 'TIJDLIJN';
+  position: absolute;
+  top: var(--space-6);
+  left: var(--space-8);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--accent-deep);
+  z-index: 3;
+}
+.timetravel-wrap::after {
+  content: '→  time travel';
+  position: absolute;
+  top: var(--space-6);
+  right: var(--space-8);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--text-tertiary);
+  z-index: 3;
+  animation: scroll-hint-x 2s ease-in-out infinite;
+}
+.timetravel-inner {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-left: 18vw;
+  padding-right: 18vw;
+  will-change: transform;
+  gap: 7vw;
+}
+.timetravel-panel {
+  flex: 0 0 auto;
+  width: min(64vw, 820px);
+  height: 72vh;
+  padding: clamp(32px, 4vw, 72px);
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.06);
+  overflow: hidden;
+  will-change: transform, opacity, filter;
+  transform-origin: center center;
+}
+.timetravel-panel-step {
+  position: absolute;
+  top: var(--space-6);
+  right: var(--space-7);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--accent);
+  letter-spacing: 0.15em;
+  z-index: 2;
+}
+.timetravel-year {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--accent-deep);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-4);
+  font-weight: 600;
+  position: relative;
+  z-index: 2;
+}
+.timetravel-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(28px, 3.5vw, 48px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  margin-bottom: var(--space-5);
+  position: relative;
+  z-index: 2;
+}
+.timetravel-title em {
+  font-style: italic;
+  color: var(--accent);
+  font-weight: 600;
+}
+.timetravel-desc {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  position: relative;
+  z-index: 2;
+}
+.timetravel-desc strong { color: var(--text-primary); }
+.timetravel-desc em { font-family: 'Fraunces', serif; font-style: italic; color: var(--text-primary); font-weight: 500; }
+.timetravel-giant {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  font-family: 'Fraunces', serif;
+  font-weight: 800;
+  font-size: clamp(100px, 14vw, 220px);
+  color: var(--text-primary);
+  opacity: 0.05;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  white-space: nowrap;
+}
+
+/* ============ TRAVEL FEATURE (side-by-side foto + tekst) ============ */
+.travel-feature { display: grid; gap: var(--space-10); margin-top: var(--space-6); }
+.travel-feature-item {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: var(--space-8);
+  align-items: center;
+}
+.travel-feature-item.reverse { grid-template-columns: 1.1fr 1fr; }
+.travel-feature-item.reverse .travel-feature-photo { order: 2; }
+.travel-feature-item.reverse .travel-feature-text { order: 1; }
+@media (max-width: 820px) {
+  .travel-feature-item, .travel-feature-item.reverse {
+    grid-template-columns: 1fr;
+  }
+  .travel-feature-item.reverse .travel-feature-photo { order: 0; }
+  .travel-feature-item.reverse .travel-feature-text { order: 1; }
+}
+.travel-feature-photo {
+  aspect-ratio: 4/5;
+  background: var(--bg-elev-2);
+  border: 1px dashed var(--accent);
+  border-radius: var(--radius-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-deep);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  text-align: center;
+  padding: var(--space-5);
+  line-height: 1.7;
+}
+.travel-feature-text .timeline-year {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--accent-deep);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-3);
+  font-weight: 600;
+}
+.travel-feature-text .timeline-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+  margin-bottom: var(--space-5);
+}
+.travel-feature-text .timeline-desc {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--text-secondary);
+}
+.travel-feature-text .timeline-desc em {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  color: var(--text-primary);
+}
+
+/* ============ SCROLL REVEAL WORDS ============ */
+.word-reveal {
+  display: inline-block;
+  overflow: hidden;
+  line-height: 1.05;
+  vertical-align: bottom;
+}
+.word-reveal span {
+  display: inline-block;
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+/* ============ MARQUEE ============ */
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  padding: var(--space-6) 0;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--bg-elev-1);
+}
+.marquee-inner {
+  display: inline-flex;
+  gap: var(--space-8);
+  animation: marquee 40s linear infinite;
+  will-change: transform;
+}
+.marquee-item {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(32px, 4.5vw, 64px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+.marquee-item em {
+  font-style: italic;
+  color: var(--accent);
+}
+.marquee-item .dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin: 0 var(--space-6);
+  vertical-align: middle;
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ============ HIDE ORIGINAL HERO ============ */
+body.cinematic .hero { display: none; }
+
+/* ============ FILM ATMOSPHERE — grain + vignette ============ */
+body.cinematic {
+  background: var(--bg);
+}
+html, body {
+  background: var(--bg);  /* continuity across pin spacers */
+}
+.film-grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.06;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' seed='7'/><feColorMatrix values='0 0 0 0 0   0 0 0 0 0   0 0 0 0 0   0 0 0 0.6 0'/></filter><rect width='240' height='240' filter='url(%23n)'/></svg>");
+  background-size: 240px 240px;
+  animation: grain-shift 5s steps(6) infinite;
+}
+@keyframes grain-shift {
+  0%   { transform: translate(0, 0); }
+  20%  { transform: translate(-2%, -3%); }
+  40%  { transform: translate(3%, 1%); }
+  60%  { transform: translate(-1%, 4%); }
+  80%  { transform: translate(2%, -2%); }
+  100% { transform: translate(0, 0); }
+}
+.film-vignette {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9997;
+  background: radial-gradient(ellipse 130% 110% at 50% 50%, transparent 50%, rgba(30,58,95,0.08) 85%, rgba(15,35,64,0.18) 100%);
+}
+
+/* ============ CHAPTER CARDS (intermission between acts) ============ */
+.chapter {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  background: var(--text-primary);
+  color: var(--bg);
+  z-index: 1;
+}
+.chapter::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 40% at 50% 50%, rgba(255,255,255,0.08) 0%, transparent 70%),
+    linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.02) 50%, transparent 100%);
+  pointer-events: none;
+}
+.chapter-inner {
+  position: relative;
+  z-index: 2;
+  padding: 0 var(--space-5);
+  max-width: 1100px;
+}
+.chapter-act {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--accent-bright);
+  margin-bottom: var(--space-6);
+  opacity: 0.9;
+}
+.chapter-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-style: italic;
+  font-size: clamp(48px, 8vw, 130px);
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  color: var(--bg);
+  margin-bottom: var(--space-6);
+}
+.chapter-caption {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(15px, 1.4vw, 20px);
+  line-height: 1.6;
+  color: rgba(255,255,255,0.65);
+  max-width: 640px;
+  margin: 0 auto;
+  font-style: italic;
+}
+.chapter-rule {
+  display: block;
+  width: 80px;
+  height: 1px;
+  background: var(--accent-bright);
+  margin: var(--space-6) auto;
+  transform-origin: left center;
+}
+
+/* ============ LETTERBOX for pinned scenes ============ */
+.letterbox {
+  position: fixed;
+  left: 0; right: 0;
+  height: 0;
+  background: #0a0a0f;
+  z-index: 9996;
+  pointer-events: none;
+}
+.letterbox.top { top: 0; }
+.letterbox.bottom { bottom: 0; }
+
+/* ============ SCENE BACKGROUND (prevent white gaps) ============ */
+.photo-rail-wrap,
+.timetravel-wrap,
+.notes-cinema,
+.motto-cinematic {
+  background: var(--bg-elev-2);
+}
+.photo-rail-wrap + *,
+.timetravel-wrap + *,
+.notes-cinema + * {
+  background: var(--bg);
+}
+</style>
+</head>
+<body class="cinematic">
+
+<div class="film-vignette" aria-hidden="true"></div>
+<div class="film-grain" aria-hidden="true"></div>
+
+<!-- ============ CINEMATIC INTRO ============ -->
+<section class="cinematic-intro" id="top">
+  <div class="type-backdrop top-right">MERK IK</div>
+  <div class="type-backdrop bottom-left">2026</div>
+  <h1 class="cinematic-name" aria-label="Stan van Dijk">
+    <span class="line"><span class="word">Stan</span> <span class="word italic">van</span> <span class="word">Dijk.</span></span>
+  </h1>
+  <div class="cinematic-tagline"><span class="accent">↓</span>&nbsp;&nbsp;marketeer in de maak · ondernemer · eerste elftal&nbsp;&nbsp;<span class="accent">↓</span></div>
+</section>
+
+<!-- ============ MARQUEE STRIP ============ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-inner">
+    <span class="marquee-item">Marketeer in de maak <span class="dot"></span> <em>ondernemen</em> <span class="dot"></span> voetbal · eerste elftal <span class="dot"></span> <em>Bali inbound</em> <span class="dot"></span> StudentenLeads <span class="dot"></span> AI &amp; automatisering <span class="dot"></span></span>
+    <span class="marquee-item">Marketeer in de maak <span class="dot"></span> <em>ondernemen</em> <span class="dot"></span> voetbal · eerste elftal <span class="dot"></span> <em>Bali inbound</em> <span class="dot"></span> StudentenLeads <span class="dot"></span> AI &amp; automatisering <span class="dot"></span></span>
+  </div>
+</div>
+
+<nav class="top">
+  <div class="nav-inner">
+    <a href="#top" class="nav-brand">
+      <span class="nav-dot"></span>
+      Stan van Dijk
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#editorial">Editorial</a></li>
+      <li><a href="#stage">Ideale stage</a></li>
+      <li><a href="#ikkenjou">Ik ken jou</a></li>
+      <li><a href="#kompas">Moreel kompas</a></li>
+      <li><a href="#aanloop">Aanloop</a></li>
+      <li><a href="#somebody">Kleding</a></li>
+      <li><a href="#passie">Passie</a></li>
+      <li><a href="#day">A day</a></li>
+      <li><a href="#reis">Reis</a></li>
+      <li><a href="#motto">Motto</a></li>
+    </ul>
+    <div class="nav-cta-wrap">
+      <a href="#contact" class="nav-cta">Contact</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="container hero-inner">
+    <div class="eyebrow">
+      <span class="eyebrow-badge">Merk IK · 2026</span>
+      <span>Op zoek naar een stage die ergens over gaat</span>
+    </div>
+    <h1>Stan van Dijk.<br><span class="accent-text">Marketeer in de maak.</span></h1>
+    <p class="hero-sub">Eerstejaars Commerciële Economie aan de Hanze. Dit is geen standaard stageboekje. Dit is wie ik ben voordat we elkaar ontmoeten.</p>
+    <div class="hero-ctas">
+      <a href="#editorial" class="btn btn-primary">Begin bij het begin →</a>
+      <a href="#contact" class="btn btn-secondary">Direct contact</a>
+    </div>
+
+    <div class="hero-cover">
+      <div>
+        COVERFOTO<br>
+        <span style="font-size: 11px; opacity: 0.7;">— scherp, contrastrijk, beeldvullend, in de camera kijkend —<br>plaats als <code>images/cover.jpg</code></span>
+      </div>
+    </div>
+
+    <div class="hero-trust">
+      <div class="trust-label">Drie feiten die iets zeggen</div>
+      <div class="trust-stats">
+        <div class="trust-stat">
+          <div class="trust-stat-value">59,2%</div>
+          <div class="trust-stat-label">reply rate — 3× de branchenorm (StudentenLeads)</div>
+        </div>
+        <div class="trust-stat">
+          <div class="trust-stat-value">1<sup style="font-size:0.5em; vertical-align: super;">e</sup></div>
+          <div class="trust-stat-label">Eerste elftal · voetbal</div>
+        </div>
+        <div class="trust-stat">
+          <div class="trust-stat-value">2027</div>
+          <div class="trust-stat-label">Op zoek naar stage · Bali</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 1 · EDITORIAL ============ -->
+<section id="editorial">
+  <div class="container-narrow">
+    <div class="reveal">
+      <span class="section-eyebrow"><span class="section-num">01 /10</span>Editorial</span>
+      <h2>Waarom ik <span class="serif-accent">dit maak</span>.</h2>
+      <p class="section-sub">Van de hoofdredacteur. Persoonlijk, prikkelend — en mét een vraag aan het eind.</p>
+    </div>
+
+    <div class="reveal">
+      <div class="prose">
+        <p>Stel je voor: je zoekt een stagiair die niet alleen een CV op tafel legt, maar jou dag één iets terug kan geven. Deze site is mijn manier om te laten zien wie daar tegenover je zit — voordat we elkaar ontmoeten.</p>
+        <p>Ik ben Stan. Eerstejaars Commerciële Economie aan de Hanze. Voor dit blok moesten we een merk-IK maken — glossy of website. Ik koos bewust voor website. Dat voelt modern, het sluit aan op wat ik doe (ondernemen, online werken), het past bij waar ik vandaan kom en waar ik heen wil. Alles wat ik opbouw gebeurt online. Dan klopt een gedrukt magazine gewoon niet.</p>
+        <p><strong>Het maakproces.</strong></p>
+        <p>Eerste moment: ik liep vast op welke opdrachten ik erin wilde zetten. Tien verplicht, vijftien mogelijk, en elk onderwerp vraagt je om iets over jezelf te vertellen. Dat is niet m'n comfortzone. Ik doe liever dan dat ik over mezelf praat. Maar juist dáárom werd het interessant: ik kwam dingen over mezelf tegen die ik eigenlijk nooit zo hardop had gezegd.</p>
+        <p>Tweede moment: halverwege liep ik tegen m'n eigen toon aan. De eerste versie voelde te netjes — alsof ik op een sollicitatiegesprek aan het oefenen was. Ik heb de keuze gemaakt om te schrijven zoals ik praat, niet zoals je denkt dat het 'hoort'. Dat leest minder gepolijst, maar het is wel écht. En dat is het hele punt van deze site.</p>
+        <p>Wat je hierna gaat lezen is geen lijstje met skills. Het zijn tien pagina's over wie ik ben als ik aan het werk ben, wat ik waardeer, waar ik vandaan kom en waar ik heen ga.</p>
+      </div>
+
+      <div class="editorial-cta">
+        <p>Tot zo — en als je na de laatste pagina vragen hebt, bel me gerust.</p>
+        <a href="#stage" class="btn btn-primary">Volgende →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2 · IDEALE STAGE ============ -->
+<section id="stage" style="background: var(--bg-elev-2); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-eyebrow"><span class="section-num">02 /10</span>Ideale stage</span>
+      <h2>Op pad, op <span class="serif-accent">Bali</span>, met AI.</h2>
+      <p class="section-sub">Mijn ideale stage combineert drie dingen: buitenland (Bali), werk rond AI en automatisering, en véél klantcontact. Geen kantoortuin waarin ik m'n dagen zit uit te zitten — wel een werkplek waar ik van ochtend tot eind van de dag bezig ben met mensen en oplossingen.</p>
+    </div>
+
+    <div class="stage-grid reveal">
+      <div class="card-soft">
+        <h3 class="sub">Wat ik zoek</h3>
+        <ul class="checklist">
+          <li><span>Stage <strong>op Bali</strong> — ik hoor al jaren goeie verhalen van ondernemers die het daar combineren: werken, rust, en tegelijk in een community van mensen die hetzelfde willen. Plus: het leven is er niet duur, de natuur is prachtig, en de mensen zijn chill. Dat helpt als je productief wil zijn.</span></li>
+          <li><span>Een bedrijf dat bezig is met <strong>AI-automatiseringen</strong> voor klanten — manuren besparen, processen slimmer maken, dashboards bouwen. Daar ligt m'n kracht.</span></li>
+          <li><span>Véél <strong>klantcontact</strong>. Ik wil op pad, niet achter een bureau.</span></li>
+          <li><span>Een team waar ik <strong>échte verantwoordelijkheid</strong> krijg — geen koffie halen.</span></li>
+          <li><span>Mensen met <strong>vakkennis</strong> die me serieus nemen als gesprekspartner, niet als 'gewoon de stagiair'.</span></li>
+        </ul>
+      </div>
+
+      <div class="card-soft">
+        <h3 class="sub">Hoe m'n ideale dag eruit ziet</h3>
+        <p class="body-text"><strong>Ochtend:</strong> vergaderen met collega's of klanten over waar de pijn zit. Welke processen kosten onnodig manuren? Wat is handmatig dat geautomatiseerd zou kunnen? Daar een concreet plan uit halen.</p>
+        <p class="body-text"><strong>Middag:</strong> dat plan uitvoeren. Workflow bouwen, AI-tooling koppelen, testen, bijschaven. Lekker in de uitvoering zitten.</p>
+        <p class="body-text"><strong>Eind van de dag:</strong> op pad naar een klant. Presenteren wat er werkt, feedback ophalen, afspraken voor de volgende stap. Dag afsluiten met gesprekken, niet met e-mails.</p>
+
+        <h3 class="sub" style="margin-top: var(--space-6);">Waarom dit bij mij past</h3>
+        <p class="body-text">Dit is precies wat ik nu al doe — alleen dan kleiner. Bij <strong>Employ</strong> bouw ik onder Maxim aan automatiseringen. Bij m'n eigen <strong>StudentenLeads</strong> draai ik LinkedIn-campagnes die <strong>3× de branchenorm</strong> scoren. En ik heb Telegram-bots gebouwd voor bedrijven, websites verkocht, AI-content opgeleverd. Een stage in dezelfde lijn is geen sprong — het is de volgende trap.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CHAPTER I — Wie ============ -->
+<section class="chapter" data-chapter>
+  <div class="chapter-inner">
+    <div class="chapter-act">Act I · de mens</div>
+    <h2 class="chapter-title">Wie mij<br><em>zien</em>.</h2>
+    <div class="chapter-rule"></div>
+    <p class="chapter-caption">Vier mensen aan het woord die mij in vier totaal verschillende settings hebben zien opereren.</p>
+  </div>
+</section>
+
+<!-- ============ 3 · IK KEN JOU ============ -->
+<section id="ikkenjou">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-eyebrow"><span class="section-num">03 /10</span>Ik ken jou!</span>
+      <h2>Vier mensen <span class="serif-accent">die mij zien</span>.</h2>
+      <p class="section-sub">De meeste mensen zeggen zelf: <em>zo bijzonder ben ik niet</em>. Anderen zien vaak meer dan jij zelf. Daarom laat ik hier vier mensen aan het woord die mij in totaal verschillende situaties hebben gezien.</p>
+    </div>
+
+    <div class="notes-cinema" data-notes-cinema>
+      <div class="notes-cinema-inner">
+        <svg class="notes-pen" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <g transform="rotate(-40 24 24)">
+            <rect x="21" y="4" width="6" height="30" rx="1" fill="#d4a74a"/>
+            <rect x="21" y="4" width="6" height="4" rx="1" fill="#1e3a5f"/>
+            <polygon points="21,34 27,34 24,44" fill="#2a2a2a"/>
+            <polygon points="23,40 25,40 24,44" fill="#fafafa"/>
+          </g>
+        </svg>
+        <div class="cinema-note cinema-note--1" data-note-idx="0">
+          <span class="cinema-note-text" data-note-text>"Stan is iemand die al als kind wist wat hij wilde. Eigenwijs op de goede manier — hij luistert, maar hakt daarna z'n eigen knoop door. Zorgzaam, humor, en altijd bezig."</span>
+          <div class="cinema-note-name">— Lisette · moeder</div>
+        </div>
+        <div class="cinema-note cinema-note--2" data-note-idx="1">
+          <span class="cinema-note-text" data-note-text>"Ik ken Stan als zoon én als beginnend ondernemer. Wat opvalt: hij kijkt niet naar 'mag het?' — hij kijkt naar 'werkt het?'. Hij brengt structuur in chaos en komt met bewijs terug."</span>
+          <div class="cinema-note-name">— Bas · vader</div>
+        </div>
+        <div class="cinema-note cinema-note--3" data-note-idx="2">
+          <span class="cinema-note-text" data-note-text>"Stan pakt dingen bij Employ zelfstandig op en komt terug met oplossingen waar ik niet aan had gedacht. Snapt écht hoe systemen in elkaar haken. Plus: hij zeurt niet als iets drie keer anders moet."</span>
+          <div class="cinema-note-name">— Maxim · Employ</div>
+        </div>
+        <div class="cinema-note cinema-note--4" data-note-idx="3">
+          <span class="cinema-note-text" data-note-text>"Stan en ik kennen elkaar door en door. Iemand waar je altijd op kan rekenen — niet het type dat bij tegenwind verdwijnt. In de gym, op het veld, op de bank: consistent. En grappig tegelijk."</span>
+          <div class="cinema-note-name">— Ian · beste maat</div>
+        </div>
+        <div class="cinema-counter"><span class="cnt-current">01</span> <span class="cnt-sep">/</span> <span class="cnt-total">04</span></div>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <h3 class="sub">Wat ik hier zelf van opsteek</h3>
+      <p class="body-text">Wat ik uit deze vier hoeken het vaakst terug hoor is de <strong>combinatie van hard werken en lol</strong> — ik neem m'n werk serieus, maar mezelf niet. Ik hoor ook dat ik <strong>mensen makkelijk meeneem</strong>, of het nu gaat om een projectgroep, het voetbalveld of een klantgesprek. En dat ik liever iets probeer dan op zeker speel.</p>
+      <p class="body-text">Voor een (stage)organisatie betekent dat: ik draag energie aan het team, ik kom met ideeën aanzetten, en ik zoek de randen op zonder het schip te laten zinken.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4 · MOREEL KOMPAS ============ -->
+<section id="kompas" style="background: var(--bg-elev-2); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-eyebrow"><span class="section-num">04 /10</span>Moreel kompas</span>
+      <h2>Drie waarden. <span class="serif-accent">Twee situaties.</span></h2>
+      <p class="section-sub">Een moreel kompas is geen poster aan de muur — het is waar je op vaart als het ingewikkeld wordt. Via de Value Compass heb ik m'n belangrijkste waarden in kaart gebracht. Hieronder de drie die het sterkst naar voren kwamen, plus twee STARR-situaties waarin ze echt in actie kwamen.</p>
+    </div>
+
+    <div class="values-row reveal">
+      <div class="value-card">
+        <div class="value-num">/01</div>
+        <div class="value-name">Autonomie</div>
+        <div class="value-desc">Zelf bepalen waar ik aan werk, voor wie, en hoe laat. Ruimte om fouten te maken en daar zelf de rekening voor op te halen.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-num">/02</div>
+        <div class="value-name">Ondernemerschap</div>
+        <div class="value-desc">Iets starten zonder dat iemand het vraagt. Kansen niet alleen zien, maar ook pakken — ook als het nog geen uitgewerkt plan is.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-num">/03</div>
+        <div class="value-name">Leiderschap</div>
+        <div class="value-desc">Verantwoordelijkheid pakken voor het eindresultaat. Zelf de richting bepalen en anderen meenemen, zonder over ze heen te willen.</div>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <div class="starr-block">
+        <div class="starr-head">
+          <h3>STARR · situatie 1</h3>
+          <span class="starr-tag">Ondernemerschap</span>
+        </div>
+        <div class="starr-steps">
+          <div class="starr-step"><div class="starr-step-label">Situatie</div><div>Het bedrijf van m'n vader (Certificeerwijzer.nl, een vergelijkingsplatform voor ISO-certificering) had een acquisitie-probleem: cold outreach via LinkedIn leverde bijna niks op. De branchenorm in B2B is 15–25% reply rate — dat was zo'n beetje het plafond waar standaard SDR-bureaus tegenaan liepen.</div></div>
+          <div class="starr-step"><div class="starr-step-label">Taak</div><div>Er was geen 'opdracht' voor mij. Ik zag gewoon dat het beter kon, en heb aangeboden om een nieuwe lead-funnel te bouwen die wél zou werken.</div></div>
+          <div class="starr-step"><div class="starr-step-label">Actie</div><div>Ik bedacht een nieuwe aanpak: MKB-directeuren niet benaderen als een SDR in pak, maar als student met een oprecht marktonderzoek. Funnel gebouwd met LinkedIn Sales Navigator + HeyReach + Tally (survey) + een AI-workflow voor doelgroep-segmentatie. Binnen 4 weken een testcampagne uitgevoerd.</div></div>
+          <div class="starr-step"><div class="starr-step-label">Resultaat</div><div>225 connection requests → 49 geaccepteerd (21,8%) → <strong>29 replies op 49 connecties = 59,2% reply rate</strong>. Dat is <strong>bijna 3× de Europese branchenorm</strong>. Hieruit is mijn eigen bedrijfje ontstaan: StudentenLeads, dat nu in de pre-launch zit.</div></div>
+          <div class="starr-step"><div class="starr-step-label">Reflectie</div><div>Wat ik leerde: ondernemerschap begint niet met "mag ik?". Als ik had gewacht op een opdracht was er niks gebeurd. De spanning zat in het moment dat ik met cijfers moest komen — ik wist niet of de aanpak zou werken. Nu weet ik: bouwen is goedkoper dan twijfelen.</div></div>
+        </div>
+      </div>
+
+      <div class="starr-block">
+        <div class="starr-head">
+          <h3>STARR · situatie 2</h3>
+          <span class="starr-tag">Leiderschap</span>
+        </div>
+        <div class="starr-steps">
+          <div class="starr-step"><div class="starr-step-label">Situatie</div><div>Een tijdje geleden zag ik dat Telegram-groep-eigenaren (community's, bedrijven) vastliepen op dezelfde vraag: "hoe krijg ik meer leden?" Niemand bediende die markt goed, iedereen probeerde hetzelfde.</div></div>
+          <div class="starr-step"><div class="starr-step-label">Taak</div><div>Niemand had mij gevraagd om een oplossing — maar ik zag een hele reeks kleine klanten met dezelfde behoefte. De taak heb ik zelf gemaakt.</div></div>
+          <div class="starr-step"><div class="starr-step-label">Actie</div><div>Eerst: reclame-campagnes voor deze groep-eigenaren opgezet en uitgevoerd (leden werven). Toen ik zag dat de vraag groter was dan het aanbod, ben ik Telegram-bots voor bedrijven gaan bouwen — automatische opvolging, filtering, respons.</div></div>
+          <div class="starr-step"><div class="starr-step-label">Resultaat</div><div>Betaalde opdrachten gekregen van meerdere Telegram-groep-eigenaren en bedrijven. Eerste keer dat ik zelfstandig (zonder verkoopgesprek aan de andere kant) geld verdiende met iets dat ík had bedacht en gebouwd.</div></div>
+          <div class="starr-step"><div class="starr-step-label">Reflectie</div><div>Wat hier wrong: klanten verwachten dat je er "altijd" bent als het iets automatisch is. Leiderschap bleek óók: nee zeggen als een klant iets vraagt wat buiten scope valt. Die les heb ik nu meegenomen naar StudentenLeads — scope vooraf hard vastleggen.</div></div>
+          <div class="starr-step"><div class="starr-step-label">Reflectie</div><div><span class="placeholder" style="display:inline-block; margin:0; padding:6px 10px; font-size:13px;">[ Heb je er nog iets anders van geleerd? Zou je het nu anders aanpakken? ]</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CHAPTER II — Hoe ============ -->
+<section class="chapter" data-chapter>
+  <div class="chapter-inner">
+    <div class="chapter-act">Act II · de aanloop</div>
+    <h2 class="chapter-title">Hoe ik hier<br><em>kwam</em>.</h2>
+    <div class="chapter-rule"></div>
+    <p class="chapter-caption">Van logo's verkopen op de basisschool tot StudentenLeads. Elf momenten, één rode draad.</p>
+  </div>
+</section>
+
+<!-- ============ 5 · AANLOOP NAAR SUCCES — TIME TRAVEL ============ -->
+<section id="aanloop" style="padding: 0;">
+  <div class="container-narrow" style="padding-top: var(--space-10); padding-bottom: var(--space-7);">
+    <div class="reveal">
+      <span class="section-eyebrow"><span class="section-num">05 /10</span>Aanloop naar succes</span>
+      <h2>De <span class="serif-accent">rode draad</span> tot hier.</h2>
+      <p class="section-sub">Scroll door de tijdlijn — elk moment was een stap in m'n commerciële opvoeding. Basisschool tot nu.</p>
+    </div>
+  </div>
+
+  <div class="timetravel-wrap" data-timetravel>
+    <div class="timetravel-inner">
+
+      <div class="timetravel-panel">
+        <div class="timetravel-panel-step">01 /11</div>
+        <div class="timetravel-year">basisschool</div>
+        <div class="timetravel-title"><em>Logo's</em> verkopen</div>
+        <div class="timetravel-desc">M'n eerste 'onderneming' was niet eens bewust: ik ontwierp logo's en verkocht ze aan mensen die ik kende. Klein en amateur, maar ik leerde het gevoel van <em>iemand betaalt me voor iets dat ik zelf heb gemaakt</em> — en dat gevoel is nooit meer weggegaan.</div>
+        <div class="timetravel-giant">01</div>
+      </div>
+
+      <div class="timetravel-panel">
+        <div class="timetravel-panel-step">02 /11</div>
+        <div class="timetravel-year">2019 — 2025</div>
+        <div class="timetravel-title">Wolfsbos, <em>havo E&amp;M</em></div>
+        <div class="timetravel-desc">Diploma gehaald in juli 2025. De economievakken bleven hangen — daar zag ik voor het eerst dat markten en mensen hetzelfde spel spelen, met andere woorden.</div>
+        <div class="timetravel-giant">2019</div>
+      </div>
+
+      <div class="timetravel-panel">
+        <div class="timetravel-panel-step">03 /11</div>
+        <div class="timetravel-year">laatste jaar middelbare</div>
+        <div class="timetravel-title">Ouders <em>uit elkaar</em></div>
+        <div class="timetravel-desc">In m'n eindexamenjaar gingen m'n ouders uit elkaar. Geen dramatisch verhaal — wél een moment waarop ik meer op mezelf kwam te staan. Je leert sneller dan je wilt hoe je zelf je dag, je ritme en je huishouden organiseert. Achteraf: dat heeft me niet gebroken, dat heeft me eerder volwassen gemaakt op plekken waar ik anders nog twee jaar kind had kunnen zijn.</div>
+        <div class="timetravel-giant">—</div>
+      </div>
+
+      <div class="timetravel-panel">
+        <div class="timetravel-panel-step">04 /11</div>
+        <div class="timetravel-year">middelbare</div>
+        <div class="timetravel-title">Websites <em>verkopen</em></div>
+        <div class="timetravel-desc">M'n eerste serieuze commerciële pad. Ik was goed in sales: cold calling, klanten overtuigen, aanbetalingen binnenhalen. Maar ik was niet top in het bouwen — veel projecten kwamen niet af. Wat ik eraan overhield: <strong>ik heb een knop voor sales</strong>. Cold bellen, pitchen, mensen in beweging krijgen — daar ligt m'n talent.</div>
+        <div class="timetravel-giant">sales</div>
+      </div>
+
+      <div class="timetravel-panel">
+        <div class="timetravel-panel-step">05 /11</div>
+        <div class="timetravel-year">middelbare</div>
+        <div class="timetravel-title">Telegram-<em>bots</em></div>
+        <div class="timetravel-desc">Eerste echte automatiseringen: bots bouwen voor Telegram-groepen en bedrijven. Filtering, opvolging, respons. Hier begon m'n liefde voor <em>één keer bouwen, zelf blijft werken</em>.</div>
+        <div class="timetravel-giant">bots</div>
+      </div>
+
+      <div class="timetravel-panel">
+        <div class="timetravel-panel-step">06 /11</div>
+        <div class="timetravel-year">middelbare</div>
+        <div class="timetravel-title"><em>Reclame</em> draaien</div>
+        <div class="timetravel-desc">Groep-eigenaren liepen vast op ledenwerving. Ik ging reclame voor ze draaien, betaald. Eerste keer dat ik m'n sales-skill en m'n bot-skill samen inzette voor klanten.</div>
+        <div class="timetravel-giant">ads</div>
+      </div>
+
+      <div class="timetravel-panel" style="border-color: rgba(184, 58, 58, 0.3);">
+        <div class="timetravel-panel-step" style="color: #b83a3a;">07 /11 · fail</div>
+        <div class="timetravel-year" style="color: #b83a3a;">middelbare</div>
+        <div class="timetravel-title">Nieuwsapp — <em>mislukt</em></div>
+        <div class="timetravel-desc">Grootste zelfstandige bouw tot dan: een app waarin ondernemers hun nieuwsonderwerpen aanklikten, en elke dag automatisch de belangrijkste updates binnenkregen. Niet geworden wat ik hoopte — product nog niet af, timing niet goed. Van alles op deze pagina het meest leerzaam: <strong>een goed idee is pas wat waard als de hele uitvoering ook klopt</strong>.</div>
+        <div class="timetravel-giant" style="color: #b83a3a;">fail</div>
+      </div>
+
+      <div class="timetravel-panel">
+        <div class="timetravel-panel-step">08 /11</div>
+        <div class="timetravel-year">pre-Employ</div>
+        <div class="timetravel-title">AI-content, <em>in volume</em></div>
+        <div class="timetravel-desc">Vóór Employ heb ik heel veel AI-content verkocht. Echt heel veel. Teksten, posts, visuals op volume. M'n eerste schaalbare inkomen: één workflow, tientallen klanten. Hier leerde ik dat <strong>'schaal' niet begint bij het product, maar bij het sales-ritme eromheen</strong>.</div>
+        <div class="timetravel-giant">AI</div>
+      </div>
+
+      <div class="timetravel-panel">
+        <div class="timetravel-panel-step">09 /11</div>
+        <div class="timetravel-year">2025 — heden</div>
+        <div class="timetravel-title"><em>Employ</em></div>
+        <div class="timetravel-desc">Bij Employ (recruitment automation voor MKB) werk ik onder Maxim Snoecker. Een dag per week volop bezig met AI-workflows en automatiseringen. Hier zie ik hoe je van een los idee naar een werkend systeem gaat dat klanten écht vertrouwen.</div>
+        <div class="timetravel-giant">Employ</div>
+      </div>
+
+      <div class="timetravel-panel" style="border-color: var(--accent); box-shadow: 0 20px 60px rgba(30, 58, 95, 0.12);">
+        <div class="timetravel-panel-step">10 /11</div>
+        <div class="timetravel-year">2025 — heden</div>
+        <div class="timetravel-title">StudentenLeads — <em>59,2%</em></div>
+        <div class="timetravel-desc">Voor het bedrijf van m'n vader (Certificeerwijzer.nl) bouwde ik het volledige lead-proces. Resultaat: <strong>59,2% reply rate, 3× de branchenorm</strong>. Daaruit is m'n eigen bedrijf StudentenLeads ontstaan — nu in de eerste tryout-fase met externe klanten.</div>
+        <div class="timetravel-giant" style="color: var(--accent); opacity: 0.12;">leads</div>
+      </div>
+
+      <div class="timetravel-panel">
+        <div class="timetravel-panel-step">11 /11 · nu</div>
+        <div class="timetravel-year">sept 2025 — heden</div>
+        <div class="timetravel-title"><em>CE</em> · Hanze</div>
+        <div class="timetravel-desc">Eerste jaar, klas CEV1B. Tegelijk: Employ (1 dag/week), StudentenLeads, side-projects voor m'n vader, en 's zomers achter de bar als het lekker weer is. Volgend jaar: <strong>tweedejaarsstage op Bali</strong>.</div>
+        <div class="timetravel-giant">now</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="container-narrow" style="padding-top: var(--space-10); padding-bottom: var(--space-9);">
+
+    <div class="reveal" style="margin-top: var(--space-8);">
+      <h3 class="sub">Bijbanen — in chronologische volgorde</h3>
+      <p class="body-text"><strong>Fietsbezorger</strong> (op tijd komen, afspraken nakomen, geen excuses) → <strong>afwasser in de horeca</strong> (hard werken tussen de rotzooi) → <strong>vakkenvuller bij Albert Heijn</strong> (hoe je je redt in een grote organisatie) → <strong>barman</strong> (met álle soorten mensen leren werken, op snelheid en met lol). Van elk baantje iets meegenomen dat ik nog gebruik.</p>
+
+      <h3 class="sub" style="margin-top: var(--space-6);">De constante — m'n vader als klankbord</h3>
+      <p class="body-text">Eén element loopt als rode draad door bijna elk project hierboven: m'n vader. Hij is zelf een <strong>succesvol ondernemer</strong> (Certificeerwijzer.nl is één van zijn bedrijven) en hij is voor mij de belangrijkste sparringpartner. We voeren constant inhoudelijke gesprekken — over strategie, over fouten, over wat écht werkt. Hij drukt me nergens in, maar hij geeft me wel de inzichten die ik ergens anders niet zo krijg. Veel van wat ik bij StudentenLeads bouw, is direct voortgekomen uit die gesprekken.</p>
+      <p class="body-text">Voor een stagebedrijf is dat relevant: ik ben van jongs af aan opgegroeid met een ondernemers-mindset aan tafel, en ik weet wat het kost en wat het oplevert. Geen fantasie — meegekregen.</p>
+
+      <h3 class="sub" style="margin-top: var(--space-6);">De rode draad</h3>
+      <p class="body-text">Als ik terugkijk zie ik één ding telkens terugkomen: ik heb <strong>affectie voor geld, voor ondernemen, en voor goeie connecties opdoen</strong>. Of dat nou een logo, een website, een bot, een funnel of een klantgesprek is — de cirkel van <em>bedenken-bouwen-brengen-verkopen</em> is waar ik op aan ga. Dat is waarom marketing-met-sales-eraan voor mij de logische plek is.</p>
+
+      <h3 class="sub" style="margin-top: var(--space-6);">Waar ik naartoe wil</h3>
+      <p class="body-text"><strong>Kort</strong> — tweedejaarsstage op Bali, bij een bedrijf rond online marketing en AI-automatisering. <strong>Middel</strong> — over vier jaar afstuderen met een portfolio dat concrete cases laat zien, niet alleen cijfers.</p>
+      <p class="body-text"><strong>Lang</strong> — de combinatie van <em>eigen ondernemer</em> zijn en <em>remote werken</em>, met een eigen bedrijf rond AI en automatisering. Parallel bouw ik daar nu al aan: ik connect op LinkedIn met directeuren uit meerdere branches en post AI-content, zodat ik op termijn als <strong>ZZP'er</strong> ingehuurd kan worden voor AI-klussen. Die kleine opdrachten zijn de trap naar het grotere plan.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6 · ANYBODY / SOMEBODY ============ -->
+<section id="somebody" style="background: var(--bg-elev-2); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-eyebrow"><span class="section-num">06 /10</span>Kleding & stijl</span>
+      <h2>Mijn <span class="serif-accent">kledingkast</span>, stuk voor stuk.</h2>
+      <p class="section-sub">Kleding verandert me niet, maar het stelt me wél scherp. Hier de twee versies waar ik het meest in rondloop — en wat er nog meer in m'n kast hangt.</p>
+    </div>
+
+    <div class="somebody-split reveal">
+      <div class="somebody-card">
+        <div class="somebody-img">[ FOTO 1 · casual — sneakers, hoodie, dagelijkse setting ]</div>
+        <div class="somebody-body">
+          <div class="somebody-tag">De dagelijkse versie</div>
+          <div class="somebody-cap">Ontspannen, open, iets minder op m'n woorden.</div>
+        </div>
+      </div>
+
+      <div class="somebody-card">
+        <div class="somebody-img">[ FOTO 2 · overhemd met trui — netjes, klaar voor een gesprek ]</div>
+        <div class="somebody-body">
+          <div class="somebody-tag">De scherpere versie</div>
+          <div class="somebody-cap">Netjes maar geen verkleedpartij. Dit is hoe ik écht aan tafel zit.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-top: var(--space-8);">
+      <h3 class="sub">De kast, stuk voor stuk</h3>
+      <div class="gallery" style="grid-template-columns: repeat(4, 1fr);">
+        <div class="gallery-item">
+          <div style="text-align: center;">
+            <strong style="color: var(--text-primary); display: block; margin-bottom: 6px;">Mason Garments</strong>
+            <span style="font-size: 11px;">Italiaans vakmanschap, m'n favoriete sneakers. Niet luid, wel herkenbaar.</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div style="text-align: center;">
+            <strong style="color: var(--text-primary); display: block; margin-bottom: 6px;">Nike Air Force</strong>
+            <span style="font-size: 11px;">M'n dailys. Gaan met alles. Geen week zonder.</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div style="text-align: center;">
+            <strong style="color: var(--text-primary); display: block; margin-bottom: 6px;">Yeezy 350 Boost</strong>
+            <span style="font-size: 11px;">Strikt voor de gym. Lekker licht, stevig, vast ritueel.</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div style="text-align: center;">
+            <strong style="color: var(--text-primary); display: block; margin-bottom: 6px;">Zakelijke schoenen</strong>
+            <span style="font-size: 11px;">Voor de momenten dat een sneaker echt niet kan.</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div style="text-align: center;">
+            <strong style="color: var(--text-primary); display: block; margin-bottom: 6px;">Boss overhemden</strong>
+            <span style="font-size: 11px;">Vaste keuze voor wanneer het net een tandje strakker mag.</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div style="text-align: center;">
+            <strong style="color: var(--text-primary); display: block; margin-bottom: 6px;">Cavallaro</strong>
+            <span style="font-size: 11px;">Shirts, truien, zippers. Italiaanse snit, m'n meest gebruikte merk.</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div style="text-align: center;">
+            <strong style="color: var(--text-primary); display: block; margin-bottom: 6px;">Stone Island</strong>
+            <span style="font-size: 11px;">Shirtjes voor de dagen dat ik 't iets losser wil.</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div style="text-align: center;">
+            <strong style="color: var(--text-primary); display: block; margin-bottom: 6px;">G-Star jeans</strong>
+            <span style="font-size: 11px;">M'n vaste spijkerbroek. Gaat mee met casual én nettere setting.</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div style="text-align: center;">
+            <strong style="color: var(--text-primary); display: block; margin-bottom: 6px;">Under Armour</strong>
+            <span style="font-size: 11px;">Gym- en trainingskleding. Gewoon werk dat werkt.</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div style="text-align: center;">
+            <strong style="color: var(--text-primary); display: block; margin-bottom: 6px;">Gymshark</strong>
+            <span style="font-size: 11px;">Lichte sportkleding, voor als de intensiteit omhoog moet.</span>
+          </div>
+        </div>
+        <div class="gallery-item wide">
+          <div style="text-align: center;">
+            <strong style="color: var(--text-primary); display: block; margin-bottom: 6px;">Voetbalshirts — een collectie van 15</strong>
+            <span style="font-size: 11px;">Shirts van clubs die ik verzamel. Ik hou van voetbal, en dit is m'n favoriete stukje 'kledingkast' — meer een eerbetoon dan een outfit.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-top: var(--space-7);">
+      <div class="card-soft">
+        <p class="body-text">Een pak voelt voor mij als een verkleedpartij — dat is niet wie ik ben. M'n kast zit vol met <strong>merken met een signatuur</strong>: Mason en Nike voor de sneakers, Cavallaro en Boss voor wanneer het scherper moet, Stone en G-Star voor de gewone dagen, en Under Armour plus Gymshark voor in de gym.</p>
+        <p class="body-text">En dan m'n <strong>voetbalshirt-collectie</strong>. Vijftien shirts van verschillende clubs. Dat is niet zomaar kleding — dat is passie. Ik hou van voetbal, en die shirts vertellen tegelijk iets over welke ploegen me hebben geraakt.</p>
+        <p class="body-text">Als marketingstudent zie ik het zo: de sterkste merken bouw je niet met één campagne, maar met <em>consistente keuzes</em>. Dat is precies hoe ik m'n eigen garderobe opbouw — en hopelijk later: hoe ik merken voor m'n klanten bouw.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7 · HIER GA IK VOOR — SPLIT ============ -->
+<section id="passie" style="padding: 0;">
+  <div class="container" style="padding-top: var(--space-10); padding-bottom: var(--space-7);">
+    <div class="reveal">
+      <span class="section-eyebrow"><span class="section-num">07 /10</span>Hier ga ik voor!</span>
+      <h2>Twee <span class="serif-accent">passies</span>, één ritme.</h2>
+      <p class="section-sub">Ondernemen en voetbal/sport. Op papier twee werelden — in de praktijk hetzelfde spel: presteren als het erop aankomt, terug na tegenslag, consistent je ritme opbouwen.</p>
+    </div>
+  </div>
+
+  <div class="split-passion">
+    <div class="passion-half left reveal">
+      <div class="passion-number">01</div>
+      <div class="passion-label">Passie #1</div>
+      <h3><em>Ondernemen</em></h3>
+      <p>Waar anderen chillen na een lange schooldag, zit ik 's avonds aan een lead-funnel te schaven of een LinkedIn-post te schrijven. Niet omdat het moet — omdat ik er <em>lol</em> in heb. Ondernemen is voor mij geen doel, het is m'n manier van leren: iets maken, de wereld in gooien, kijken wat er terugkomt, opnieuw.</p>
+      <p>Concreet: Employ, StudentenLeads, Telegram-bots, AI-content, website-verkopen. Niet elk spoor wordt groot — maar ik leer sneller van één mislukte poging dan van tien boeken.</p>
+    </div>
+
+    <div class="passion-half right reveal">
+      <div class="passion-number">02</div>
+      <div class="passion-label">Passie #2</div>
+      <h3><em>Voetbal</em> &amp; sport</h3>
+      <p>M'n andere helft. Ik voetbal in het <strong>eerste elftal</strong> en sta consistent in de gym. Hier haalt m'n dag z'n ritme uit. Kop leeg, alles even weg, scherper terug achter de laptop.</p>
+      <p>Op het veld leer je wat je in ondernemen ook nodig hebt: <em>blijf lopen als je moe bent, communiceer met je team, laat een gemiste kans je volgende actie niet bepalen</em>. Plus m'n <strong>collectie van 15 voetbalshirts</strong> — clubs die me geraakt hebben, seizoenen die ik kan uittekenen.</p>
+    </div>
+  </div>
+
+  <!-- Photo rail: laat beide passies in beeld schuiven -->
+  <div class="photo-rail-wrap reveal" data-rail>
+    <div class="photo-rail">
+      <div class="rail-card">
+        <div class="rail-card-placeholder">images/passie-laptop.jpg</div>
+        <div class="rail-card-overlay"><div class="rail-tag">ondernemen</div><div class="rail-title">Achter de laptop</div></div>
+      </div>
+      <div class="rail-card">
+        <div class="rail-card-placeholder">images/passie-voetbal.jpg</div>
+        <div class="rail-card-overlay"><div class="rail-tag">voetbal</div><div class="rail-title">Eerste elftal</div></div>
+      </div>
+      <div class="rail-card wide">
+        <div class="rail-card-placeholder">images/passie-pitch.jpg</div>
+        <div class="rail-card-overlay"><div class="rail-tag">ondernemen</div><div class="rail-title">Pitch / klantgesprek</div></div>
+      </div>
+      <div class="rail-card">
+        <div class="rail-card-placeholder">images/passie-gym.jpg</div>
+        <div class="rail-card-overlay"><div class="rail-tag">sport</div><div class="rail-title">Gym · consistentie</div></div>
+      </div>
+      <div class="rail-card">
+        <div class="rail-card-placeholder">images/passie-linkedin.jpg</div>
+        <div class="rail-card-overlay"><div class="rail-tag">ondernemen</div><div class="rail-title">StudentenLeads</div></div>
+      </div>
+      <div class="rail-card wide">
+        <div class="rail-card-placeholder">images/passie-team.jpg</div>
+        <div class="rail-card-overlay"><div class="rail-tag">voetbal</div><div class="rail-title">Met het team</div></div>
+      </div>
+      <div class="rail-card">
+        <div class="rail-card-placeholder">images/passie-shirts.jpg</div>
+        <div class="rail-card-overlay"><div class="rail-tag">voetbal</div><div class="rail-title">15 voetbalshirts</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" style="padding-top: var(--space-7); padding-bottom: var(--space-10);">
+    <div class="reveal">
+      <div class="card-soft">
+        <h3 class="sub">Wat deze twee met elkaar te maken hebben</h3>
+        <p class="body-text">Allebei vragen ze hetzelfde: <strong>lange adem, geen kortstondige motivatie, terugkomen na tegenslag</strong>. Dashboards liegen niet. Een scorebord liegt ook niet. Ik hou van werkvelden waarin je cijfers krijgt — omdat je weet waar je staat.</p>
+        <p class="body-text">Dat is wat ik meeneem naar elk team: ik ben niet de snelste brain, maar ik ben er wél <em>altijd</em>. Op de lange termijn wint dat van iedereen die op gevoel werkt.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 8 · A DAY IN THE LIFE ============ -->
+<section id="day" style="background: var(--bg-elev-2); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-eyebrow"><span class="section-num">08 /10</span>A day in the life</span>
+      <h2>Willekeurige <span class="serif-accent">dinsdag</span>.</h2>
+      <p class="section-sub">Ik woon thuis in <strong>Hoogeveen</strong>, samen met m'n vader. Hij is veel op vakantie, dus vaak run ik het huis in m'n eentje. Koken, wassen, schoonmaken — allemaal zelf. Zo ziet een doordeweekse dag er dan uit:</p>
+    </div>
+  </div>
+
+  <!-- HORIZONTAL DAY-RAIL — schuift bij scroll -->
+  <div class="photo-rail-wrap reveal" data-rail>
+    <div class="photo-rail">
+      <div class="rail-card"><div class="rail-card-placeholder">images/day-08.jpg</div><div class="rail-card-overlay"><div class="rail-tag">08:00</div><div class="rail-title">Wakker + eigen werk</div></div></div>
+      <div class="rail-card"><div class="rail-card-placeholder">images/day-09.jpg</div><div class="rail-card-overlay"><div class="rail-tag">09:19</div><div class="rail-title">Trein</div></div></div>
+      <div class="rail-card"><div class="rail-card-placeholder">images/day-10.jpg</div><div class="rail-card-overlay"><div class="rail-tag">10:00</div><div class="rail-title">Bus naar Hanze</div></div></div>
+      <div class="rail-card wide"><div class="rail-card-placeholder">images/day-studie.jpg</div><div class="rail-card-overlay"><div class="rail-tag">10:30 — 13:00</div><div class="rail-title">Studie</div></div></div>
+      <div class="rail-card"><div class="rail-card-placeholder">images/day-14.jpg</div><div class="rail-card-overlay"><div class="rail-tag">14:00</div><div class="rail-title">Thuis — huishouden</div></div></div>
+      <div class="rail-card"><div class="rail-card-placeholder">images/day-gym.jpg</div><div class="rail-card-overlay"><div class="rail-tag">15:30</div><div class="rail-title">Gym</div></div></div>
+      <div class="rail-card"><div class="rail-card-placeholder">images/day-eten.jpg</div><div class="rail-card-overlay"><div class="rail-tag">18:00</div><div class="rail-title">Avondeten</div></div></div>
+      <div class="rail-card wide"><div class="rail-card-placeholder">images/day-20.jpg</div><div class="rail-card-overlay"><div class="rail-tag">20:00</div><div class="rail-title">Voetbal of vrienden</div></div></div>
+      <div class="rail-card"><div class="rail-card-placeholder">images/day-22.jpg</div><div class="rail-card-overlay"><div class="rail-tag">22:30</div><div class="rail-title">Op bed · nog half uurtje</div></div></div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="day-grid reveal">
+      <div class="day-row">
+        <div class="day-time">08:00</div>
+        <div>
+          <div class="day-title">Wakker + eigen werk</div>
+          <div class="day-desc">Opstaan, ontbijten, koffie. Voordat ik überhaupt naar school kijk, werk ik eerst een uurtje aan m'n eigen projecten — StudentenLeads opvolgingen, LinkedIn-posts, leadlijsten. Zo begin ik de dag met iets van mezelf, niet met iemand anders' agenda.</div>
+        </div>
+        <div class="day-img">[ foto · ochtend / eigen werk ]</div>
+      </div>
+
+      <div class="day-row">
+        <div class="day-time">09:19</div>
+        <div>
+          <div class="day-title">Trein halen</div>
+          <div class="day-desc">Vaste trein richting Groningen. In de trein nog ~40 minuten doorwerken aan m'n projecten. Treinritten zijn voor mij een soort rustig kantoor — niemand die je stoort.</div>
+        </div>
+        <div class="day-img">[ foto · trein / laptop onderweg ]</div>
+      </div>
+
+      <div class="day-row">
+        <div class="day-time">10:00</div>
+        <div>
+          <div class="day-title">Bus naar Hanze</div>
+          <div class="day-desc">Vanaf het station de bus naar Zernike. Laatste scroll door LinkedIn of marketing-nieuws voor studie begint.</div>
+        </div>
+        <div class="day-img">[ foto · bus / Hanze ]</div>
+      </div>
+
+      <div class="day-row">
+        <div class="day-time">10:30 — 13:00</div>
+        <div>
+          <div class="day-title">Studie — college + projectwerk</div>
+          <div class="day-desc">Colleges, projectgroep-sessies, lunch met CEV1B er tussendoor. Op dit moment werken we met de klas aan de Beurs-pitch voor Blok 4. In de klas worden vaak de beste ideeën gesmeed — daar leer je het meest van elkaar.</div>
+        </div>
+        <div class="day-img">[ foto · klas / projectwerk ]</div>
+      </div>
+
+      <div class="day-row">
+        <div class="day-time">14:00</div>
+        <div>
+          <div class="day-title">Thuis — reset en huishouden</div>
+          <div class="day-desc">Weer thuis in Hoogeveen. Eten pakken, even ontladen, en vaak tussendoor ook de klus van de dag: koken, wassen, of de boel opruimen. Als m'n vader weg is doe ik alles zelf — niet vervelend, gewoon onderdeel van het ritme.</div>
+        </div>
+        <div class="day-img">[ foto · thuis / huishouden ]</div>
+      </div>
+
+      <div class="day-row">
+        <div class="day-time">15:30</div>
+        <div>
+          <div class="day-title">Gym</div>
+          <div class="day-desc">Vast moment in de sportschool. Geen laptop, geen telefoon, alleen de volgende set. Hier lopen de rest van m'n dag en m'n gedachten weer scherp.</div>
+        </div>
+        <div class="day-img">[ foto · gym ]</div>
+      </div>
+
+      <div class="day-row">
+        <div class="day-time">18:00</div>
+        <div>
+          <div class="day-title">Avondeten</div>
+          <div class="day-desc">Zelf koken of samen met m'n vader als hij thuis is. Moment om de dag kort terug te blikken, even uit het werk-ritme.</div>
+        </div>
+        <div class="day-img">[ foto · avondeten / koken ]</div>
+      </div>
+
+      <div class="day-row">
+        <div class="day-time">20:00</div>
+        <div>
+          <div class="day-title">Voetbaltraining of vrienden</div>
+          <div class="day-desc"><strong>Dinsdag en donderdag</strong> zijn vaste voetbaldagen — training met het eerste elftal. Scherp staan, wedstrijdmodus. <strong>De andere dagen</strong> spreek ik meestal met vrienden af. Allebei essentieel: de ene helft van de week leert me presteren onder druk, de andere helft houdt me mentaal in balans.</div>
+        </div>
+        <div class="day-img">[ foto · voetbaltraining / vrienden ]</div>
+      </div>
+
+      <div class="day-row">
+        <div class="day-time">22:30</div>
+        <div>
+          <div class="day-title">Op bed — nog een half uur werk</div>
+          <div class="day-desc">Nog even op m'n telefoon of laptop voor mezelf: losse notities, ideeën uitwerken, morgen vooruit plannen. Daarna slapen. Ritme gaat over consistentie, niet over extremen.</div>
+        </div>
+        <div class="day-img">[ foto · afsluiten / nachttafel ]</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CHAPTER III — De wereld ============ -->
+<section class="chapter" data-chapter>
+  <div class="chapter-inner">
+    <div class="chapter-act">Act III · de wereld</div>
+    <h2 class="chapter-title">Waar ik<br><em>heen ga</em>.</h2>
+    <div class="chapter-rule"></div>
+    <p class="chapter-caption">Drie plekken die me vormden. Zes die ik nog te gaan heb. En één waar ik m'n stage gaat lopen.</p>
+  </div>
+</section>
+
+<!-- ============ 9 · REIS ============ -->
+<section id="reis">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-eyebrow"><span class="section-num">09 /10</span>Reis</span>
+      <h2>De plekken die <span class="serif-accent">iets achterlieten</span>.</h2>
+      <p class="section-sub">Reizen is voor mij geen vakantie. Het is de snelste manier om te zien hoe andere mensen hun leven hebben gebouwd — en wat ík daaruit wil meenemen. Drie plekken die echt iets in me hebben losgemaakt.</p>
+    </div>
+
+    <div class="reveal travel-feature">
+      <div class="travel-feature-item">
+        <div class="travel-feature-photo">[ foto · Japan — Tokyo / Kyoto / sushi<br><code>images/reis-japan.jpg</code> ]</div>
+        <div class="travel-feature-text">
+          <div class="timeline-year">2 maanden · met m'n vader</div>
+          <div class="timeline-title">Japan — m'n favoriet, tot nu toe</div>
+          <div class="timeline-desc">Twee maanden backpacken door Japan met m'n vader. Hands-down de mooiste reis die ik tot nu toe heb gemaakt. De mensen zijn super vriendelijk, het eten absurd lekker (sushi blijft m'n nummer één, wagyu-vlees komt kort daarna), en de cultuur is een complete cultuurshock. Drukte in Tokyo vergelijkbaar met Marokko — maar stiller, beleefder, op een manier die je ergens anders niet ziet. Dit is de reis die me liet zien dat 'comfortabel' vaak te klein is voor wat je eigenlijk wil zien.</div>
+        </div>
+      </div>
+
+      <div class="travel-feature-item reverse">
+        <div class="travel-feature-photo">[ foto · Gambia — straatleven of landschap<br><code>images/reis-gambia.jpg</code> ]</div>
+        <div class="travel-feature-text">
+          <div class="timeline-year">met m'n ouders</div>
+          <div class="timeline-title">Gambia — armoede en positiviteit tegelijk</div>
+          <div class="timeline-desc">De reis die me het meest heeft doen nadenken. In Gambia zie je armoede die je in Nederland niet meemaakt — en tegelijk een <em>positiviteit</em> die niet te rijmen valt met hoe wij over 'genoeg hebben' praten. Mensen met veel minder dan wij, maar met een rust en een lach die je hier minder tegenkomt. Dat was een cultuurshock in de goeie zin: het schoof m'n eigen maatstaven voor 'succes' en 'geluk' een stuk op. Sindsdien kijk ik anders naar wat je écht nodig hebt om een goed leven te bouwen.</div>
+        </div>
+      </div>
+
+      <div class="travel-feature-item">
+        <div class="travel-feature-photo">[ foto · Bonaire — onder water / strand<br><code>images/reis-bonaire.jpg</code> ]</div>
+        <div class="travel-feature-text">
+          <div class="timeline-year">met m'n ouders</div>
+          <div class="timeline-title">Bonaire — super vibes, water-leven</div>
+          <div class="timeline-desc">Compleet andere energie dan Japan of Gambia. Bonaire is rust, zon, snorkelen, surfen. Geen druk, geen agenda — gewoon zijn. Dit is het soort plek waar je voelt dat werken en leven niet tegenover elkaar hoeven te staan. Als ik straks zeg dat ik m'n stage op Bali wil doen, is dit het beeld dat ik voor me heb.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-top: var(--space-8);">
+      <h3 class="sub">En verder — de rest van de kaart</h3>
+      <p class="body-text">Reizen zit bij ons thuis in de genen. Naast de drie hierboven ben ik op veel meer plekken geweest met m'n ouders, met vrienden, of met het voetbalteam:</p>
+      <p class="body-text">
+        <strong>Europa:</strong> Londen (te gekke stad, maar na 5 dagen klaar — net als Parijs), Rome, Barcelona, Sevilla, Malaga, Lissabon, Kreta, Denemarken, Oostenrijk, Frankrijk &amp; België (backpacken met m'n vader), Mallorca, Fuerteventura, Tenerife, Alicante, <strong>Marbella</strong> (trainingskamp met de voetbal) en Schotland.
+      </p>
+      <p class="body-text">
+        <strong>Buiten Europa:</strong> <strong>Japan</strong>, <strong>Gambia</strong>, <strong>Bonaire</strong>, Marokko.
+      </p>
+      <p class="body-text" style="margin-top: var(--space-5);">
+        <strong>En waar ik nog heen wil —</strong> de kaart is nog niet af. Bovenaan m'n lijst: <strong>Bali</strong> (voor m'n stage én voor hoe ondernemers daar hun leven bouwen), <strong>Brazilië</strong>, <strong>Colombia</strong>, <strong>Canada</strong>, <strong>Cyprus</strong> en <strong>Egypte</strong>. Elke plek om een andere reden — sommige voor de cultuur, sommige voor de natuur, sommige voor de ondernemers-community. Samen geven ze m'n komende jaren een duidelijke richting.
+      </p>
+    </div>
+
+    <div class="reveal" style="margin-top: var(--space-9);">
+      <div style="text-align: center; margin-bottom: var(--space-5);">
+        <span class="section-eyebrow">M'n kaart — interactief</span>
+        <h3 class="sub" style="font-size: 22px; margin-top: var(--space-2);">Draai de globe met je muis.</h3>
+        <p style="font-size: 14px; color: var(--text-tertiary); margin-top: var(--space-2); max-width: 620px; margin-left: auto; margin-right: auto;">Elke stip is een plek waar ik ben geweest — of nog heen wil. Hover op een stip om 'm te zien.</p>
+        <div style="display: inline-flex; gap: var(--space-5); flex-wrap: wrap; justify-content: center; margin-top: var(--space-4); font-size: 12px; font-family: 'JetBrains Mono', monospace; color: var(--text-tertiary);">
+          <span style="display: inline-flex; align-items: center; gap: 8px;"><span style="width: 10px; height: 10px; border-radius: 50%; background: #6ea8ff; display: inline-block;"></span>Top 3 — Japan, Gambia, Bonaire</span>
+          <span style="display: inline-flex; align-items: center; gap: 8px;"><span style="width: 10px; height: 10px; border-radius: 50%; background: #ffffff; border: 1px solid var(--border-default); display: inline-block;"></span>Andere plekken geweest</span>
+          <span style="display: inline-flex; align-items: center; gap: 8px;"><span style="width: 10px; height: 10px; border-radius: 50%; background: #ffd56b; display: inline-block;"></span>Op de wishlist</span>
+        </div>
+      </div>
+      <div id="reis-globe" style="width: 100%; height: 520px; display: flex; align-items: center; justify-content: center; background: #0a0a0f; border-radius: var(--radius-xl); overflow: hidden;">
+        <div id="globe-loading" style="color: #b4b6c0; font-size: 13px; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.04em;">globe wordt geladen…</div>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-top: var(--space-7);">
+      <div class="card-soft">
+        <h3 class="sub">Wat al dit reizen me heeft geleerd</h3>
+        <p class="body-text">Elke keer dat ik ergens anders ben, merk ik hoeveel <em>aannames</em> ik van huis meeneem zonder dat ik het door heb. Hoe je eet, hoe hard je praat, hoe je onderhandelt, hoe snel een gesprek op zaken komt — overal is het anders, en overal werkt het. Die ervaring maakt me flexibeler: ik schrik niet van een klant die m'n regels niet kent, en ik pas me snel aan een nieuwe omgeving aan.</p>
+        <p class="body-text">Het is ook waarom ik m'n stage op <strong>Bali</strong> wil doen. Niet voor het strand, maar omdat ik uit eerste hand heb gezien (Bonaire, Japan, Marokko) dat werken en leven niet tegenover elkaar hoeven te staan. Die versie van werken wil ik voor mezelf bouwen — en het begint bij die eerste stage.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10 · LIJFSPREUK — CINEMATIC ============ -->
+<section id="motto" style="background: var(--bg-elev-2); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); padding: 0;">
+  <div class="motto-cinematic">
+    <div class="motto-bg"></div>
+    <div class="motto-bg-word">MOTTO</div>
+    <div style="position: relative; z-index: 2;">
+      <span class="section-eyebrow" style="margin-bottom: var(--space-5);"><span class="section-num">10 /10</span>Lijfspreuk</span>
+      <h2>
+        <span class="word-reveal"><span>Consistentie</span></span>
+        <span class="hl word-reveal"><span>verslaat</span></span>
+        <br>
+        <span class="word-reveal"><span>motivatie.</span></span>
+        <span class="word-reveal"><span>Altijd.</span></span>
+      </h2>
+      <div class="motto-attr-big">— mijn lijfspreuk</div>
+    </div>
+  </div>
+
+  <div class="container-narrow" style="padding-top: var(--space-9); padding-bottom: var(--space-10);">
+
+    <div class="reveal" style="margin-top: var(--space-7);">
+      <div class="card-soft">
+        <h3 class="sub">Waarom dit motto bij mij past</h3>
+        <p class="body-text">Motivatie is een gevoel. En gevoelens komen en gaan. Op een maandagochtend heb je ze niet, op een vrijdagavond ineens wel. Als je je studie, je bedrijf of je training op motivatie bouwt, werk je eens in de zoveel dagen. En dat is te weinig om iets op te bouwen dat blijft staan.</p>
+        <p class="body-text"><strong>Consistentie is iets anders.</strong> Het is terugkomen op de dagen dat je er geen zin in hebt. Het is die follow-up sturen na de derde keer radiostilte. Het is naar de gym gaan op een regenachtige zondag. Minder sexy dan 'gemotiveerd zijn' — maar het is wat op termijn wint.</p>
+        <p class="body-text">Je ziet het terug in alles wat ik doe. In de <strong>gym</strong>: ik ga elke week, of ik er nu zin in heb of niet — daar bouw je geen kracht op in zes wilde dagen, maar in zes maanden rustig doorgaan. Op het <strong>voetbalveld</strong>: wie elke training komt groeit, de rest staat stil. Bij <strong>StudentenLeads</strong>: de 59,2% reply rate kwam niet uit één briljante campagne — die kwam uit 225 connectie-verzoeken achter elkaar, zonder dat ik wist of het zou werken. En op <strong>LinkedIn</strong>: ik post wekelijks AI-content, niet omdat ik elke week een top-idee heb, maar omdat ik weet dat twintig oké posts meer waard zijn dan één perfecte.</p>
+        <p class="body-text">Zelfs m'n <strong>mislukte projecten</strong> (de nieuwsapp voor ondernemers, de websites die ik nooit afbouwde) leerden me hetzelfde: ik ging in een sprint en raakte leeg. Wie in een marathon denkt — die komt er wel.</p>
+        <p class="body-text">Dat is m'n snelweg: niet hard, maar altijd. Voor een toekomstige stagebegeleider betekent dat vooral één ding: ik ben er volgende week nog. En de week daarna ook.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact" class="contact">
+  <div class="container-narrow">
+    <span class="section-eyebrow">Contact</span>
+    <h2>Laten we <span class="serif-accent">praten</span>.</h2>
+    <p class="section-sub">Tot hier gelezen? Dan hebben we waarschijnlijk iets te bespreken. Bel, mail, DM — maakt niet uit hoe.</p>
+    <div class="contact-actions">
+      <a href="mailto:stanvdijk8@gmail.com" class="btn btn-primary">Stuur me een bericht →</a>
+      <a href="https://www.linkedin.com/in/stanvandijk1" target="_blank" rel="noopener" class="btn btn-secondary">LinkedIn</a>
+    </div>
+
+    <div class="contact-details">
+      <div>
+        <div class="contact-detail-label">Mail</div>
+        <a href="mailto:stanvdijk8@gmail.com" class="contact-detail-value">stanvdijk8@gmail.com</a>
+      </div>
+      <div>
+        <div class="contact-detail-label">Telefoon</div>
+        <a href="tel:+31650524012" class="contact-detail-value">06 50 52 40 12</a>
+      </div>
+      <div>
+        <div class="contact-detail-label">LinkedIn</div>
+        <a href="https://www.linkedin.com/in/stanvandijk1" target="_blank" rel="noopener" class="contact-detail-value">/stanvandijk1</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="nav-dot"></span>
+        Stan van Dijk
+      </div>
+      <div class="footer-meta">merk IK · CEV1B · hanze 2026</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ============ SCROLL PROGRESS BAR ============
+const progressBar = document.createElement('div');
+progressBar.className = 'scroll-progress';
+document.body.appendChild(progressBar);
+
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = Math.min((scrollTop / docHeight) * 100, 100);
+  progressBar.style.width = progress + '%';
+}, { passive: true });
+
+// ============ REVEAL ON SCROLL ============
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// ============ MAGNETIC BUTTONS ============
+document.querySelectorAll('.btn').forEach(btn => {
+  btn.addEventListener('mousemove', (e) => {
+    const rect = btn.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    btn.style.transform = `translate(${x * 0.18}px, ${y * 0.22}px)`;
+  });
+  btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+});
+
+// ============ MOBILE NAV ============
+const toggle = document.getElementById('navToggle');
+const links = document.getElementById('navLinks');
+toggle.addEventListener('click', () => links.classList.toggle('open'));
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', () => links.classList.remove('open'));
+});
+</script>
+
+<!-- ============ INTERACTIVE 3D GLOBE (Reis sectie) ============ -->
+<script src="https://unpkg.com/globe.gl"></script>
+<script>
+(function initGlobe() {
+  const placesVisited = [
+    // Highlights — groter + accent
+    { name: 'Japan',        lat: 35.68,  lng: 139.69, size: 1.1, color: '#6ea8ff', highlight: true },
+    { name: 'Gambia',       lat: 13.45,  lng: -16.58, size: 1.1, color: '#6ea8ff', highlight: true },
+    { name: 'Bonaire',      lat: 12.14,  lng: -68.27, size: 1.1, color: '#6ea8ff', highlight: true },
+    // Overige plekken — kleiner, wit
+    { name: 'Marokko',      lat: 31.63,  lng:  -7.99, size: 0.55, color: '#ffffff' },
+    { name: 'Londen',       lat: 51.51,  lng:  -0.13, size: 0.55, color: '#ffffff' },
+    { name: 'Parijs',       lat: 48.86,  lng:   2.35, size: 0.55, color: '#ffffff' },
+    { name: 'Rome',         lat: 41.90,  lng:  12.50, size: 0.55, color: '#ffffff' },
+    { name: 'Barcelona',    lat: 41.38,  lng:   2.17, size: 0.55, color: '#ffffff' },
+    { name: 'Sevilla',      lat: 37.39,  lng:  -5.98, size: 0.55, color: '#ffffff' },
+    { name: 'Malaga',       lat: 36.72,  lng:  -4.42, size: 0.55, color: '#ffffff' },
+    { name: 'Marbella',     lat: 36.51,  lng:  -4.89, size: 0.55, color: '#ffffff' },
+    { name: 'Alicante',     lat: 38.35,  lng:  -0.48, size: 0.55, color: '#ffffff' },
+    { name: 'Mallorca',     lat: 39.57,  lng:   2.65, size: 0.55, color: '#ffffff' },
+    { name: 'Tenerife',     lat: 28.29,  lng: -16.62, size: 0.55, color: '#ffffff' },
+    { name: 'Fuerteventura',lat: 28.40,  lng: -14.00, size: 0.55, color: '#ffffff' },
+    { name: 'Lissabon',     lat: 38.72,  lng:  -9.14, size: 0.55, color: '#ffffff' },
+    { name: 'Brussel',      lat: 50.85,  lng:   4.35, size: 0.55, color: '#ffffff' },
+    { name: 'Kopenhagen',   lat: 55.68,  lng:  12.57, size: 0.55, color: '#ffffff' },
+    { name: 'Wenen',        lat: 48.21,  lng:  16.37, size: 0.55, color: '#ffffff' },
+    { name: 'Kreta',        lat: 35.33,  lng:  25.13, size: 0.55, color: '#ffffff' },
+    { name: 'Edinburgh',    lat: 55.95,  lng:  -3.19, size: 0.55, color: '#ffffff' },
+
+    // Op de wishlist — gele stippen
+    { name: 'Bali — droom-stage', lat: -8.41, lng: 115.19, size: 0.9, color: '#ffd56b', wish: true },
+    { name: 'Brazilië',           lat: -22.91, lng: -43.17, size: 0.9, color: '#ffd56b', wish: true },
+    { name: 'Colombia',           lat:   6.25, lng: -75.57, size: 0.9, color: '#ffd56b', wish: true },
+    { name: 'Canada',             lat:  49.28, lng: -123.12, size: 0.9, color: '#ffd56b', wish: true },
+    { name: 'Cyprus',             lat:  34.67, lng:  33.04, size: 0.9, color: '#ffd56b', wish: true },
+    { name: 'Egypte',             lat:  30.04, lng:  31.24, size: 0.9, color: '#ffd56b', wish: true },
+  ];
+
+  function mount() {
+    const el = document.getElementById('reis-globe');
+    if (!el) return;
+    // Verwijder loading text
+    const loading = document.getElementById('globe-loading');
+    if (loading) loading.remove();
+
+    const width = el.clientWidth || 720;
+    const height = 520;
+
+    const GlobeFactory = window.Globe && (window.Globe.default || window.Globe);
+    if (!GlobeFactory) {
+      el.innerHTML = '<div style="color:#ffd890;font-family:monospace;font-size:13px;">Globe kon niet laden — check internet.</div>';
+      return;
+    }
+
+    const world = GlobeFactory()(el)
+      .width(width)
+      .height(height)
+      .backgroundColor('#0a0a0f')
+      .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-night.jpg')
+      .showAtmosphere(true)
+      .atmosphereColor('#6ea8ff')
+      .atmosphereAltitude(0.18)
+      .pointsData(placesVisited)
+      .pointLat('lat')
+      .pointLng('lng')
+      .pointColor('color')
+      .pointAltitude(d => d.highlight ? 0.08 : (d.wish ? 0.06 : 0.02))
+      .pointRadius('size')
+      .pointLabel(d => `<div style="background:rgba(10,10,15,0.92);color:#fafafa;padding:6px 12px;border-radius:8px;border:1px solid rgba(110,168,255,0.35);font-family:Inter,sans-serif;font-size:12px;letter-spacing:0.02em;">${d.name}</div>`)
+      .pointsMerge(false);
+
+    // Auto-rotate tot user interactie
+    const controls = world.controls();
+    controls.autoRotate = true;
+    controls.autoRotateSpeed = 0.6;
+    controls.enableZoom = false;
+
+    el.addEventListener('mousedown', () => { controls.autoRotate = false; });
+    el.addEventListener('touchstart', () => { controls.autoRotate = false; }, { passive: true });
+
+    // Resize handler
+    window.addEventListener('resize', () => {
+      world.width(el.clientWidth);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', mount);
+  } else {
+    // Delay iets om globe.gl script te laten laden
+    setTimeout(mount, 100);
+  }
+})();
+</script>
+
+<!-- ============ CINEMATIC LEVEL 3 SCRIPTS (GSAP + Lenis + ScrollTrigger) ============ -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script>
+(function cinematic() {
+  if (!window.gsap || !window.Lenis) {
+    console.warn('GSAP of Lenis niet geladen — cinematic fallback');
+    return;
+  }
+  gsap.registerPlugin(ScrollTrigger);
+
+  // ============ LENIS SMOOTH SCROLL ============
+  const lenis = new Lenis({
+    duration: 1.15,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true,
+  });
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+  gsap.ticker.lagSmoothing(0);
+
+  // Nav-link smooth-scroll via Lenis
+  document.querySelectorAll('.nav-links a, a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const href = a.getAttribute('href');
+      if (!href || !href.startsWith('#') || href === '#') return;
+      const target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        lenis.scrollTo(target, { offset: -60, duration: 1.4 });
+      }
+    });
+  });
+
+  // ============ CINEMATIC HERO INTRO — echte fly-through ============
+  const hero = document.querySelector('.cinematic-intro');
+  const heroName = document.querySelector('.cinematic-name');
+  const heroTagline = document.querySelector('.cinematic-tagline');
+
+  // Initial reveal van letters
+  const tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
+  tl.fromTo('.cinematic-name .word',
+    { y: '110%', opacity: 0, scale: 0.85 },
+    { y: '0%', opacity: 1, scale: 1, duration: 1.4, stagger: 0.22 },
+    0.3);
+  tl.to('.cinematic-tagline', { opacity: 1, duration: 0.8 }, 1.4);
+
+  // PIN + dramatic fly-through — naam zoomt naar oneindig, backdrops expanderen mee
+  ScrollTrigger.create({
+    trigger: hero,
+    start: 'top top',
+    end: '+=300%',
+    pin: true,
+    pinSpacing: true,
+    scrub: 0.8,
+    animation: gsap.timeline()
+      .to(heroName,    { scale: 55, filter: 'blur(40px)', opacity: 0, ease: 'power3.in', duration: 1 }, 0)
+      .to(heroTagline, { opacity: 0, y: -40, scale: 0.6, ease: 'power2.in', duration: 0.4 }, 0)
+      .to('.cinematic-intro .type-backdrop.top-right', { xPercent: 30, yPercent: -20, scale: 3.5, opacity: 0.2, ease: 'none', duration: 1 }, 0)
+      .to('.cinematic-intro .type-backdrop.bottom-left', { xPercent: -30, yPercent: 25, scale: 3.5, opacity: 0.2, ease: 'none', duration: 1 }, 0),
+  });
+
+  // ============ BACKDROP TYPE PARALLAX (non-hero) ============
+  document.querySelectorAll('section:not(.cinematic-intro) .type-backdrop').forEach((el) => {
+    const container = el.closest('section') || el.parentElement;
+    gsap.to(el, {
+      xPercent: el.classList.contains('top-right') || el.classList.contains('bottom-right') ? -10 : 10,
+      yPercent: -8,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: container,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: true,
+      },
+    });
+  });
+
+  // ============ WORD REVEAL ============
+  document.querySelectorAll('.word-reveal').forEach(wr => {
+    const inner = wr.querySelector('span');
+    if (!inner) return;
+    gsap.to(inner, {
+      y: '0%',
+      opacity: 1,
+      duration: 1.1,
+      ease: 'expo.out',
+      scrollTrigger: {
+        trigger: wr,
+        start: 'top 85%',
+      },
+    });
+  });
+
+  // ============ HORIZONTAL PHOTO RAILS — cinematic card-by-card ============
+  document.querySelectorAll('[data-rail]').forEach(wrap => {
+    const rail = wrap.querySelector('.photo-rail');
+    if (!rail) return;
+    const cards = rail.querySelectorAll('.rail-card');
+    const getDistance = () => Math.max(0, rail.scrollWidth - window.innerWidth + 40);
+
+    // Hoofd pin + rail translate
+    const railTween = gsap.to(rail, {
+      x: () => -getDistance(),
+      ease: 'none',
+      scrollTrigger: {
+        trigger: wrap,
+        pin: true,
+        pinSpacing: true,
+        scrub: 0.6,
+        start: 'top top',
+        end: () => '+=' + getDistance(),
+        invalidateOnRefresh: true,
+      },
+    });
+
+    // Per kaart: scale up bij center, scale down + blur op flanken — altijd zichtbaar
+    cards.forEach((card) => {
+      gsap.fromTo(card,
+        { scale: 0.72, opacity: 0.25, rotateY: 28, filter: 'blur(6px)' },
+        {
+          scale: 1, opacity: 1, rotateY: 0, filter: 'blur(0px)',
+          ease: 'power2.out',
+          immediateRender: false,
+          scrollTrigger: {
+            trigger: card,
+            containerAnimation: railTween,
+            start: 'left right',
+            end: 'center center',
+            scrub: 1,
+          },
+        }
+      );
+      gsap.to(card, {
+        scale: 0.72, opacity: 0.25, rotateY: -28, filter: 'blur(6px)',
+        ease: 'power2.in',
+        immediateRender: false,
+        scrollTrigger: {
+          trigger: card,
+          containerAnimation: railTween,
+          start: 'center center',
+          end: 'right left',
+          scrub: 1,
+        },
+      });
+    });
+  });
+
+  // ============ TIME-TRAVEL — cinematic pinned timeline ============
+  document.querySelectorAll('[data-timetravel]').forEach(wrap => {
+    const inner = wrap.querySelector('.timetravel-inner');
+    if (!inner) return;
+    const panels = inner.querySelectorAll('.timetravel-panel');
+    const getDistance = () => Math.max(0, inner.scrollWidth - window.innerWidth + 40);
+
+    const pinTween = gsap.to(inner, {
+      x: () => -getDistance(),
+      ease: 'none',
+      scrollTrigger: {
+        trigger: wrap,
+        pin: true,
+        pinSpacing: true,
+        scrub: 0.8,
+        start: 'top top',
+        end: () => '+=' + getDistance(),
+        invalidateOnRefresh: true,
+      },
+    });
+
+    panels.forEach((panel) => {
+      // Altijd zichtbaar — 3D kantel + scale wisselt tussen flanken en midden
+      gsap.fromTo(panel,
+        { scale: 0.72, opacity: 0.3, rotateY: 28, filter: 'blur(7px)' },
+        {
+          scale: 1, opacity: 1, rotateY: 0, filter: 'blur(0px)',
+          ease: 'power2.out',
+          immediateRender: false,
+          scrollTrigger: {
+            trigger: panel,
+            containerAnimation: pinTween,
+            start: 'left right',
+            end: 'center center',
+            scrub: 1,
+          },
+        }
+      );
+      gsap.to(panel, {
+        scale: 0.72, opacity: 0.3, rotateY: -28, filter: 'blur(7px)',
+        ease: 'power2.in',
+        immediateRender: false,
+        scrollTrigger: {
+          trigger: panel,
+          containerAnimation: pinTween,
+          start: 'center center',
+          end: 'right left',
+          scrub: 1,
+        },
+      });
+
+      // Giant letter parallax binnen panel
+      const giant = panel.querySelector('.timetravel-giant');
+      if (giant) {
+        gsap.fromTo(giant,
+          { xPercent: 40 },
+          {
+            xPercent: -20,
+            ease: 'none',
+            immediateRender: false,
+            scrollTrigger: {
+              trigger: panel,
+              containerAnimation: pinTween,
+              start: 'left right',
+              end: 'right left',
+              scrub: 1,
+            },
+          }
+        );
+      }
+    });
+  });
+
+  // ============ NOTES CINEMA — pen schrijft elke note sequentieel ============
+  document.querySelectorAll('[data-notes-cinema]').forEach(cinema => {
+    const notes = Array.from(cinema.querySelectorAll('.cinema-note'));
+    const pen = cinema.querySelector('.notes-pen');
+    const counter = cinema.querySelector('.cnt-current');
+    if (!notes.length) return;
+
+    // Split elke note-text in words
+    notes.forEach(note => {
+      const textEl = note.querySelector('[data-note-text]');
+      if (!textEl) return;
+      const raw = textEl.textContent.trim();
+      textEl.innerHTML = raw.split(/\s+/).map(w => `<span class="nw">${w}</span>`).join(' ');
+    });
+
+    const TOTAL = notes.length;
+    // Breathing room: writing-phase (60%) + rest-phase (40%) per note
+    const SLOT_SCROLL = 160; // % scroll per note
+    const WRITE_PHASE = 0.60; // deel van slot waarin typen gebeurt
+    ScrollTrigger.create({
+      trigger: cinema,
+      start: 'top top',
+      end: () => '+=' + (TOTAL * SLOT_SCROLL) + '%',
+      pin: true,
+      pinSpacing: true,
+      scrub: 0.5,
+      onUpdate(self) {
+        const p = self.progress;
+        const slotF = Math.min(p * TOTAL, TOTAL - 0.0001);
+        const slot = Math.floor(slotF);
+        const inSlotRaw = slotF - slot;
+        // Map 0..WRITE_PHASE → writing 0..1; WRITE_PHASE..1 → fully written (rest)
+        const writeP = Math.min(inSlotRaw / WRITE_PHASE, 1);
+
+        notes.forEach((note, i) => {
+          const words = note.querySelectorAll('.nw');
+          if (i === slot) {
+            note.classList.add('active');
+            const total = words.length;
+            const visible = Math.floor(writeP * (total + 1));
+            words.forEach((w, wi) => {
+              if (wi < visible) {
+                w.style.opacity = '1';
+                w.style.transform = 'translateY(0)';
+              } else {
+                w.style.opacity = '0';
+                w.style.transform = 'translateY(8px)';
+              }
+            });
+            const nameEl = note.querySelector('.cinema-note-name');
+            if (nameEl) nameEl.style.opacity = (visible >= total) ? '0.75' : '0';
+          } else {
+            note.classList.remove('active');
+            words.forEach(w => { w.style.opacity = '0'; w.style.transform = 'translateY(8px)'; });
+            const nameEl = note.querySelector('.cinema-note-name');
+            if (nameEl) nameEl.style.opacity = '0';
+          }
+        });
+
+        if (counter) counter.textContent = String(slot + 1).padStart(2, '0');
+
+        if (pen) {
+          pen.style.opacity = writeP < 1 ? '1' : '0.3';  // pen fade-out tijdens rust
+          const activeNote = notes[slot];
+          const words = activeNote.querySelectorAll('.nw');
+          const total = words.length;
+          const visible = Math.min(Math.floor(writeP * (total + 1)), total);
+          const currentWord = words[Math.max(0, visible - 1)];
+          if (currentWord) {
+            const penRect = pen.parentElement.getBoundingClientRect();
+            const wRect = currentWord.getBoundingClientRect();
+            const x = wRect.right - penRect.left - 8;
+            const y = wRect.top - penRect.top - 8;
+            pen.style.transform = `translate(${x}px, ${y}px)`;
+          }
+        }
+      },
+      onLeave() { if (pen) pen.style.opacity = '0'; },
+      onLeaveBack() { if (pen) pen.style.opacity = '0'; },
+    });
+  });
+
+  // ============ SPLIT PASSIE — cinematic reveal ============
+  gsap.utils.toArray('.passion-half').forEach((half, i) => {
+    gsap.from(half, {
+      opacity: 0,
+      y: 60,
+      duration: 1.4,
+      ease: 'expo.out',
+      delay: i * 0.15,
+      scrollTrigger: {
+        trigger: half,
+        start: 'top 80%',
+      },
+    });
+    const num = half.querySelector('.passion-number');
+    if (num) {
+      gsap.fromTo(num,
+        { scale: 0.7, opacity: 0 },
+        {
+          scale: 1,
+          opacity: 0.05,
+          duration: 2,
+          ease: 'expo.out',
+          scrollTrigger: {
+            trigger: half,
+            start: 'top 70%',
+          },
+        }
+      );
+    }
+  });
+
+  // ============ REVEAL CLASS — cinematic + retrigger ============
+  gsap.utils.toArray('.reveal').forEach(el => {
+    gsap.fromTo(el,
+      { opacity: 0, y: 40, scale: 0.98 },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 1.1,
+        ease: 'expo.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 88%',
+          toggleActions: 'restart none restart reverse',
+        },
+      }
+    );
+  });
+
+  // ============ CHAPTER CARDS — iris open + title fly in ============
+  document.querySelectorAll('[data-chapter]').forEach(chapter => {
+    const act = chapter.querySelector('.chapter-act');
+    const title = chapter.querySelector('.chapter-title');
+    const rule = chapter.querySelector('.chapter-rule');
+    const caption = chapter.querySelector('.chapter-caption');
+
+    // Pin chapter voor breathing moment
+    ScrollTrigger.create({
+      trigger: chapter,
+      start: 'top top',
+      end: '+=100%',
+      pin: true,
+      pinSpacing: true,
+      scrub: false,
+      animation: gsap.timeline()
+        .fromTo(act,     { opacity: 0, y: 20 }, { opacity: 0.9, y: 0, duration: 0.8, ease: 'expo.out' }, 0)
+        .fromTo(title,   { opacity: 0, y: 60, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 1.2, ease: 'expo.out' }, 0.1)
+        .fromTo(rule,    { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.8, ease: 'expo.out' }, 0.8)
+        .fromTo(caption, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8, ease: 'expo.out' }, 1),
+    });
+
+    // Parallax title tijdens leave
+    gsap.to(title, {
+      yPercent: -30,
+      opacity: 0,
+      scale: 1.1,
+      ease: 'power2.in',
+      scrollTrigger: {
+        trigger: chapter,
+        start: 'bottom 70%',
+        end: 'bottom top',
+        scrub: 1,
+      },
+    });
+  });
+
+  // ============ LETTERBOX — subtle top/bottom bars tijdens dramatic pinned scenes ============
+  const topBar = document.createElement('div');
+  topBar.className = 'letterbox top';
+  document.body.appendChild(topBar);
+  const bottomBar = document.createElement('div');
+  bottomBar.className = 'letterbox bottom';
+  document.body.appendChild(bottomBar);
+
+  // Activeer letterbox tijdens photo-rails, timetravel, en notes-cinema
+  const dramaticSections = document.querySelectorAll('[data-rail], [data-timetravel], [data-notes-cinema]');
+  dramaticSections.forEach(section => {
+    ScrollTrigger.create({
+      trigger: section,
+      start: 'top 20%',
+      end: 'bottom 80%',
+      onEnter:    () => gsap.to([topBar, bottomBar], { height: 48, duration: 0.5, ease: 'expo.out' }),
+      onLeave:    () => gsap.to([topBar, bottomBar], { height: 0,  duration: 0.5, ease: 'expo.out' }),
+      onEnterBack:() => gsap.to([topBar, bottomBar], { height: 48, duration: 0.5, ease: 'expo.out' }),
+      onLeaveBack:() => gsap.to([topBar, bottomBar], { height: 0,  duration: 0.5, ease: 'expo.out' }),
+    });
+  });
+
+  // ============ MOTTO BG-WORD parallax ============
+  const mottoWord = document.querySelector('.motto-bg-word');
+  if (mottoWord) {
+    gsap.fromTo(mottoWord,
+      { scale: 0.8, opacity: 0 },
+      {
+        scale: 1,
+        opacity: 0.04,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.motto-cinematic',
+          start: 'top 80%',
+          end: 'bottom 30%',
+          scrub: true,
+        },
+      }
+    );
+  }
+
+  // Initial refresh na load (voor async fonts + globe)
+  window.addEventListener('load', () => {
+    setTimeout(() => ScrollTrigger.refresh(), 400);
+  });
+})();
+</script>
+
+</body>
+</html>
