@@ -1788,6 +1788,89 @@ section.on .red-accent::after {
 }
 .ps-dot.active { background: #fff; transform: scale(1.25); }
 
+/* ============ SETTINGS BUTTON + MODAL (voor GitHub token cross-device sync) ============ */
+.settings-btn {
+  position: fixed; bottom: 24px; left: 24px;
+  z-index: 89;
+  width: 44px; height: 44px;
+  border-radius: 50%; border: 0; cursor: pointer;
+  background: rgba(30,58,95,0.92);
+  color: #fff;
+  font-size: 18px; line-height: 1;
+  display: inline-flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 24px rgba(10,15,25,0.2);
+  backdrop-filter: blur(12px);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.settings-btn:hover { transform: scale(1.08); box-shadow: 0 12px 30px rgba(10,15,25,0.28); }
+.settings-btn.cloud-on::after {
+  content: ''; position: absolute; top: 3px; right: 3px;
+  width: 10px; height: 10px; border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 8px rgba(74,222,128,0.7);
+}
+
+.settings-modal {
+  position: fixed; inset: 0; z-index: 9998;
+  background: rgba(10,15,25,0.72);
+  backdrop-filter: blur(8px);
+  display: none;
+  align-items: center; justify-content: center;
+  padding: var(--space-5);
+}
+.settings-modal.open { display: flex; }
+.settings-modal-inner {
+  background: var(--bg);
+  border-radius: var(--radius-xl);
+  padding: var(--space-7);
+  max-width: 560px; width: 100%;
+  max-height: 90vh; overflow-y: auto;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+  border: 1px solid var(--border-subtle);
+}
+.settings-modal h3 {
+  font-family: 'Fraunces', serif; font-size: 24px;
+  margin: 0 0 var(--space-3); color: var(--text-primary);
+}
+.settings-modal p { font-size: 14px; color: var(--text-secondary); line-height: 1.5; margin: 0 0 var(--space-4); }
+.settings-modal ol { font-size: 13px; color: var(--text-secondary); line-height: 1.65; padding-left: 18px; margin: 0 0 var(--space-5); }
+.settings-modal ol a { color: var(--accent); font-weight: 500; }
+.settings-modal ol code {
+  background: var(--bg-elev-2); padding: 2px 6px; border-radius: 4px;
+  font-size: 11px; color: var(--text-primary);
+}
+.settings-modal input[type="text"], .settings-modal input[type="password"] {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  background: var(--bg-elev-2);
+  color: var(--text-primary);
+  margin-bottom: var(--space-4);
+}
+.settings-modal-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.settings-modal-actions button {
+  padding: 11px 20px; border-radius: 999px;
+  border: 0; cursor: pointer;
+  font-size: 13px; font-weight: 500;
+  transition: transform 0.2s, opacity 0.2s;
+}
+.settings-modal-actions .sm-save { background: var(--accent); color: #fff; }
+.settings-modal-actions .sm-clear { background: var(--red); color: #fff; }
+.settings-modal-actions .sm-close { background: var(--bg-elev-2); color: var(--text-primary); border: 1px solid var(--border-subtle); }
+.settings-modal-actions button:hover { transform: scale(1.04); }
+.settings-status {
+  margin-top: var(--space-4);
+  padding: 10px 14px;
+  background: var(--bg-elev-2); border-radius: 10px;
+  font-size: 12px; color: var(--text-secondary);
+  border-left: 3px solid var(--text-tertiary);
+}
+.settings-status.ok { border-left-color: #4ade80; color: var(--text-primary); }
+.settings-status.err { border-left-color: var(--red); }
+
 /* CAPTIONS */
 .rps-caption {
   position: absolute; bottom: 8%; left: 50%;
@@ -3705,6 +3788,138 @@ document.querySelectorAll('.nav-links a').forEach(a => {
   }
 
   // ============ UNIVERSAL PHOTO UPLOAD SLOTS — alle foto-plekken op de site ============
+  // ============ GITHUB API CROSS-DEVICE SYNC ============
+  window.GH = {
+    owner: 'StanvDijk',
+    repo: 'stan-merk-ik',
+    branch: 'main',
+    folder: 'images/uploads',
+    tokenKey: 'gh-token-v1',
+    get token() { return localStorage.getItem(this.tokenKey); },
+    set token(t) { if (t) localStorage.setItem(this.tokenKey, t); else localStorage.removeItem(this.tokenKey); },
+    hasToken() { return !!this.token; },
+    async api(pathSuffix, opts = {}) {
+      return fetch(`https://api.github.com/repos/${this.owner}/${this.repo}${pathSuffix}`, {
+        ...opts,
+        headers: {
+          'Accept': 'application/vnd.github+json',
+          'Authorization': `Bearer ${this.token}`,
+          'X-GitHub-Api-Version': '2022-11-28',
+          ...(opts.headers || {}),
+        },
+      });
+    },
+    rawUrl(path) {
+      return `https://raw.githubusercontent.com/${this.owner}/${this.repo}/${this.branch}/${path}`;
+    },
+    async testAuth() {
+      if (!this.hasToken()) return { ok: false, msg: 'Geen token' };
+      try {
+        const r = await this.api('');
+        if (r.status === 200) return { ok: true, msg: 'Token werkt — foto\'s syncen cross-device.' };
+        if (r.status === 401) return { ok: false, msg: 'Token ongeldig (401).' };
+        if (r.status === 404) return { ok: false, msg: 'Repo niet gevonden (check repo-access).' };
+        return { ok: false, msg: `Fout ${r.status}.` };
+      } catch (e) { return { ok: false, msg: 'Netwerkfout: ' + e.message }; }
+    },
+    async uploadBlob(slotKey, blob, ext) {
+      const ts = Date.now();
+      const filename = `${slotKey}-${ts}.${ext}`;
+      const path = `${this.folder}/${filename}`;
+      const base64 = await new Promise((resolve, reject) => {
+        const r = new FileReader();
+        r.onload = () => resolve(r.result.split(',')[1]);
+        r.onerror = reject;
+        r.readAsDataURL(blob);
+      });
+      const res = await this.api(`/contents/${encodeURIComponent(path).replace(/%2F/g, '/')}`, {
+        method: 'PUT',
+        body: JSON.stringify({ message: `Upload: ${slotKey}`, content: base64, branch: this.branch }),
+      });
+      if (!res.ok) throw new Error('Upload ' + res.status);
+      const data = await res.json();
+      return { path: data.content.path, sha: data.content.sha, url: this.rawUrl(data.content.path) };
+    },
+    async list() {
+      if (!this.hasToken()) return [];
+      try {
+        const res = await this.api(`/contents/${this.folder}?ref=${this.branch}`);
+        if (!res.ok) return [];
+        const data = await res.json();
+        return Array.isArray(data) ? data : [];
+      } catch { return []; }
+    },
+    async delete(path, sha) {
+      const res = await this.api(`/contents/${path}`, {
+        method: 'DELETE',
+        body: JSON.stringify({ message: `Delete: ${path}`, sha, branch: this.branch }),
+      });
+      return res.ok;
+    },
+  };
+
+  // Cache the file list once per page load
+  window._ghFilesPromise = null;
+  window.getGhFiles = () => {
+    if (!window._ghFilesPromise) window._ghFilesPromise = window.GH.list();
+    return window._ghFilesPromise;
+  };
+
+  // Settings modal wiring
+  (function initSettingsModal() {
+    const btn = document.getElementById('settingsBtn');
+    const modal = document.getElementById('settingsModal');
+    const input = document.getElementById('ghTokenInput');
+    const saveBtn = document.getElementById('ghTokenSave');
+    const clearBtn = document.getElementById('ghTokenClear');
+    const closeBtn = document.getElementById('ghTokenClose');
+    const status = document.getElementById('ghTokenStatus');
+    if (!btn || !modal) return;
+
+    const updateIndicator = () => {
+      if (window.GH.hasToken()) btn.classList.add('cloud-on');
+      else btn.classList.remove('cloud-on');
+    };
+    const setStatus = (txt, cls) => {
+      status.textContent = txt;
+      status.className = 'settings-status' + (cls ? ' ' + cls : '');
+    };
+    const open = () => {
+      modal.classList.add('open');
+      if (window.GH.hasToken()) {
+        input.value = window.GH.token;
+        setStatus('Token geconfigureerd — cross-device sync actief.', 'ok');
+      } else {
+        input.value = '';
+        setStatus('Geen token — foto\'s blijven alleen op dit device.');
+      }
+    };
+    const close = () => modal.classList.remove('open');
+
+    btn.addEventListener('click', open);
+    closeBtn.addEventListener('click', close);
+    modal.addEventListener('click', (e) => { if (e.target === modal) close(); });
+
+    saveBtn.addEventListener('click', async () => {
+      const val = input.value.trim();
+      if (!val) { setStatus('Plak je token in het invulveld.', 'err'); return; }
+      window.GH.token = val;
+      setStatus('Testen...', '');
+      const res = await window.GH.testAuth();
+      setStatus(res.msg, res.ok ? 'ok' : 'err');
+      updateIndicator();
+      if (res.ok) setTimeout(() => location.reload(), 1200);
+    });
+    clearBtn.addEventListener('click', () => {
+      window.GH.token = null;
+      input.value = '';
+      updateIndicator();
+      setStatus('Token verwijderd.', '');
+      setTimeout(() => location.reload(), 800);
+    });
+    updateIndicator();
+  })();
+
   // ============ IndexedDB fallback — voor als localStorage vol is (iOS Safari ~5MB limit) ============
   const IDB_NAME = 'stan-merk-ik';
   const IDB_STORE = 'uploads';
@@ -3793,7 +4008,7 @@ document.querySelectorAll('.nav-links a').forEach(a => {
 
       const inputId = 'ps-inp-' + key.replace(/[^a-z0-9]/gi, '-');
       const input = document.createElement('input');
-      input.type = 'file'; input.accept = 'image/*';
+      input.type = 'file'; input.accept = 'image/*,video/*';
       input.multiple = true;   // meerdere foto's tegelijk
       input.className = 'ps-input'; input.id = inputId;
       el.appendChild(input);
@@ -3868,16 +4083,44 @@ document.querySelectorAll('.nav-links a').forEach(a => {
         }
       };
 
+      // Track GH paths+shas per slot zodat we later kunnen deleten
+      const ghItemsMeta = []; // [{path, sha, url}]
+
       input.addEventListener('change', async (e) => {
         const files = Array.from(e.target.files || []);
         if (!files.length) return;
+        const useGh = window.GH && window.GH.hasToken();
+        cue.textContent = useGh ? 'Uploaden naar cloud...' : 'Bezig...';
         for (const file of files) {
           try {
-            const dataUrl = await compressImg(file);
-            state.items.push(dataUrl);
-          } catch {}
+            // Compress (imgs only) - videos skip compressie, direct upload
+            let blob, ext;
+            if (file.type.startsWith('video/')) {
+              blob = file; ext = (file.name.split('.').pop() || 'mp4').toLowerCase();
+            } else {
+              const dataUrl = await compressImg(file);
+              blob = await (await fetch(dataUrl)).blob();
+              ext = 'jpg';
+            }
+            if (useGh) {
+              const meta = await window.GH.uploadBlob(key, blob, ext);
+              state.items.push(meta.url);
+              ghItemsMeta.push(meta);
+            } else {
+              // Local-only: gebruik dataURL
+              const reader = new FileReader();
+              const dataUrl = await new Promise((res, rej) => {
+                reader.onload = () => res(reader.result);
+                reader.onerror = rej;
+                reader.readAsDataURL(blob);
+              });
+              state.items.push(dataUrl);
+            }
+          } catch (err) {
+            console.error('Upload failed', err);
+          }
         }
-        await persist();
+        if (!useGh) await persist();
         if (state.items.length === files.length) state.idx = 0;
         showCurrent(false);
         startCycle();
@@ -3886,6 +4129,14 @@ document.querySelectorAll('.nav-links a').forEach(a => {
       clearBtn.addEventListener('click', async (e) => {
         e.stopPropagation(); e.preventDefault();
         stopCycle();
+        // Delete all GH files for this slot if token set
+        if (window.GH && window.GH.hasToken() && ghItemsMeta.length) {
+          cue.textContent = 'Wissen uit cloud...';
+          for (const meta of ghItemsMeta) {
+            try { await window.GH.delete(meta.path, meta.sha); } catch {}
+          }
+          ghItemsMeta.length = 0;
+        }
         state.items = []; state.idx = 0;
         await window.StanStorage.remove(STORAGE_PREFIX + key);
         imgEl.removeAttribute('src');
@@ -3897,8 +4148,22 @@ document.querySelectorAll('.nav-links a').forEach(a => {
       el.addEventListener('mouseenter', stopCycle);
       el.addEventListener('mouseleave', startCycle);
 
-      // Restore — try localStorage eerst, dan IndexedDB
+      // Restore — als GH token: laad uit GH. Anders localStorage/IndexedDB.
       (async () => {
+        if (window.GH && window.GH.hasToken()) {
+          try {
+            const files = await window.getGhFiles();
+            const mine = files.filter(f => f.name.startsWith(key + '-'))
+                              .sort((a, b) => a.name.localeCompare(b.name));
+            if (mine.length) {
+              state.items = mine.map(f => window.GH.rawUrl(f.path));
+              mine.forEach(f => ghItemsMeta.push({ path: f.path, sha: f.sha, url: window.GH.rawUrl(f.path) }));
+              showCurrent(false);
+              startCycle();
+              return;
+            }
+          } catch (err) { console.warn('GH restore mislukt, fallback naar local:', err); }
+        }
         const stored = await window.StanStorage.get(STORAGE_PREFIX + key);
         if (!stored) return;
         try {
@@ -3946,6 +4211,30 @@ document.querySelectorAll('.nav-links a').forEach(a => {
   </div>
   <a href="#contact" class="float-nav-btn">Zeg hoi →</a>
   <button class="float-nav-close" aria-label="Sluit">×</button>
+</div>
+
+<!-- ============ SETTINGS BUTTON + MODAL (cross-device foto-sync) ============ -->
+<button class="settings-btn" id="settingsBtn" aria-label="Instellingen" title="Foto-sync instellingen">⚙</button>
+<div class="settings-modal" id="settingsModal" role="dialog" aria-modal="true">
+  <div class="settings-modal-inner">
+    <h3>Cross-device foto-sync</h3>
+    <p>Stel een <strong>GitHub token</strong> in zodat foto's die je op je telefoon upload, automatisch ook op je laptop verschijnen. Setup duurt 2 minuten, daarna werkt het overal.</p>
+    <ol>
+      <li>Ga naar <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">github.com → Fine-grained tokens</a></li>
+      <li>Token name: <code>stan-merk-ik</code> · Expiration: 90 dagen</li>
+      <li>Repository access: <strong>Only select repositories</strong> → kies <code>stan-merk-ik</code></li>
+      <li>Permissions → Repository permissions → <strong>Contents: Read and write</strong></li>
+      <li>Klik <strong>Generate token</strong>, kopieer de token (begint met <code>github_pat_...</code>)</li>
+      <li>Plak 'm hieronder + klik Opslaan</li>
+    </ol>
+    <input type="password" id="ghTokenInput" placeholder="github_pat_..." autocomplete="off" spellcheck="false">
+    <div class="settings-modal-actions">
+      <button type="button" class="sm-save" id="ghTokenSave">Opslaan + testen</button>
+      <button type="button" class="sm-clear" id="ghTokenClear">Verwijderen</button>
+      <button type="button" class="sm-close" id="ghTokenClose">Sluiten</button>
+    </div>
+    <div class="settings-status" id="ghTokenStatus">Geen token — foto's blijven alleen op dit device.</div>
+  </div>
 </div>
 
 </body>
