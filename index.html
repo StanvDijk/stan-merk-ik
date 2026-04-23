@@ -1769,6 +1769,18 @@ section.on .red-accent::after {
   opacity: 0.85;
 }
 .photo-slot .ps-img { transition: opacity 0.45s ease; }
+.photo-slot .ps-video {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  border-radius: inherit;
+  transition: opacity 0.45s ease;
+  background: #000;
+}
+.photo-slot:not(.has-image) .ps-video { display: none; }
+.photo-slot.is-video .ps-img { display: none; }
+.photo-slot:not(.is-video) .ps-video { display: none; }
 .ps-dots {
   position: absolute;
   top: 10px; left: 50%;
@@ -1957,7 +1969,7 @@ section.on .red-accent::after {
       <span class="eyebrow-badge">Merk IK · 2026</span>
       <span>Op zoek naar een stage die ergens over gaat</span>
     </div>
-    <h1><span class="hw"><span>Stan van Dijk.</span></span><br><span class="hw"><span class="accent-text">Marketeer in de maak.</span></span></h1>
+    <h1><span class="hw"><span>Stan van Dijk.</span></span><br><span class="hw"><span class="accent-text">Salesman in de maak.</span></span></h1>
     <p class="hero-sub">Eerstejaars Commerciële Economie aan de Hanze. Dit is geen standaard stageboekje. Dit is wie ik ben voordat we elkaar ontmoeten.</p>
     <p class="hero-role">Een <span class="role-word" id="heroRoleWord">Ondernemer</span> uit Hoogeveen, student in Groningen.</p>
     <div class="hero-ctas">
@@ -1995,8 +2007,8 @@ section.on .red-accent::after {
 <!-- ============ MARQUEE STRIP ============ -->
 <div class="marquee-strip" aria-hidden="true">
   <div class="marquee-inner">
-    <span class="marquee-item"><em>Marketeer in de maak</em><span class="dot"></span>ondernemen<span class="dot"></span><em>eerste elftal</em><span class="dot"></span>StudentenLeads<span class="dot"></span><em>AI &amp; automatisering</em><span class="dot"></span>Bali inbound<span class="dot"></span></span>
-    <span class="marquee-item"><em>Marketeer in de maak</em><span class="dot"></span>ondernemen<span class="dot"></span><em>eerste elftal</em><span class="dot"></span>StudentenLeads<span class="dot"></span><em>AI &amp; automatisering</em><span class="dot"></span>Bali inbound<span class="dot"></span></span>
+    <span class="marquee-item"><em>Salesman in de maak</em><span class="dot"></span>ondernemen<span class="dot"></span><em>eerste elftal</em><span class="dot"></span>StudentenLeads<span class="dot"></span><em>AI &amp; automatisering</em><span class="dot"></span>Bali inbound<span class="dot"></span></span>
+    <span class="marquee-item"><em>Salesman in de maak</em><span class="dot"></span>ondernemen<span class="dot"></span><em>eerste elftal</em><span class="dot"></span>StudentenLeads<span class="dot"></span><em>AI &amp; automatisering</em><span class="dot"></span>Bali inbound<span class="dot"></span></span>
   </div>
 </div>
 
@@ -2985,7 +2997,7 @@ document.querySelectorAll('.nav-links a').forEach(a => {
       .replace(/<\/span><\/span>/g, '</span>');
     // Eerst standaard fix: extract tekst
     const line1 = 'Stan van Dijk.';
-    const line2 = 'Marketeer in de maak.';
+    const line2 = 'Salesman in de maak.';
     h1.innerHTML = '<span class="l1">' + line1 + '</span><br><span class="l2 accent-text">' + line2 + '</span>';
 
     const s1 = new SplitType('.hero h1 .l1', { types: 'chars' });
@@ -4011,6 +4023,17 @@ document.querySelectorAll('.nav-links a').forEach(a => {
       imgEl.className = 'ps-img'; imgEl.alt = '';
       el.appendChild(imgEl);
 
+      const vidEl = document.createElement('video');
+      vidEl.className = 'ps-video';
+      vidEl.muted = true;
+      vidEl.playsInline = true;
+      vidEl.setAttribute('playsinline', '');
+      vidEl.setAttribute('muted', '');
+      vidEl.preload = 'auto';
+      el.appendChild(vidEl);
+
+      const isVideoSrc = (s) => typeof s === 'string' && (/\.(mp4|mov|m4v|webm|ogg|ogv)(\?|#|$)/i.test(s) || /^data:video\//i.test(s));
+
       const inputId = 'ps-inp-' + key.replace(/[^a-z0-9]/gi, '-');
       const input = document.createElement('input');
       input.type = 'file'; input.accept = 'image/*,video/*';
@@ -4047,17 +4070,35 @@ document.querySelectorAll('.nav-links a').forEach(a => {
         }
       };
       const showCurrent = (animate = true) => {
-        if (!state.items.length) { el.classList.remove('has-image'); return; }
+        if (!state.items.length) { el.classList.remove('has-image'); el.classList.remove('is-video'); return; }
         el.classList.add('has-image');
-        if (animate) {
+        const src = state.items[state.idx];
+        const video = isVideoSrc(src);
+        el.classList.toggle('is-video', video);
+        if (video) {
+          // img pauzeren/wissen
+          imgEl.removeAttribute('src');
           imgEl.style.opacity = '0';
-          setTimeout(() => {
-            imgEl.src = state.items[state.idx];
-            imgEl.style.opacity = '1';
-          }, 300);
+          if (vidEl.src !== src) {
+            vidEl.src = src;
+          }
+          try { vidEl.currentTime = 0; } catch {}
+          const p = vidEl.play();
+          if (p && typeof p.catch === 'function') p.catch(() => {});
         } else {
-          imgEl.src = state.items[state.idx];
-          imgEl.style.opacity = '1';
+          // video pauzeren/wissen
+          try { vidEl.pause(); } catch {}
+          if (vidEl.src) { vidEl.removeAttribute('src'); try { vidEl.load(); } catch {} }
+          if (animate) {
+            imgEl.style.opacity = '0';
+            setTimeout(() => {
+              imgEl.src = src;
+              imgEl.style.opacity = '1';
+            }, 300);
+          } else {
+            imgEl.src = src;
+            imgEl.style.opacity = '1';
+          }
         }
         renderDots();
         if (state.items.length > 1) {
@@ -4066,16 +4107,37 @@ document.querySelectorAll('.nav-links a').forEach(a => {
           cue.textContent = '+ Meer toevoegen';
         }
       };
+      const stopCycle = () => {
+        if (state.timer) { clearTimeout(state.timer); state.timer = null; }
+        if (state.videoEndedHandler) {
+          vidEl.removeEventListener('ended', state.videoEndedHandler);
+          vidEl.removeEventListener('error', state.videoEndedHandler);
+          state.videoEndedHandler = null;
+        }
+        if (state.videoFailsafe) { clearTimeout(state.videoFailsafe); state.videoFailsafe = null; }
+      };
       const startCycle = () => {
         stopCycle();
-        if (state.items.length > 1) {
-          state.timer = setInterval(() => {
-            state.idx = (state.idx + 1) % state.items.length;
-            showCurrent(true);
-          }, 3800);
+        if (state.items.length <= 1) return;
+        const src = state.items[state.idx];
+        const advance = () => {
+          stopCycle();
+          state.idx = (state.idx + 1) % state.items.length;
+          showCurrent(true);
+          startCycle();
+        };
+        if (isVideoSrc(src)) {
+          // als video al klaar is (bv. hervat na hover), direct door
+          if (vidEl.ended) { advance(); return; }
+          state.videoEndedHandler = advance;
+          vidEl.addEventListener('ended', state.videoEndedHandler, { once: true });
+          vidEl.addEventListener('error', state.videoEndedHandler, { once: true });
+          // failsafe: als video niet speelt of stuck is, na 30s toch door
+          state.videoFailsafe = setTimeout(advance, 30000);
+        } else {
+          state.timer = setTimeout(advance, 3800);
         }
       };
-      const stopCycle = () => { if (state.timer) { clearInterval(state.timer); state.timer = null; } };
 
       const persist = async () => {
         const result = await window.StanStorage.set(STORAGE_PREFIX + key, JSON.stringify({ items: state.items }));
@@ -4154,7 +4216,10 @@ document.querySelectorAll('.nav-links a').forEach(a => {
         state.items = []; state.idx = 0;
         await window.StanStorage.remove(STORAGE_PREFIX + key);
         imgEl.removeAttribute('src');
+        try { vidEl.pause(); } catch {}
+        vidEl.removeAttribute('src'); try { vidEl.load(); } catch {}
         el.classList.remove('has-image');
+        el.classList.remove('is-video');
         dots.innerHTML = '';
         cue.textContent = 'Tap voor foto\'s';
       });
