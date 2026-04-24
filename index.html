@@ -1634,7 +1634,9 @@ section.on .red-accent::after {
   0%,100% { transform: translateY(0) rotate(0); }
   50%     { transform: translateY(-10px) rotate(1.5deg); }
 }
-/* Als de foto actief is → float pauzeert (standaard in center) */
+/* Als de foto actief is → float pauzeert (standaard in center) + boven de phone */
+.rps-photo { z-index: 2; }
+.rps-photo.is-active { z-index: 5; }
 .rps-photo.is-active .rps-photo-float { animation-play-state: paused; transform: none; }
 
 .rps-photo-float img,
@@ -3534,6 +3536,9 @@ document.querySelectorAll('.nav-links a').forEach(a => {
         onEnter: () => s.classList.add('on'),
       });
     });
+
+    // Herbereken trigger-posities na font-load (Google Fonts kan layout verschuiven)
+    document.fonts.ready.then(() => ScrollTrigger.refresh());
   }
 
   // ============ CHAPTER BREAKS — reveal on scroll + nav darkening ============
