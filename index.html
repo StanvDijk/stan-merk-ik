@@ -3995,6 +3995,52 @@ document.querySelectorAll('.nav-links a').forEach(a => {
     },
   };
 
+  // Lokale fallback-map: als localStorage + GitHub beide leeg zijn, laad deze bestanden
+  window.LOCAL_UPLOADS = {
+    'cover': ['images/uploads/cover-1776774648767.jpg'],
+    'day-2': ['images/uploads/day-2-1776774938690.jpg'],
+    'day-4': ['images/uploads/day-4-1776774991035.jpg'],
+    'passie-gal-1': ['images/uploads/passie-gal-1-1776774728797.jpg'],
+    'passie-gal-4': [
+      'images/uploads/passie-gal-4-1776870240595.mov',
+      'images/uploads/passie-gal-4-1776870250321.mov',
+      'images/uploads/passie-gal-4-1776870256721.mov',
+      'images/uploads/passie-gal-4-1776870259766.mov',
+      'images/uploads/passie-gal-4-1776870264307.mov',
+    ],
+    'passie-gal-5': ['images/uploads/passie-gal-5-1776774789360.jpg'],
+    'passie-gal-6': [
+      'images/uploads/passie-gal-6-1776774852424.jpg',
+      'images/uploads/passie-gal-6-1776774853825.jpg',
+      'images/uploads/passie-gal-6-1776774854976.jpg',
+    ],
+    'somebody-gal-1': [
+      'images/uploads/somebody-gal-1-1776870629186.jpg',
+      'images/uploads/somebody-gal-1-1776870918114.jpg',
+      'images/uploads/somebody-gal-1-1776870927826.jpg',
+    ],
+    'somebody-gal-5': [
+      'images/uploads/somebody-gal-5-1776870544728.jpg',
+      'images/uploads/somebody-gal-5-1776870564260.jpg',
+    ],
+    'somebody-gal-6': [
+      'images/uploads/somebody-gal-6-1776870900199.jpg',
+      'images/uploads/somebody-gal-6-1776870901246.jpg',
+      'images/uploads/somebody-gal-6-1776870902687.jpg',
+    ],
+    'somebody-gal-7': [
+      'images/uploads/somebody-gal-7-1776870521899.jpg',
+      'images/uploads/somebody-gal-7-1776870823242.jpg',
+      'images/uploads/somebody-gal-7-1776870904582.jpg',
+      'images/uploads/somebody-gal-7-1776870905561.jpg',
+    ],
+    'somebody-gal-8': [
+      'images/uploads/somebody-gal-8-1776870799887.jpg',
+      'images/uploads/somebody-gal-8-1776870801012.jpg',
+      'images/uploads/somebody-gal-8-1776870802020.jpg',
+    ],
+  };
+
   (function initUniversalUploads() {
     const STORAGE_PREFIX = 'upload-v1-';
     const compressImg = (file) => new Promise((resolve, reject) => {
@@ -4249,7 +4295,15 @@ document.querySelectorAll('.nav-links a').forEach(a => {
           } catch (err) { console.warn('GH restore mislukt, fallback naar local:', err); }
         }
         const stored = await window.StanStorage.get(STORAGE_PREFIX + key);
-        if (!stored) return;
+        if (!stored) {
+          const localFiles = window.LOCAL_UPLOADS && window.LOCAL_UPLOADS[key];
+          if (localFiles && localFiles.length) {
+            state.items = [...localFiles];
+            showCurrent(false);
+            startCycle();
+          }
+          return;
+        }
         try {
           const parsed = JSON.parse(stored);
           if (parsed && Array.isArray(parsed.items)) state.items = parsed.items;
