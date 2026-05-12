@@ -675,6 +675,9 @@ p.body-text em { font-family: 'Fraunces', serif; font-style: italic; color: var(
 }
 .gallery-item:hover { transform: scale(1.02); }
 .gallery-item.wide { grid-column: span 2; aspect-ratio: 2/1; }
+.kast-static { padding: 0 !important; display: block !important; position: relative; border-style: solid !important; }
+.kast-static img { width: 100%; height: 100%; object-fit: cover; border-radius: calc(var(--radius-md) - 1px); display: block; }
+.kast-label { position: absolute; bottom: 0; left: 0; right: 0; padding: 6px 8px 8px; background: linear-gradient(transparent, rgba(0,0,0,0.6)); color: #fff; font-size: 11px; font-weight: 700; text-align: center; letter-spacing: 0.03em; }
 
 /* ============ A DAY IN THE LIFE ============ */
 .day-grid { display: grid; gap: var(--space-4); }
@@ -2334,72 +2337,115 @@ section.on .red-accent::after {
     <div class="reveal" style="margin-top: var(--space-8);">
       <h3 class="sub">De kast, stuk voor stuk</h3>
       <div class="gallery" style="grid-template-columns: repeat(4, 1fr);">
-        <div class="gallery-item">
-          <div style="text-align: center;">
-            <strong style="color: var(--text-primary); display: block; margin-bottom: 6px;">Mason Garments</strong>
-            <span style="font-size: 11px;">Italiaans vakmanschap, m'n favoriete sneakers. Niet luid, wel herkenbaar.</span>
-          </div>
+
+        <!-- Mason Garments — 3 fotos -->
+        <div class="gallery-item kast-static" data-no-upload>
+          <img src="images/uploads/somebody-gal-1-1776870629186.jpg" alt="Mason Garments">
+          <div class="kast-label">Mason Garments</div>
         </div>
+        <div class="gallery-item kast-static" data-no-upload>
+          <img src="images/uploads/somebody-gal-1-1776870918114.jpg" alt="Mason Garments">
+        </div>
+        <div class="gallery-item kast-static" data-no-upload>
+          <img src="images/uploads/somebody-gal-1-1776870927826.jpg" alt="Mason Garments">
+        </div>
+
+        <!-- Nike Air Force — upload slot -->
         <div class="gallery-item">
           <div style="text-align: center;">
             <strong style="color: var(--text-primary); display: block; margin-bottom: 6px;">Nike Air Force</strong>
             <span style="font-size: 11px;">M'n dailys. Gaan met alles. Geen week zonder.</span>
           </div>
         </div>
+
+        <!-- Yeezy — upload slot -->
         <div class="gallery-item">
           <div style="text-align: center;">
             <strong style="color: var(--text-primary); display: block; margin-bottom: 6px;">Yeezy 350 Boost</strong>
             <span style="font-size: 11px;">Strikt voor de gym. Lekker licht, stevig, vast ritueel.</span>
           </div>
         </div>
+
+        <!-- Zakelijke schoenen — upload slot -->
         <div class="gallery-item">
           <div style="text-align: center;">
             <strong style="color: var(--text-primary); display: block; margin-bottom: 6px;">Zakelijke schoenen</strong>
             <span style="font-size: 11px;">Voor de momenten dat een sneaker echt niet kan.</span>
           </div>
         </div>
-        <div class="gallery-item">
-          <div style="text-align: center;">
-            <strong style="color: var(--text-primary); display: block; margin-bottom: 6px;">Boss overhemden</strong>
-            <span style="font-size: 11px;">Vaste keuze voor wanneer het net een tandje strakker mag.</span>
-          </div>
+
+        <!-- Boss — 2 fotos -->
+        <div class="gallery-item kast-static" data-no-upload>
+          <img src="images/uploads/somebody-gal-5-1776870544728.jpg" alt="Boss overhemden">
+          <div class="kast-label">Boss overhemden</div>
         </div>
-        <div class="gallery-item">
-          <div style="text-align: center;">
-            <strong style="color: var(--text-primary); display: block; margin-bottom: 6px;">Cavallaro</strong>
-            <span style="font-size: 11px;">Shirts, truien, zippers. Italiaanse snit, m'n meest gebruikte merk.</span>
-          </div>
+        <div class="gallery-item kast-static" data-no-upload>
+          <img src="images/uploads/somebody-gal-5-1776870564260.jpg" alt="Boss overhemden">
         </div>
-        <div class="gallery-item">
-          <div style="text-align: center;">
-            <strong style="color: var(--text-primary); display: block; margin-bottom: 6px;">Stone Island</strong>
-            <span style="font-size: 11px;">Shirtjes voor de dagen dat ik 't iets losser wil.</span>
-          </div>
+
+        <!-- Cavallaro — 3 fotos -->
+        <div class="gallery-item kast-static" data-no-upload>
+          <img src="images/uploads/somebody-gal-6-1776870900199.jpg" alt="Cavallaro">
+          <div class="kast-label">Cavallaro</div>
         </div>
-        <div class="gallery-item">
-          <div style="text-align: center;">
-            <strong style="color: var(--text-primary); display: block; margin-bottom: 6px;">G-Star jeans</strong>
-            <span style="font-size: 11px;">M'n vaste spijkerbroek. Gaat mee met casual én nettere setting.</span>
-          </div>
+        <div class="gallery-item kast-static" data-no-upload>
+          <img src="images/uploads/somebody-gal-6-1776870901246.jpg" alt="Cavallaro">
         </div>
+        <div class="gallery-item kast-static" data-no-upload>
+          <img src="images/uploads/somebody-gal-6-1776870902687.jpg" alt="Cavallaro">
+        </div>
+
+        <!-- Stone Island — 4 fotos -->
+        <div class="gallery-item kast-static" data-no-upload>
+          <img src="images/uploads/somebody-gal-7-1776870521899.jpg" alt="Stone Island">
+          <div class="kast-label">Stone Island</div>
+        </div>
+        <div class="gallery-item kast-static" data-no-upload>
+          <img src="images/uploads/somebody-gal-7-1776870823242.jpg" alt="Stone Island">
+        </div>
+        <div class="gallery-item kast-static" data-no-upload>
+          <img src="images/uploads/somebody-gal-7-1776870904582.jpg" alt="Stone Island">
+        </div>
+        <div class="gallery-item kast-static" data-no-upload>
+          <img src="images/uploads/somebody-gal-7-1776870905561.jpg" alt="Stone Island">
+        </div>
+
+        <!-- G-Star — 3 fotos -->
+        <div class="gallery-item kast-static" data-no-upload>
+          <img src="images/uploads/somebody-gal-8-1776870799887.jpg" alt="G-Star jeans">
+          <div class="kast-label">G-Star jeans</div>
+        </div>
+        <div class="gallery-item kast-static" data-no-upload>
+          <img src="images/uploads/somebody-gal-8-1776870801012.jpg" alt="G-Star jeans">
+        </div>
+        <div class="gallery-item kast-static" data-no-upload>
+          <img src="images/uploads/somebody-gal-8-1776870802020.jpg" alt="G-Star jeans">
+        </div>
+
+        <!-- Under Armour — upload slot -->
         <div class="gallery-item">
           <div style="text-align: center;">
             <strong style="color: var(--text-primary); display: block; margin-bottom: 6px;">Under Armour</strong>
             <span style="font-size: 11px;">Gym- en trainingskleding. Gewoon werk dat werkt.</span>
           </div>
         </div>
+
+        <!-- Gymshark — upload slot -->
         <div class="gallery-item">
           <div style="text-align: center;">
             <strong style="color: var(--text-primary); display: block; margin-bottom: 6px;">Gymshark</strong>
             <span style="font-size: 11px;">Lichte sportkleding, voor als de intensiteit omhoog moet.</span>
           </div>
         </div>
+
+        <!-- Voetbalshirts — wide upload slot -->
         <div class="gallery-item wide">
           <div style="text-align: center;">
             <strong style="color: var(--text-primary); display: block; margin-bottom: 6px;">Voetbalshirts — een collectie van 15</strong>
             <span style="font-size: 11px;">Shirts van clubs die ik verzamel. Ik hou van voetbal, en dit is m'n favoriete stukje 'kledingkast' — meer een eerbetoon dan een outfit.</span>
           </div>
         </div>
+
       </div>
     </div>
 
@@ -4014,31 +4060,6 @@ document.querySelectorAll('.nav-links a').forEach(a => {
       'images/uploads/passie-gal-6-1776774853825.jpg',
       'images/uploads/passie-gal-6-1776774854976.jpg',
     ],
-    'somebody-gal-1': [
-      'images/uploads/somebody-gal-1-1776870629186.jpg',
-      'images/uploads/somebody-gal-1-1776870918114.jpg',
-      'images/uploads/somebody-gal-1-1776870927826.jpg',
-    ],
-    'somebody-gal-5': [
-      'images/uploads/somebody-gal-5-1776870544728.jpg',
-      'images/uploads/somebody-gal-5-1776870564260.jpg',
-    ],
-    'somebody-gal-6': [
-      'images/uploads/somebody-gal-6-1776870900199.jpg',
-      'images/uploads/somebody-gal-6-1776870901246.jpg',
-      'images/uploads/somebody-gal-6-1776870902687.jpg',
-    ],
-    'somebody-gal-7': [
-      'images/uploads/somebody-gal-7-1776870521899.jpg',
-      'images/uploads/somebody-gal-7-1776870823242.jpg',
-      'images/uploads/somebody-gal-7-1776870904582.jpg',
-      'images/uploads/somebody-gal-7-1776870905561.jpg',
-    ],
-    'somebody-gal-8': [
-      'images/uploads/somebody-gal-8-1776870799887.jpg',
-      'images/uploads/somebody-gal-8-1776870801012.jpg',
-      'images/uploads/somebody-gal-8-1776870802020.jpg',
-    ],
   };
 
   (function initUniversalUploads() {
@@ -4066,6 +4087,7 @@ document.querySelectorAll('.nav-links a').forEach(a => {
 
     const attachUpload = (el, key) => {
       if (!el || el.dataset.uploadAttached) return;
+      if (el.dataset.noUpload) return;
       el.dataset.uploadAttached = '1';
       el.classList.add('photo-slot');
       el.dataset.slotKey = key;
