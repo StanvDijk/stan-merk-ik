@@ -1003,9 +1003,16 @@ nav.top.nav-dark {
   background: rgba(10, 13, 24, 0.55);
   border-bottom-color: rgba(255,255,255,0.08);
 }
+/* Light nav (default) — blauw op witte/beige achtergrond */
+nav.top:not(.nav-dark) .nav-brand { color: var(--accent); }
+nav.top:not(.nav-dark) .nav-links a { color: var(--accent); }
+nav.top:not(.nav-dark) .nav-links a:hover { color: var(--accent-bright); }
+nav.top:not(.nav-dark) .nav-cta { background: var(--accent); color: #fff; }
+nav.top:not(.nav-dark) .nav-dot { background: var(--accent); }
+/* Dark nav — wit op donkere achtergrond */
 nav.top.nav-dark .nav-brand { color: #fafafa; }
-nav.top.nav-dark .nav-links a { color: rgba(255,255,255,0.7); }
-nav.top.nav-dark .nav-links a:hover { color: #8ab4ff; }
+nav.top.nav-dark .nav-links a { color: rgba(255,255,255,0.85); }
+nav.top.nav-dark .nav-links a:hover { color: #fff; }
 nav.top.nav-dark .nav-cta { background: #fafafa; color: #0a0d18; }
 nav.top.nav-dark .nav-dot { background: #8ab4ff; }
 nav.top { transition: background 0.45s ease, border-color 0.45s ease; }
@@ -1718,8 +1725,8 @@ section.on .red-accent::after {
   border-radius: inherit;
 }
 .gallery-item.wide .ps-img {
-  object-fit: contain;
-  background: var(--bg-elev-1);
+  object-fit: cover;
+  object-position: center top;
 }
 .photo-slot:not(.has-image) .ps-img { display: none; }
 .photo-slot .ps-input {
@@ -3428,20 +3435,31 @@ document.querySelectorAll('.nav-links a').forEach(a => {
         gsap.to(rpsPhone, { scale: 1, opacity: 1, duration: DUR, ease: EASE, overwrite: 'auto' });
       };
 
-      // Per timeline-item: activeer foto zodra trigger in beeld komt,
-      // behoud actieve foto totdat de volgende het overneemt (geen reset-gat).
-      const lastIdx = rpsTriggers.length - 1;
-      rpsTriggers.forEach((el, i) => {
-        ScrollTrigger.create({
-          trigger: el,
-          start: 'top 60%',
-          end: 'bottom 40%',
-          onEnter: () => setActive(i),
-          onEnterBack: () => setActive(i),
-          onLeaveBack: () => { if (i === 0) resetAll(); },
-          onLeave: () => { if (i === lastIdx) resetAll(); },
+      // Scroll listener: welke trigger het dichtst bij het midden van de viewport
+      // zit wordt actief — werkt zowel naar beneden als terug omhoog.
+      const updateRpsActive = () => {
+        const vh = window.innerHeight;
+        const midY = vh * 0.5;
+        let bestIdx = -1;
+        let bestDist = Infinity;
+        rpsTriggers.forEach((el, i) => {
+          const r = el.getBoundingClientRect();
+          if (r.bottom < vh * 0.1 || r.top > vh * 0.9) return;
+          const center = (r.top + r.bottom) / 2;
+          const dist = Math.abs(center - midY);
+          if (dist < bestDist) { bestDist = dist; bestIdx = i; }
         });
-      });
+        if (bestIdx === -1) resetAll();
+        else setActive(bestIdx);
+      };
+      let rpsTick = false;
+      window.addEventListener('scroll', () => {
+        if (!rpsTick) {
+          requestAnimationFrame(() => { updateRpsActive(); rpsTick = false; });
+          rpsTick = true;
+        }
+      }, { passive: true });
+      updateRpsActive();
 
       // ============ REIS UPLOAD — foto + video support ============
       const RPS_STORAGE_PREFIX = 'rps-photo-v1-';
