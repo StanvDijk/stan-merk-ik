@@ -2532,6 +2532,8 @@ section.on .red-accent::after {
       <div class="gallery-item dashboard-slot kast-static" data-no-upload>
         <img src="images/uploads/passie-gal-2-1779094914553.jpg" alt="StudentenLeads dashboard">
       </div>
+      <!-- index-placeholder: houdt gal-4/5/6 op de juiste voetbal-slots -->
+      <div class="gallery-item" data-no-upload style="display:none;"></div>
     </div>
 
     <div class="reveal" style="margin-bottom: var(--space-8);">
@@ -2544,36 +2546,9 @@ section.on .red-accent::after {
     </div>
 
     <div class="gallery reveal" style="margin-bottom: var(--space-8);">
-      <div class="gallery-item wide kast-static" data-no-upload>
-        <video src="images/uploads/passie-gal-4-1776870240595.mov" autoplay muted loop playsinline></video>
-        <div class="kast-label">In wedstrijd-actie</div>
-      </div>
-      <div class="gallery-item kast-static" data-no-upload>
-        <video src="images/uploads/passie-gal-4-1776870250321.mov" autoplay muted loop playsinline></video>
-      </div>
-      <div class="gallery-item kast-static" data-no-upload>
-        <video src="images/uploads/passie-gal-4-1776870256721.mov" autoplay muted loop playsinline></video>
-      </div>
-      <div class="gallery-item kast-static" data-no-upload>
-        <video src="images/uploads/passie-gal-4-1776870259766.mov" autoplay muted loop playsinline></video>
-      </div>
-      <div class="gallery-item kast-static" data-no-upload>
-        <video src="images/uploads/passie-gal-4-1776870264307.mov" autoplay muted loop playsinline></video>
-      </div>
-      <div class="gallery-item kast-static" data-no-upload>
-        <img src="images/uploads/passie-gal-5-1776774789360.jpg" alt="Team / kleedkamer">
-        <div class="kast-label">Team</div>
-      </div>
-      <div class="gallery-item kast-static" data-no-upload>
-        <img src="images/uploads/passie-gal-6-1776774852424.jpg" alt="Gym">
-        <div class="kast-label">Gym</div>
-      </div>
-      <div class="gallery-item kast-static" data-no-upload>
-        <img src="images/uploads/passie-gal-6-1776774853825.jpg" alt="Gym">
-      </div>
-      <div class="gallery-item kast-static" data-no-upload>
-        <img src="images/uploads/passie-gal-6-1776774854976.jpg" alt="Gym">
-      </div>
+      <div class="gallery-item wide">[ FOTO/VIDEO · in wedstrijd-actie ]</div>
+      <div class="gallery-item">[ FOTO · team / kleedkamer ]</div>
+      <div class="gallery-item">[ FOTO · gym / training ]</div>
     </div>
 
     <div class="reveal">
@@ -4196,7 +4171,7 @@ document.querySelectorAll('.nav-links a').forEach(a => {
       const inputId = 'ps-inp-' + key.replace(/[^a-z0-9]/gi, '-');
       const input = document.createElement('input');
       input.type = 'file'; input.accept = 'image/*,video/*';
-      input.multiple = false;
+      input.multiple = true;
       input.className = 'ps-input'; input.id = inputId;
       el.appendChild(input);
 
@@ -4275,7 +4250,7 @@ document.querySelectorAll('.nav-links a').forEach(a => {
         }
         if (state.videoFailsafe) { clearTimeout(state.videoFailsafe); state.videoFailsafe = null; }
       };
-      const startCycle = () => { return; // geen slideshow
+      const startCycle = () => {
         stopCycle();
         if (state.items.length <= 1) return;
         const src = state.items[state.idx];
