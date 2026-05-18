@@ -1697,6 +1697,20 @@ section.on .red-accent::after {
 }
 .rps-upload-cue::before { content: '📷'; font-size: 14px; letter-spacing: 0; }
 .rps-file-input { position: absolute; opacity: 0; pointer-events: none; width: 1px; height: 1px; }
+.rps-country-label {
+  position: absolute; bottom: 14px; left: 14px; z-index: 10;
+  background: rgba(0,0,0,0.52);
+  backdrop-filter: blur(6px);
+  color: #fff;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 15px;
+  padding: 4px 14px;
+  border-radius: 999px;
+  pointer-events: none;
+  opacity: 0; transition: opacity 0.4s ease;
+}
+.rps-photo.has-image .rps-country-label { opacity: 1; }
 .rps-clear {
   position: absolute; top: 10px; right: 10px;
   width: 32px; height: 32px;
@@ -1727,6 +1741,10 @@ section.on .red-accent::after {
 .gallery-item.wide .ps-img {
   object-fit: cover;
   object-position: center top;
+}
+#passie .gallery-item .ps-img {
+  object-fit: cover;
+  object-position: left center;
 }
 .photo-slot:not(.has-image) .ps-img { display: none; }
 .photo-slot .ps-input {
@@ -2678,6 +2696,7 @@ section.on .red-accent::after {
               <div class="rps-photo-float">
                 <img src="images/reis-japan.jpg" alt="Japan" data-rps-img="1" onerror="this.style.display='none';">
                 <video class="rps-video" data-rps-video="1" src="images/reis-japan.mp4" autoplay loop muted playsinline></video>
+                <div class="rps-country-label">Japan</div>
                 <label class="rps-placeholder" for="rps-input-1">
                   <span class="mono">01 · Japan</span>
                   <span class="name">Tokyo / Kyoto</span>
@@ -2691,6 +2710,7 @@ section.on .red-accent::after {
               <div class="rps-photo-float">
                 <img src="images/reis-gambia.jpg" alt="Gambia" data-rps-img="2" onerror="this.style.display='none';">
                 <video class="rps-video" data-rps-video="2" autoplay loop muted playsinline></video>
+                <div class="rps-country-label">Gambia</div>
                 <label class="rps-placeholder" for="rps-input-2">
                   <span class="mono">02 · Gambia</span>
                   <span class="name">West-Afrika</span>
@@ -2704,6 +2724,7 @@ section.on .red-accent::after {
               <div class="rps-photo-float">
                 <img src="images/reis-bonaire.jpg" alt="Bonaire" data-rps-img="3" onerror="this.style.display='none';">
                 <video class="rps-video" data-rps-video="3" src="images/reis-bonaire.mp4" autoplay loop muted playsinline></video>
+                <div class="rps-country-label">Bonaire</div>
                 <label class="rps-placeholder" for="rps-input-3">
                   <span class="mono">03 · Bonaire</span>
                   <span class="name">Caribbean</span>
@@ -2717,6 +2738,7 @@ section.on .red-accent::after {
               <div class="rps-photo-float">
                 <img alt="Marbella" data-rps-img="4">
                 <video class="rps-video" data-rps-video="4" src="images/reis-marbella.mp4" autoplay loop muted playsinline></video>
+                <div class="rps-country-label">Marbella</div>
                 <label class="rps-placeholder" for="rps-input-4">
                   <span class="mono">04 · Marbella</span>
                   <span class="name">Voetbal trainingskamp</span>
