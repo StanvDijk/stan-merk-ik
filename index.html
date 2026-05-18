@@ -715,6 +715,8 @@ p.body-text em { font-family: 'Fraunces', serif; font-style: italic; color: var(
   font-family: 'JetBrains Mono', monospace;
   text-align: center; padding: var(--space-4);
 }
+.day-img.day-static { display: block; padding: 0; border-style: solid; border-color: var(--border-default); }
+.day-img.day-static img, .day-img.day-static video { width: 100%; height: 100%; object-fit: cover; border-radius: calc(var(--radius-md) - 1px); display: block; }
 
 /* ============ MOTTO ============ */
 .motto-card {
@@ -2546,9 +2548,15 @@ section.on .red-accent::after {
     </div>
 
     <div class="gallery reveal" style="margin-bottom: var(--space-8);">
-      <div class="gallery-item wide">[ FOTO/VIDEO · in wedstrijd-actie ]</div>
-      <div class="gallery-item">[ FOTO · team / kleedkamer ]</div>
-      <div class="gallery-item">[ FOTO · gym / training ]</div>
+      <div class="gallery-item wide kast-static" data-no-upload>
+        <video autoplay muted loop playsinline src="images/uploads/passie-gal-4-1776870240595.mov" style="width:100%;height:100%;object-fit:cover;border-radius:calc(var(--radius-md) - 1px);display:block;"></video>
+      </div>
+      <div class="gallery-item kast-static" data-no-upload>
+        <img src="images/uploads/passie-gal-5-1776774789360.jpg" alt="Team kleedkamer">
+      </div>
+      <div class="gallery-item kast-static" data-no-upload>
+        <img src="images/uploads/passie-gal-6-1776774852424.jpg" alt="Gym training">
+      </div>
     </div>
 
     <div class="reveal">
@@ -2577,7 +2585,7 @@ section.on .red-accent::after {
           <div class="day-title">Wakker + eigen werk</div>
           <div class="day-desc">Opstaan, ontbijten, koffie. Voordat ik überhaupt naar school kijk, werk ik eerst een uurtje aan m'n eigen projecten — StudentenLeads opvolgingen, LinkedIn-posts, leadlijsten. Zo begin ik de dag met iets van mezelf, niet met iemand anders' agenda.</div>
         </div>
-        <div class="day-img">[ foto · ochtend / eigen werk ]</div>
+        <div class="day-img day-static" data-no-upload><img src="images/uploads/day-1-1779091834345.jpg" alt="Ochtend eigen werk"></div>
       </div>
 
       <div class="day-row">
@@ -2586,7 +2594,7 @@ section.on .red-accent::after {
           <div class="day-title">Trein halen</div>
           <div class="day-desc">Vaste trein richting Groningen. In de trein nog ~40 minuten doorwerken aan m'n projecten — koptelefoon op, muziek aan, niemand die je stoort. Treinritten zijn voor mij een soort rustig kantoor.</div>
         </div>
-        <div class="day-img">[ foto · trein / laptop onderweg ]</div>
+        <div class="day-img day-static" data-no-upload><img src="images/uploads/day-2-1776774938690.jpg" alt="Trein naar Groningen"></div>
       </div>
 
       <div class="day-row">
@@ -2595,7 +2603,7 @@ section.on .red-accent::after {
           <div class="day-title">Bus naar Hanze</div>
           <div class="day-desc">Vanaf het station de bus naar Zernike. Geen LinkedIn, geen nieuws. Gewoon ff rustig naar buiten staren, muziek op. Van hiphop tot house — hangt van de dag af.</div>
         </div>
-        <div class="day-img">[ foto · bus / Hanze ]</div>
+        <div class="day-img day-static" data-no-upload><img src="images/uploads/day-3-1779091582270.jpg" alt="Bus naar Hanze"></div>
       </div>
 
       <div class="day-row">
@@ -2604,7 +2612,7 @@ section.on .red-accent::after {
           <div class="day-title">Studie — college + projectwerk</div>
           <div class="day-desc">Colleges, projectgroep-sessies, lunch met CEV1B er tussendoor. Op dit moment werken we met de klas aan de Beurs-pitch voor Blok 4. In de klas worden vaak de beste ideeën gesmeed — daar leer je het meest van elkaar.</div>
         </div>
-        <div class="day-img">[ foto · klas / projectwerk ]</div>
+        <div class="day-img day-static" data-no-upload><img src="images/uploads/day-4-1776774991035.jpg" alt="Klas projectwerk"></div>
       </div>
 
       <div class="day-row">
@@ -2631,7 +2639,7 @@ section.on .red-accent::after {
           <div class="day-title">Avondeten</div>
           <div class="day-desc">Zelf koken of samen met m'n vader als hij thuis is. Moment om de dag kort terug te blikken, even uit het werk-ritme.</div>
         </div>
-        <div class="day-img">[ foto · avondeten / koken ]</div>
+        <div class="day-img day-static" data-no-upload><img src="images/uploads/day-7-1779091816037.jpg" alt="Avondeten koken"></div>
       </div>
 
       <div class="day-row">
@@ -2640,7 +2648,7 @@ section.on .red-accent::after {
           <div class="day-title">Voetbaltraining of vrienden</div>
           <div class="day-desc"><strong>Dinsdag en donderdag</strong> zijn vaste voetbaldagen — training met het eerste elftal. Scherp staan, wedstrijdmodus. <strong>De andere dagen</strong> spreek ik meestal met vrienden af. Allebei essentieel: de ene helft van de week leert me presteren onder druk, de andere helft houdt me mentaal in balans.</div>
         </div>
-        <div class="day-img">[ foto · voetbaltraining / vrienden ]</div>
+        <div class="day-img day-static" data-no-upload><img src="images/uploads/day-8-1779101568765.jpg" alt="Voetbaltraining vrienden"></div>
       </div>
 
       <div class="day-row">
@@ -2649,7 +2657,7 @@ section.on .red-accent::after {
           <div class="day-title">Op bed — nog een half uur werk</div>
           <div class="day-desc">Nog even op m'n telefoon of laptop voor mezelf: losse notities, ideeën uitwerken, morgen vooruit plannen. Daarna slapen. Ritme gaat over consistentie, niet over extremen.</div>
         </div>
-        <div class="day-img">[ foto · afsluiten / nachttafel ]</div>
+        <div class="day-img day-static" data-no-upload><img src="images/uploads/day-9-1779091763575.jpg" alt="Op bed afsluiten"></div>
       </div>
     </div>
   </div>
