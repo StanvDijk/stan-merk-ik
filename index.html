@@ -676,7 +676,8 @@ p.body-text em { font-family: 'Fraunces', serif; font-style: italic; color: var(
 .gallery-item:hover { transform: scale(1.02); }
 .gallery-item.wide { grid-column: span 2; aspect-ratio: 2/1; }
 .kast-static { padding: 0 !important; display: block !important; position: relative; border-style: solid !important; }
-.kast-static img { width: 100%; height: 100%; object-fit: cover; border-radius: calc(var(--radius-md) - 1px); display: block; }
+.kast-static img, .kast-static video { width: 100%; height: 100%; object-fit: cover; border-radius: calc(var(--radius-md) - 1px); display: block; }
+#passie .gallery-item.dashboard-slot img { object-fit: contain; object-position: center center; background: #0d0d0d; border-radius: calc(var(--radius-md) - 1px); }
 .kast-label { position: absolute; bottom: 0; left: 0; right: 0; padding: 6px 8px 8px; background: linear-gradient(transparent, rgba(0,0,0,0.6)); color: #fff; font-size: 11px; font-weight: 700; text-align: center; letter-spacing: 0.03em; }
 
 /* ============ A DAY IN THE LIFE ============ */
@@ -2525,8 +2526,12 @@ section.on .red-accent::after {
     </div>
 
     <div class="gallery reveal" style="margin-bottom: var(--space-8);">
-      <div class="gallery-item wide">[ FOTO · achter de laptop aan het werk ]</div>
-      <div class="gallery-item dashboard-slot">[ FOTO · StudentenLeads / LinkedIn dashboard ]</div>
+      <div class="gallery-item wide kast-static" data-no-upload>
+        <img src="images/uploads/passie-gal-1-1779094759663.jpg" alt="Achter de laptop">
+      </div>
+      <div class="gallery-item dashboard-slot kast-static" data-no-upload>
+        <img src="images/uploads/passie-gal-2-1779094914553.jpg" alt="StudentenLeads dashboard">
+      </div>
     </div>
 
     <div class="reveal" style="margin-bottom: var(--space-8);">
@@ -2539,9 +2544,36 @@ section.on .red-accent::after {
     </div>
 
     <div class="gallery reveal" style="margin-bottom: var(--space-8);">
-      <div class="gallery-item wide">[ FOTO · in wedstrijd-actie ]</div>
-      <div class="gallery-item">[ FOTO · team / kleedkamer ]</div>
-      <div class="gallery-item">[ FOTO · gym / training ]</div>
+      <div class="gallery-item wide kast-static" data-no-upload>
+        <video src="images/uploads/passie-gal-4-1776870240595.mov" autoplay muted loop playsinline></video>
+        <div class="kast-label">In wedstrijd-actie</div>
+      </div>
+      <div class="gallery-item kast-static" data-no-upload>
+        <video src="images/uploads/passie-gal-4-1776870250321.mov" autoplay muted loop playsinline></video>
+      </div>
+      <div class="gallery-item kast-static" data-no-upload>
+        <video src="images/uploads/passie-gal-4-1776870256721.mov" autoplay muted loop playsinline></video>
+      </div>
+      <div class="gallery-item kast-static" data-no-upload>
+        <video src="images/uploads/passie-gal-4-1776870259766.mov" autoplay muted loop playsinline></video>
+      </div>
+      <div class="gallery-item kast-static" data-no-upload>
+        <video src="images/uploads/passie-gal-4-1776870264307.mov" autoplay muted loop playsinline></video>
+      </div>
+      <div class="gallery-item kast-static" data-no-upload>
+        <img src="images/uploads/passie-gal-5-1776774789360.jpg" alt="Team / kleedkamer">
+        <div class="kast-label">Team</div>
+      </div>
+      <div class="gallery-item kast-static" data-no-upload>
+        <img src="images/uploads/passie-gal-6-1776774852424.jpg" alt="Gym">
+        <div class="kast-label">Gym</div>
+      </div>
+      <div class="gallery-item kast-static" data-no-upload>
+        <img src="images/uploads/passie-gal-6-1776774853825.jpg" alt="Gym">
+      </div>
+      <div class="gallery-item kast-static" data-no-upload>
+        <img src="images/uploads/passie-gal-6-1776774854976.jpg" alt="Gym">
+      </div>
     </div>
 
     <div class="reveal">
