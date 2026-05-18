@@ -1717,6 +1717,10 @@ section.on .red-accent::after {
   z-index: 1;
   border-radius: inherit;
 }
+.gallery-item.wide .ps-img {
+  object-fit: contain;
+  background: var(--bg-elev-1);
+}
 .photo-slot:not(.has-image) .ps-img { display: none; }
 .photo-slot .ps-input {
   position: absolute; opacity: 0;
@@ -3424,26 +3428,18 @@ document.querySelectorAll('.nav-links a').forEach(a => {
         gsap.to(rpsPhone, { scale: 1, opacity: 1, duration: DUR, ease: EASE, overwrite: 'auto' });
       };
 
-      // Per timeline-item een ScrollTrigger met royale start/end-range zodat
-      // Bonaire (het laatste) óók actief blijft als je voorbij z'n tekst scrollt.
+      // Per timeline-item: activeer foto zodra trigger in beeld komt,
+      // behoud actieve foto totdat de volgende het overneemt (geen reset-gat).
       const lastIdx = rpsTriggers.length - 1;
       rpsTriggers.forEach((el, i) => {
         ScrollTrigger.create({
           trigger: el,
-          start: 'top 70%',
-          end: i === lastIdx ? 'bottom top' : 'bottom 30%',
-          onToggle: (self) => {
-            if (self.isActive) setActive(i);
-            else if (currentActive === i) {
-              const anyActive = [...rpsTriggers].some((t, j) => {
-                if (j === i) return false;
-                const r = t.getBoundingClientRect();
-                const vh = window.innerHeight;
-                return r.top < vh * 0.6 && r.bottom > vh * 0.3;
-              });
-              if (!anyActive) resetAll();
-            }
-          },
+          start: 'top 60%',
+          end: 'bottom 40%',
+          onEnter: () => setActive(i),
+          onEnterBack: () => setActive(i),
+          onLeaveBack: () => { if (i === 0) resetAll(); },
+          onLeave: () => { if (i === lastIdx) resetAll(); },
         });
       });
 
