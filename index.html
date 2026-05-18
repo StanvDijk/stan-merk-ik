@@ -4271,7 +4271,10 @@ document.querySelectorAll('.nav-links a').forEach(a => {
           // Alle uploads gefaald → laat duidelijke error zien
           cue.textContent = '⚠ Upload gefaald — zie alert';
           setTimeout(() => { cue.textContent = 'Tap voor foto\'s'; }, 4000);
-          alert('Foto upload mislukt:\n\n' + (lastErr.message || lastErr) + '\n\nCheck je GitHub token:\n• Repo-access = stan-merk-ik\n• Permissions: Contents → Read and write\n• Niet verlopen\n\nOf klik ⚙ + Verwijderen en maak opnieuw aan.');
+          const errMsg = lastErr instanceof Error ? lastErr.message
+            : lastErr instanceof Event ? (lastErr.target?.error?.message || 'Bestand kon niet worden gelezen (probeer JPG/PNG, geen HEIC)')
+            : String(lastErr);
+          alert('Foto upload mislukt:\n\n' + errMsg + '\n\nCheck je GitHub token:\n• Repo-access = stan-merk-ik\n• Permissions: Contents → Read and write\n• Niet verlopen\n\nOf klik ⚙ + Verwijderen en maak opnieuw aan.');
         } else {
           showCurrent(false);
           startCycle();
