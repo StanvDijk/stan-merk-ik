@@ -1746,6 +1746,16 @@ section.on .red-accent::after {
   object-fit: cover;
   object-position: left center;
 }
+#passie .gallery-item.dashboard-slot .ps-img {
+  object-fit: contain;
+  object-position: center center;
+  background: #0d0d0d;
+}
+#somebody .gallery-item.wide .ps-img {
+  object-fit: contain;
+  object-position: center center;
+  background: var(--bg);
+}
 .photo-slot:not(.has-image) .ps-img { display: none; }
 .photo-slot .ps-input {
   position: absolute; opacity: 0;
@@ -2510,8 +2520,7 @@ section.on .red-accent::after {
 
     <div class="gallery reveal" style="margin-bottom: var(--space-8);">
       <div class="gallery-item wide">[ FOTO · achter de laptop aan het werk ]</div>
-      <div class="gallery-item">[ FOTO · StudentenLeads / LinkedIn dashboard ]</div>
-      <div class="gallery-item">[ FOTO · klantgesprek of pitch ]</div>
+      <div class="gallery-item dashboard-slot">[ FOTO · StudentenLeads / LinkedIn dashboard ]</div>
     </div>
 
     <div class="reveal" style="margin-bottom: var(--space-8);">
@@ -2706,10 +2715,10 @@ section.on .red-accent::after {
                 <button type="button" class="rps-clear" data-rps-clear="1" aria-label="Verwijderen">×</button>
               </div>
             </div>
-            <div class="rps-photo" data-rps="2">
+            <div class="rps-photo has-image has-video" data-rps="2">
               <div class="rps-photo-float">
                 <img src="images/reis-gambia.jpg" alt="Gambia" data-rps-img="2" onerror="this.style.display='none';">
-                <video class="rps-video" data-rps-video="2" autoplay loop muted playsinline></video>
+                <video class="rps-video" data-rps-video="2" src="images/gambiafilmpje.mp4" autoplay loop muted playsinline></video>
                 <div class="rps-country-label">Gambia</div>
                 <label class="rps-placeholder" for="rps-input-2">
                   <span class="mono">02 · Gambia</span>
