@@ -4130,6 +4130,22 @@ document.querySelectorAll('.nav-links a').forEach(a => {
     ],
   };
 
+  // Wis localStorage voor alle kast-static slots zodat oude slideshow-data nooit meer verschijnt
+  (function clearKastStaticStorage() {
+    try {
+      const toRemove = [];
+      for (let i = 0; i < localStorage.length; i++) {
+        const k = localStorage.key(i);
+        if (!k || !k.startsWith('upload-v1-')) continue;
+        const slot = k.replace('upload-v1-', '');
+        if (/^somebody-gal-\d+$/.test(slot)) toRemove.push(k);
+        if (/^passie-gal-[1-6]$/.test(slot)) toRemove.push(k);
+        if (/^day-([1-4]|[7-9])$/.test(slot)) toRemove.push(k);
+      }
+      toRemove.forEach(k => localStorage.removeItem(k));
+    } catch(e) {}
+  })();
+
   (function initUniversalUploads() {
     const STORAGE_PREFIX = 'upload-v1-';
     const compressImg = (file) => new Promise((resolve, reject) => {
