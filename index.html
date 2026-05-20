@@ -4171,7 +4171,7 @@ document.querySelectorAll('.nav-links a').forEach(a => {
 
     const attachUpload = (el, key) => {
       if (!el || el.dataset.uploadAttached) return;
-      if (el.dataset.noUpload) return;
+      if ('noUpload' in el.dataset) return;
       el.dataset.uploadAttached = '1';
       el.classList.add('photo-slot');
       el.dataset.slotKey = key;
