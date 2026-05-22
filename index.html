@@ -270,6 +270,26 @@ h1 {
   overflow: hidden;
 }
 .hero-cover img { width: 100%; height: 100%; object-fit: cover; }
+.hero-cover[data-no-upload] { padding: 0; border-style: solid; border-color: var(--border-default); }
+.hero-cover[data-no-upload] img { border-radius: var(--radius-xl); display: block; }
+.somebody-img-text {
+  aspect-ratio: 4/5;
+  background: var(--bg-elev-2);
+  border-bottom: 1px solid var(--accent);
+  display: flex; flex-direction: column; justify-content: center;
+  padding: var(--space-7);
+}
+.somebody-img-text-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; color: var(--accent-deep);
+  text-transform: uppercase; letter-spacing: 0.12em;
+  margin-bottom: 14px;
+}
+.somebody-img-text-body {
+  font-family: 'Fraunces', serif;
+  font-style: italic; font-size: 20px;
+  color: var(--text-primary); line-height: 1.45;
+}
 
 /* ============ ANIMATIONS ============ */
 @keyframes fade-in { to { opacity: 1; } }
@@ -2024,11 +2044,8 @@ section.on .red-accent::after {
       <a href="#contact" class="btn btn-secondary">Direct contact</a>
     </div>
 
-    <div class="hero-cover">
-      <div>
-        COVERFOTO<br>
-        <span style="font-size: 11px; opacity: 0.7;">— scherp, contrastrijk, beeldvullend, in de camera kijkend —<br>plaats als <code>images/cover.jpg</code></span>
-      </div>
+    <div class="hero-cover" data-no-upload>
+      <img src="images/uploads/cover-1776774648767.jpg" alt="Stan van Dijk">
     </div>
 
     <div class="hero-trust">
@@ -2142,7 +2159,6 @@ section.on .red-accent::after {
     <div class="people reveal">
       <div class="person">
         <div class="person-head">
-          <div class="person-avatar person-photo">foto</div>
           <div class="person-meta">
             <div class="person-name">Lisette</div>
             <div class="person-rel">moeder · kent me het langst</div>
@@ -2153,7 +2169,6 @@ section.on .red-accent::after {
 
       <div class="person">
         <div class="person-head">
-          <div class="person-avatar person-photo">foto</div>
           <div class="person-meta">
             <div class="person-name">Bas</div>
             <div class="person-rel">vader · zakelijke klankbord</div>
@@ -2164,7 +2179,6 @@ section.on .red-accent::after {
 
       <div class="person">
         <div class="person-head">
-          <div class="person-avatar person-photo">foto</div>
           <div class="person-meta">
             <div class="person-name">Maxim Snoecker</div>
             <div class="person-rel">werkgever · Employ</div>
@@ -2175,7 +2189,6 @@ section.on .red-accent::after {
 
       <div class="person">
         <div class="person-head">
-          <div class="person-avatar person-photo">foto</div>
           <div class="person-meta">
             <div class="person-name">Ian</div>
             <div class="person-rel">beste maat · buiten school/werk</div>
@@ -2375,7 +2388,10 @@ section.on .red-accent::after {
 
     <div class="somebody-split reveal">
       <div class="somebody-card">
-        <div class="somebody-img">[ FOTO 1 · casual, sneakers, hoodie, dagelijkse setting ]</div>
+        <div class="somebody-img-text">
+          <div class="somebody-img-text-label">Dagelijkse look</div>
+          <p class="somebody-img-text-body">Hoodie, ruime broek, Mason sneakers. Elke dag een beetje hetzelfde en dat voelt goed. Niet nonchalant, gewoon ontspannen.</p>
+        </div>
         <div class="somebody-body">
           <div class="somebody-tag">De dagelijkse versie</div>
           <div class="somebody-cap">Ontspannen, open, iets minder op m'n woorden.</div>
@@ -2383,7 +2399,10 @@ section.on .red-accent::after {
       </div>
 
       <div class="somebody-card">
-        <div class="somebody-img">[ FOTO 2 · overhemd met trui, netjes, klaar voor een gesprek ]</div>
+        <div class="somebody-img-text">
+          <div class="somebody-img-text-label">Scherpere look</div>
+          <p class="somebody-img-text-body">Cavallaro overhemd of Boss trui, nette broek. Dit is wat ik aan heb als het ergens over gaat. Geen verkleedpartij, gewoon een tandje scherper.</p>
+        </div>
         <div class="somebody-body">
           <div class="somebody-tag">De scherpere versie</div>
           <div class="somebody-cap">Netjes maar geen verkleedpartij. Dit is hoe ik écht aan tafel zit.</div>
@@ -2628,22 +2647,20 @@ section.on .red-accent::after {
         <div class="day-img day-static" data-no-upload><img src="images/uploads/day-4-1776774991035.jpg" alt="Klas projectwerk"></div>
       </div>
 
-      <div class="day-row">
+      <div class="day-row" style="grid-template-columns: 100px 1fr;">
         <div class="day-time">14:00</div>
         <div>
           <div class="day-title">Thuis, reset en huishouden</div>
           <div class="day-desc">Weer thuis in Hoogeveen. Eten pakken, even ontladen, en vaak tussendoor ook de klus van de dag: koken, wassen, of de boel opruimen. Als m'n vader weg is doe ik alles zelf, niet vervelend, gewoon onderdeel van het ritme.</div>
         </div>
-        <div class="day-img">[ foto · thuis / huishouden ]</div>
       </div>
 
-      <div class="day-row">
+      <div class="day-row" style="grid-template-columns: 100px 1fr;">
         <div class="day-time">15:30</div>
         <div>
           <div class="day-title">Gym</div>
           <div class="day-desc">Vast moment in de sportschool. Koptelefoon op, volume omhoog, muziek is eigenlijk de hele dag al aan, maar hier gaat ie nog een tandje harder. Geen laptop, geen telefoon, alleen de volgende set. Hier lopen m'n gedachten weer scherp.</div>
         </div>
-        <div class="day-img">[ foto · gym ]</div>
       </div>
 
       <div class="day-row">
@@ -4144,7 +4161,7 @@ document.querySelectorAll('.nav-links a').forEach(a => {
     ],
   };
 
-  // Wis localStorage voor alle kast-static slots zodat oude slideshow-data nooit meer verschijnt
+  // Wis localStorage voor alle hardcoded/verwijderde slots
   (function clearKastStaticStorage() {
     try {
       const toRemove = [];
@@ -4153,8 +4170,11 @@ document.querySelectorAll('.nav-links a').forEach(a => {
         if (!k || !k.startsWith('upload-v1-')) continue;
         const slot = k.replace('upload-v1-', '');
         if (/^somebody-gal-\d+$/.test(slot)) toRemove.push(k);
+        if (/^somebody-\d+$/.test(slot)) toRemove.push(k);
         if (/^passie-gal-[1-6]$/.test(slot)) toRemove.push(k);
         if (/^day-([1-4]|[7-9])$/.test(slot)) toRemove.push(k);
+        if (/^persoon-\d+$/.test(slot)) toRemove.push(k);
+        if (slot === 'cover') toRemove.push(k);
       }
       toRemove.forEach(k => localStorage.removeItem(k));
     } catch(e) {}
@@ -4443,8 +4463,6 @@ document.querySelectorAll('.nav-links a').forEach(a => {
     };
 
     // Auto-enhance alle bekende plekken
-    document.querySelectorAll('.hero-cover').forEach((el) => attachUpload(el, 'cover'));
-    document.querySelectorAll('.somebody-img').forEach((el, i) => attachUpload(el, 'somebody-' + (i + 1)));
     document.querySelectorAll('.day-img').forEach((el, i) => attachUpload(el, 'day-' + (i + 1)));
 
     // Galleries per section, unieke key per sectie+index
@@ -4453,11 +4471,6 @@ document.querySelectorAll('.nav-links a').forEach(a => {
       section.querySelectorAll('.gallery .gallery-item').forEach((el, i) => {
         attachUpload(el, id + '-gal-' + (i + 1));
       });
-    });
-
-    // Eventuele avatars in de Ik ken jou sectie (rond / cirkelvormig)
-    document.querySelectorAll('#ikkenjou .person-photo, #ikkenjou .avatar-slot').forEach((el, i) => {
-      attachUpload(el, 'persoon-' + (i + 1));
     });
   })();
 })();
