@@ -2657,7 +2657,7 @@ section.on .red-accent::after {
           <div class="day-title">Thuis, reset en huishouden</div>
           <div class="day-desc">Weer thuis in Hoogeveen. Eten pakken, even ontladen, en vaak tussendoor ook de klus van de dag: koken, wassen, of de boel opruimen. Als m'n vader weg is doe ik alles zelf, niet vervelend, gewoon onderdeel van het ritme.</div>
         </div>
-        <div class="day-img">[ foto · thuis / huishouden ]</div>
+        <div class="day-img day-static" data-no-upload><img src="images/uploads/day-5-1779452100711.jpg" alt="Thuis reset en huishouden"></div>
       </div>
 
       <div class="day-row">
@@ -2666,7 +2666,7 @@ section.on .red-accent::after {
           <div class="day-title">Gym</div>
           <div class="day-desc">Vast moment in de sportschool. Koptelefoon op, volume omhoog, muziek is eigenlijk de hele dag al aan, maar hier gaat ie nog een tandje harder. Geen laptop, geen telefoon, alleen de volgende set. Hier lopen m'n gedachten weer scherp.</div>
         </div>
-        <div class="day-img">[ foto · gym ]</div>
+        <div class="day-img day-static" data-no-upload><img src="images/uploads/day-6-1779452109658.jpg" alt="Gym"></div>
       </div>
 
       <div class="day-row">
@@ -4178,7 +4178,7 @@ document.querySelectorAll('.nav-links a').forEach(a => {
         if (/^somebody-gal-\d+$/.test(slot)) toRemove.push(k);
         if (/^somebody-\d+$/.test(slot)) toRemove.push(k);
         if (/^passie-gal-[1-6]$/.test(slot)) toRemove.push(k);
-        if (/^day-([1-4]|[7-9])$/.test(slot)) toRemove.push(k);
+        if (/^day-[1-9]$/.test(slot)) toRemove.push(k);
         if (/^persoon-\d+$/.test(slot)) toRemove.push(k);
         if (slot === 'cover') toRemove.push(k);
       }
